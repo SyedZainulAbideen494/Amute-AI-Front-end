@@ -6,7 +6,7 @@ import {
   Link,
   Params,
 } from "react-router-dom";
-import Home from "./main-folder/home";
+import Home from "./home/home";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
