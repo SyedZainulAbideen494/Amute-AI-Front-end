@@ -1,0 +1,59 @@
+/* Style for the signup form container */
+.signup_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* Black background color */
+  padding: 20px;
+  border: 2px solid #555; /* Greyish outline */
+  border-radius: 8px;
+  max-width: 400px; /* Set a maximum width to fit content */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Style for labels */
+.signup_form label {
+  color: white; /* White text color for labels */
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+.signup_form input[type="text"],
+.signup_form input[type="email"],
+.signup_form input[type="password"],
+.signup_form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333; /* Darker background for inputs */
+  color: white; /* White text color for inputs */
+}
+
+/* Style for placeholder text in inputs */
+.signup_form input::placeholder {
+  color: #bbb; /* Placeholder text color */
+}
+.signup_form button {
+  margin-left: 6px;
+}
+
+/* Style for submit button */
+.signup_form .submit-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5px;
+}
+
+/* Style for "Already have an account?" section */
+.signup_form .already {
+  color: white; /* White text color for the text */
+}
+
+/* Style for the Cancel button (assuming it has a class of Cancelbtn) */
+.Cancelbtn {
+  /* Your styles for the Cancel button */
+}

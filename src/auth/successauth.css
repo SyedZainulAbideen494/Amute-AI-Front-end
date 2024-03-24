@@ -1,0 +1,25 @@
+/* styles.css */
+.login-seccess-main-div {
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+  }
+  
+  .big-textlogin-seccess-main-div {
+    font-size: 2em;
+  }
+  
+  .buttonlogin-seccess-main-div {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .button:hover {
+    background-color: #444;
+  }
