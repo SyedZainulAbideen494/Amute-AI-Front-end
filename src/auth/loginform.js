@@ -1,28 +1,18 @@
+import React, { Fragment, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import "./login.css";
 import Axios from "axios";
+import { API_ROUTES } from '../app-modules/api_routes';
+import "./login.css";
+
 const Loginform = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [loginstatus, setloginstatus] = useState(false);
-  const [error, setError] = useState("")
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const userauthentication = () => {
-    Axios.get("http://localhost:8080/userAuth", {
-      headers: {
-        "x-access-token": localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      console.log(response);
-    });
-  };
 
   const login = () => {
     setError(""); // Clear any previous errors
-    Axios.post("http://localhost:8080/login", {
+    Axios.post(API_ROUTES.login, {
       email: email,
       password: password,
     }).then((response) => {
@@ -35,10 +25,6 @@ const Loginform = () => {
     }).catch((error) => {
       setError("An error occurred while logging in"); // Display generic error message for network or other errors
     });
-  };
-
-  const userAuth = () => {
-    Axios.get("http://localhost:8080/isUserAuth");
   };
 
   return (
@@ -74,27 +60,23 @@ const Loginform = () => {
         </div>
         {error && <p className="error-message">{error}</p>}
         <div className="btnloginform">
-          <span>
-            <Link to="/">
-            </Link>
-          </span>
           <span className="loginbtn">
-            <button onClick={login} style={{cursor: 'pointer'}}>Login</button>
+            <button onClick={login} style={{ cursor: 'pointer' }}>Login</button>
           </span>
           <span className="loginbtn">
             <Link to='/website'>
-            <button>Cancel</button>
+              <button>Cancel</button>
             </Link>
           </span>
         </div>
         <div className="logintt">
           <Link to='/forgot-password'>
-        <p style={{color: 'white'}}>Forgot password</p>
-        </Link>
-          <p style={{color: 'white'}}>Don't have an account?</p>
+            <p style={{ color: 'white' }}>Forgot password</p>
+          </Link>
+          <p style={{ color: 'white' }}>Don't have an account?</p>
           <div className="loginct">
             <Link to="/signin">
-              <p style={{color: 'white'}}>Sign up</p>
+              <p style={{ color: 'white' }}>Sign up</p>
             </Link>
           </div>
         </div>

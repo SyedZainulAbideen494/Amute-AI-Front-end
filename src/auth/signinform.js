@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./auth.css";
 import Axios from "axios";
+import { API_ROUTES } from "../app-modules/api_routes";
 
 const Signinform = () => {
   const [phone_no, setphone_no] = useState("");
@@ -65,7 +66,7 @@ const Signinform = () => {
     };
 
     try {
-      const response = await Axios.post("http://localhost:8080/addUser", userData);
+      const response = await Axios.post(API_ROUTES.signup, userData);
 
       if (response.status === 200) {
         nav('/login');
