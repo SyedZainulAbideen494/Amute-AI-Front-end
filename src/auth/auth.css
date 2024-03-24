@@ -53,7 +53,16 @@
   color: white; /* White text color for the text */
 }
 
-/* Style for the Cancel button (assuming it has a class of Cancelbtn) */
-.Cancelbtn {
-  /* Your styles for the Cancel button */
+.input-container-gender {
+  margin-bottom: 20px;
+}
+
+.select-input-gender {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  background-color: #333; /* Darker background for inputs */
+  font-size: 16px;
 }

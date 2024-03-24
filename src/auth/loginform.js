@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import Cancelbtn from "./cancelbtn";
 import "./login.css";
 import Axios from "axios";
 const Loginform = () => {
@@ -77,7 +76,6 @@ const Loginform = () => {
         <div className="btnloginform">
           <span>
             <Link to="/">
-              <Cancelbtn />
             </Link>
           </span>
           <span className="loginbtn">

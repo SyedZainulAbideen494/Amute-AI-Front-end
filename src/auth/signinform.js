@@ -6,42 +6,18 @@ import Axios from "axios";
 
 const Signinform = () => {
   const [phoneno, setphoneno] = useState("");
-  const [id, setid] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [first_name, setfirstname] = useState("");
-  const [last_name, setlastname] = useState("");
-  const [occupation, setoccupation] = useState("");
+  const [Name, setname] = useState("");
+  const [Position, setpostion] = useState("");
   const [age, setage] = useState("");
-  const [streetadrs, setstreetsdrs] = useState("");
-  const [city, setcity] = useState("");
-  const [state, setstate] = useState("");
-  const [zipcode, setzipcode] = useState("");
-  const [country, setcountry] = useState("");
-  const [unique_id, setunique_id] = useState("");
-  const [bio, setbio] = useState("")
   const [gender, setGender] = useState(""); // State for gender
   const [error, setError] = useState("")
-  const firstnameHandler = (event) => {
-    setfirstname(event.target.value);
+  const nameHandler = (event) => {
+    setname(event.target.value);
   };
   const genderHandler = (event) => {
     setGender(event.target.value); // Update gender based on selected option
-  };
-  const bioHandler = (event) => {
-    setbio(event.target.value);
-  };
-
-  const idhandler = (event) => {
-    setid(event.target.value);
-  };
-
-  const unique_idHandler = (event) => {
-    setunique_id(event.target.value);
-  };
-
-  const lastnameHandler = (event) => {
-    setlastname(event.target.value);
   };
 
   const emailHandler = (event) => {
@@ -56,33 +32,11 @@ const Signinform = () => {
     setphoneno(event.target.value);
   };
 
-  const ageHandler = (event) => {
-    setage(event.target.value);
+  const PositionHandler = (event) => {
+    setpostion(event.target.value);
   };
 
-  const occupationHandler = (event) => {
-    setoccupation(event.target.value);
-  };
 
-  const streetaddress = (event) => {
-    setstreetsdrs(event.target.value);
-  };
-
-  const cityadrs = (event) => {
-    setcity(event.target.value);
-  };
-
-  const stateadrs = (event) => {
-    setstate(event.target.value);
-  };
-
-  const counrtyadrs = (event) => {
-    setcountry(event.target.value);
-  };
-
-  const zipcodeadrs = (event) => {
-    setzipcode(event.target.value);
-  };
   const nav = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -90,15 +44,11 @@ const Signinform = () => {
 
     // Check if required fields are empty
     if (
-      !first_name ||
-      !last_name ||
+      !Name ||
       !email ||
       !password ||
-      !unique_id ||
-      !occupation ||
-      !age ||
+      !Position ||
       !phoneno ||
-      !bio ||
       !gender
     ) {
       console.log("Please fill in all fields");
@@ -106,15 +56,11 @@ const Signinform = () => {
     }
 
     const userData = {
-      first_name: first_name,
-      last_name: last_name,
+      Name: Name,
       email: email,
       password: password,
-      unique_id: unique_id,
-      occupation: occupation,
-      age: age,
+      Position: Position,
       phoneno: phoneno,
-      bio: bio,
       gender: gender
     };
 
@@ -140,7 +86,7 @@ const Signinform = () => {
         <h2 className="sign-heading">Sign Up</h2>
         <div className="signup_info">
          
-          <div className="inp">
+        <div className="input-container-gender">
       <label htmlFor="gender">Gender</label><br/>
       <select
         id="gender"
@@ -148,6 +94,7 @@ const Signinform = () => {
         value={gender}
         onChange={genderHandler}
         required
+        className="select-input-gender"
       >
         <option value="">Select Gender</option>
         <option value="male">Male</option>
@@ -155,28 +102,15 @@ const Signinform = () => {
       </select>
     </div>
           <div className="inp">
-            <label htmlFor="fname">First Name</label>
+            <label htmlFor="fname">Name</label>
             <br />
             <input
               type="text"
               id="fname"
               name="fname"
-              value={first_name}
-              onChange={firstnameHandler}
-              placeholder="Enter First Name"
-              required
-            />
-          </div>
-          <div className="inp">
-            <label htmlFor="lname">Last Name</label>
-            <br />
-            <input
-              type="text"
-              id="lname"
-              name="lname"
-              value={last_name}
-              onChange={lastnameHandler}
-              placeholder="Enter Last Name"
+              value={Name}
+              onChange={nameHandler}
+              placeholder="Enter Name"
               required
             />
           </div>
@@ -220,39 +154,14 @@ const Signinform = () => {
             />
           </div>
           <div className="inp">
-            <label htmlFor="age">Age</label>
-            <br />
-            <input
-              type="text"
-              id="age"
-              name="age"
-              value={age}
-              onChange={ageHandler}
-              placeholder="Enter Age"
-              required
-            />
-          </div>
-          <div className="inp">
-            <label htmlFor="bio">Bio</label><br/>
-            <input
-              type="text"
-              id="bio"
-              name="bio"
-              value={bio}
-              onChange={bioHandler}
-              placeholder="bio"
-              required
-            />
-          </div>
-          <div className="inp">
-            <label htmlFor="occupation">Occupation</label>
+            <label htmlFor="occupation">Position</label>
             <br />
             <input
               type="text"
               id="occupation"
               name="occupation"
-              value={occupation}
-              onChange={occupationHandler}
+              value={Position}
+              onChange={PositionHandler}
               placeholder="Enter Occupation"
               required
             />
