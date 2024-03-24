@@ -29,7 +29,7 @@ const Loginform = () => {
       if (!response.data.auth) {
         setError(response.data.message || "An error occurred"); // Display the error message from the server, or a generic error message
       } else {
-        navigate("/Addshoppage1");
+        navigate("/home");
         localStorage.setItem("token", response.data.token);
       }
     }).catch((error) => {
@@ -81,15 +81,20 @@ const Loginform = () => {
           <span className="loginbtn">
             <button onClick={login} style={{cursor: 'pointer'}}>Login</button>
           </span>
+          <span className="loginbtn">
+            <Link to='/website'>
+            <button>Cancel</button>
+            </Link>
+          </span>
         </div>
         <div className="logintt">
           <Link to='/forgot-password'>
-        <p>Forgot password</p>
+        <p style={{color: 'white'}}>Forgot password</p>
         </Link>
-          <p>Don't have an account?</p>
+          <p style={{color: 'white'}}>Don't have an account?</p>
           <div className="loginct">
             <Link to="/signin">
-              <p>Sign up</p>
+              <p style={{color: 'white'}}>Sign up</p>
             </Link>
           </div>
         </div>

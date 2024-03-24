@@ -5,7 +5,7 @@ import "./auth.css";
 import Axios from "axios";
 
 const Signinform = () => {
-  const [phoneno, setphoneno] = useState("");
+  const [phone_no, setphone_no] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Name, setname] = useState("");
@@ -28,8 +28,8 @@ const Signinform = () => {
     setpassword(event.target.value);
   };
 
-  const phoneNohandler = (event) => {
-    setphoneno(event.target.value);
+  const phone_nohandler = (event) => {
+    setphone_no(event.target.value);
   };
 
   const PositionHandler = (event) => {
@@ -48,7 +48,7 @@ const Signinform = () => {
       !email ||
       !password ||
       !Position ||
-      !phoneno ||
+      !phone_no ||
       !gender
     ) {
       console.log("Please fill in all fields");
@@ -60,7 +60,7 @@ const Signinform = () => {
       email: email,
       password: password,
       Position: Position,
-      phoneno: phoneno,
+      phone_no: phone_no,
       gender: gender
     };
 
@@ -141,14 +141,14 @@ const Signinform = () => {
             />
           </div>
           <div className="inp">
-            <label htmlFor="phoneno">Phone No</label>
+            <label htmlFor="phone_no">Phone No</label>
             <br />
             <input
               type="text"
-              id="phoneno"
-              name="phoneno"
-              value={phoneno}
-              onChange={phoneNohandler}
+              id="phone_no"
+              name="phone_no"
+              value={phone_no}
+              onChange={phone_nohandler}
               placeholder="Enter Phone No"
               required
             />
