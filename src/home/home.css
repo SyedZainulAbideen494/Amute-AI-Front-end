@@ -8,7 +8,7 @@
   }
   
   .welcome-message_team {
-    font-size: 25px;
+    font-size: 20px;
     margin-bottom: 40px;
     font-weight: 700;
     text-align: center;
@@ -38,10 +38,127 @@
     height: 24px; /* Adjust image size as needed */
   }
   
-  .nav-button_team_active {
-    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
-  }
   
   .nav-button_team:hover {
     background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
   }
+
+
+  .main_div_team_dashboard {
+    display: flex;
+  }
+  
+  .nav_bar_area_Team_dashboard,
+  .Dashboard_area_Team_dashboard,
+  .rightmenu_area_Team_dashboard {
+    flex: 1; /* Equal width for all */
+  }
+  
+  .Dashboard_area_Team_dashboard {
+    flex: 2; /* Twice the width of the others */
+  }
+  
+
+/* home.css */
+
+
+.dashvoard_team_header {
+  background-color: #1F1F1F;
+  color: #fff;
+  border-radius: 25px;
+  padding: 6px 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.dashvoard_team_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashvoard_team_header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.dashvoard_team_header button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.setting_btn_dashboard_team:hover {
+  background-color: #4b4a4a;
+  transition: 0.3s;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.dashvoard_team_header button:focus {
+  outline: none;
+}
+
+.notification_dashboard_icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid white;
+}
+
+
+
+/* Menu toggle styles */
+.menu-toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Ensure it's above other elements */
+}
+
+/* Styles for the lines icon */
+.line {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    transition: transform 0.3s ease; /* Add transition for smooth rotation */
+}
+
+/* Rotate lines to form an 'X' shape when menu is toggled */
+.menu-toggle.active .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.menu-toggle.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+/* Navbar styles */
+.nav_bar_area_Team_dashboard {
+    /* Add styles for the navigation bar */
+}
+
+/* Dashboard area styles */
+.Dashboard_area_Team_dashboard {
+    /* Add styles for the dashboard area */
+}
+
+/* Right menu area styles */
+.rightmenu_area_Team_dashboard {
+    /* Add styles for the right menu area */
+}
