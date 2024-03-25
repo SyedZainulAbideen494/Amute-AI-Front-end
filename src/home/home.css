@@ -113,6 +113,9 @@
 .main_div_team_dashboard_smallscreen {
   display: none;
 }
+.menu-toggle {
+  display: none;
+}
 }
 
 @media screen and (max-width: 750px) {
@@ -148,10 +151,11 @@
     border: none;
     background: none;
     padding: 10px 20px;
-    margin: 10px 0;
+    margin: 10px 10px;
     display: flex;
     align-items: left;
     cursor: pointer;
+    border-radius: 15px;
     color: white;
     text-align: left;
   }
