@@ -125,6 +125,7 @@
     top: 0;
     left: -240px; /* Initially hide the navbar off the screen */
     transition: left 0.3s ease;
+    border-radius: 12px;
   }
   
   .left-sidebar_team.show-nav {
@@ -173,6 +174,56 @@
   }
   .nav-button_team:hover {
     background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
+  }
+  .dashvoard_team_header {
+    background-color: #1F1F1F;
+    color: #fff;
+    border-radius: 25px;
+    padding: 6px 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .dashvoard_team_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dashvoard_team_header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .dashvoard_team_header button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .setting_btn_dashboard_team:hover {
+    background-color: #4b4a4a;
+    transition: 0.3s;
+    padding: 12px;
+    border-radius: 12px;
+  }
+  
+  .dashvoard_team_header button:focus {
+    outline: none;
+  }
+  
+  .notification_dashboard_icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: 1px solid white;
   }
   .main_div_team_dashboard {
     display: none;
