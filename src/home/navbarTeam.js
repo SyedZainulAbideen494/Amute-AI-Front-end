@@ -11,7 +11,7 @@ import dashboardicon from '../images/icons8-dashboard-50.png';
 
 const NavBarTeam = () => {
     const [userInfo, setUserInfo] = useState([]);
-    const [showNav, setShowNav] = useState(false); // State to toggle navigation bar
+    const [showNav, setShowNav] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -40,38 +40,51 @@ const NavBarTeam = () => {
         });
     }, []);
 
+    const toggleNav = () => {
+        setShowNav(!showNav);
+    };
+
     return (
-        <div className={`left-sidebar_team ${showNav ? 'active' : ''}`}>
-            <div className="welcome-message_team">Welcome, {userInfo.name}!</div>
-            <div className="nav-buttons_team">
-                <button className="nav-button_team">
-                    <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
-                    Dashboard
-                </button>
-                <button className="nav-button_team">
-                    <img src={teamicon} alt="Team" className="nav-icon" />
-                    Team
-                </button>
-                <button className="nav-button_team">
-                    <img src={taskicon} alt="Tasks" className="nav-icon" />
-                    Tasks
-                </button>
-                <button className="nav-button_team">
-                    <img src={messageicon} alt="Messages" className="nav-icon" />
-                    Messages
-                </button>
-                <button className="nav-button_team">
-                    <img src={performaceicon} alt="Performance" className="nav-icon" />
-                    My Performance
-                </button>
-                <button className="nav-button_team">
-                    <img src={porfileicon} alt="Profile" className="nav-icon" />
-                    My Profile
-                </button>
-                <button className="nav-button_team">
-                    <img src={helpicon} alt="Help" className="nav-icon" />
-                    Help
-                </button>
+        <div>
+            <div className={`left-sidebar_team ${showNav ? 'show-nav' : ''}`}>
+                <div className="welcome-message_team">Welcome, {userInfo.name}!</div>
+                <div className="nav-buttons_team">
+                    <button className="nav-button_team">
+                        <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
+                        Dashboard
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={teamicon} alt="Team" className="nav-icon" />
+                        Team
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={taskicon} alt="Tasks" className="nav-icon" />
+                        Tasks
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={messageicon} alt="Messages" className="nav-icon" />
+                        Messages
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={performaceicon} alt="Performance" className="nav-icon" />
+                        My Performance
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={porfileicon} alt="Profile" className="nav-icon" />
+                        My Profile
+                    </button>
+                    <button className="nav-button_team">
+                        <img src={helpicon} alt="Help" className="nav-icon" />
+                        Help
+                    </button>
+                </div>
+            </div>
+            <div className="menu-toggle" onClick={toggleNav}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
             </div>
         </div>
     );

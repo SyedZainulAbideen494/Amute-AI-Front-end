@@ -1,3 +1,4 @@
+@media screen and (min-width: 1025px){
 .left-sidebar_team {
     background-color: #1F1F1F;
     color: #fff;
@@ -59,9 +60,6 @@
   }
   
 
-/* home.css */
-
-
 .dashvoard_team_header {
   background-color: #1F1F1F;
   color: #fff;
@@ -112,53 +110,68 @@
   padding: 5px;
   border: 1px solid white;
 }
+.main_div_team_dashboard_smallscreen {
+  display: none;
+}
+}
 
-
-
-/* Menu toggle styles */
-.menu-toggle {
-    display: block;
+@media screen and (max-width: 750px) {
+  .left-sidebar_team {
+    width: 240px;
+    background-color: #1F1F1F;
+    color: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -240px; /* Initially hide the navbar off the screen */
+    transition: left 0.3s ease;
+  }
+  
+  .left-sidebar_team.show-nav {
+    left: 0; /* Show the navbar by bringing it back to 0 left position */
+  }
+  
+  .welcome-message_team {
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .nav-buttons_team {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+  
+  .nav-button_team {
+    border: none;
+    background: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    display: flex;
+    align-items: left;
     cursor: pointer;
-    padding: 10px;
+    color: white;
+    text-align: left;
+  }
+  
+  .nav-button_team img {
+    margin-right: 10px;
+  }
+  
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .menu-toggle {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000; /* Ensure it's above other elements */
-}
-
-/* Styles for the lines icon */
-.line {
-    width: 30px;
-    height: 3px;
-    background-color: #fff;
-    margin: 5px 0;
-    transition: transform 0.3s ease; /* Add transition for smooth rotation */
-}
-
-/* Rotate lines to form an 'X' shape when menu is toggled */
-.menu-toggle.active .line:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 5px);
-}
-
-.menu-toggle.active .line:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active .line:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -5px);
-}
-
-/* Navbar styles */
-.nav_bar_area_Team_dashboard {
-    /* Add styles for the navigation bar */
-}
-
-/* Dashboard area styles */
-.Dashboard_area_Team_dashboard {
-    /* Add styles for the dashboard area */
-}
-
-/* Right menu area styles */
-.rightmenu_area_Team_dashboard {
-    /* Add styles for the right menu area */
+    z-index: 999;
+    cursor: pointer;
+  }
+  .main_div_team_dashboard {
+    display: none;
+  }
 }
