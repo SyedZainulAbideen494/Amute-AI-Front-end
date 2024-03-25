@@ -1,0 +1,33 @@
+.left-sidebar_team {
+    background-color: #1A1A1A;
+    color: #fff;
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .welcome-message_team {
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
+  
+  .nav-buttons_team {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-button_team {
+    background: transparent; /* Set initial gradient */
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    transition: background 0.5s ease; /* Apply transition to the background property */
+  }
+  
+  .nav-button_team:hover {
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
+  }
