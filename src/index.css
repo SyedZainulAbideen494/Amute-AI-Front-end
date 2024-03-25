@@ -1,6 +1,7 @@
 body {
   background-color: black;
   margin: 0px;
+  font-family: 'Open Sans', sans-serif; /* Use Open Sans font */
 }
 p {
   color: white;
