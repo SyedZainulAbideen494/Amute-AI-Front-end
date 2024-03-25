@@ -171,6 +171,9 @@
     z-index: 999;
     cursor: pointer;
   }
+  .nav-button_team:hover {
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
+  }
   .main_div_team_dashboard {
     display: none;
   }
