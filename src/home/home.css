@@ -225,6 +225,9 @@
     padding: 5px;
     border: 1px solid white;
   }
+  .dashvoard_team_header h3 {
+    margin-left: 48px;
+  }
   .main_div_team_dashboard {
     display: none;
   }
