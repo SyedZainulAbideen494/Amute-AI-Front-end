@@ -73,13 +73,13 @@
 .dashvoard_team_header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .dashvoard_team_header h3 {
   margin: 0;
   cursor: grab;
   font-size: 20px;
+  flex: 1; /* Allow the text to take up remaining space */
 }
 
 .dashvoard_team_header button {
@@ -88,29 +88,32 @@
   color: #fff;
   font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
 }
 
-.setting_btn_dashboard_team:hover {
+.setting_btn_dashboard_team,
+.notification_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.setting_btn_dashboard_team:hover,
+.notification_icon:hover {
   background-color: #1a1919;
   transition: 0.3s;
-  padding: 9px;
-  border-radius: 12px;
-}
-
-.dashvoard_team_header button:focus {
-  outline: none;
+  border-radius: 50%;
 }
 
 .notification_dashboard_icon {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
+  padding: 9px;
 }
 .notification_dashboard_icon:hover {
   background-color: #1a1919;
