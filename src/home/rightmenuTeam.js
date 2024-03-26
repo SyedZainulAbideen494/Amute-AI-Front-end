@@ -78,7 +78,19 @@ const RightMenuSummary = () => {
                         <h3>Company</h3>
                         <img src={isCompanyDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
                     </div>
-                   
+                    {isCompanyDetailsOpen && (
+                        <div className="team_details_summary_content_company_area">
+                            <p> {userInfo.role === 'Leader' ? (
+                                <button className="right_menu_btn_company_area">
+                                    Create Company
+                                </button>
+                            ) : (
+                                <button className="right_menu_btn">
+                                    {userInfo.status}
+                                </button>
+                            )}</p>
+                        </div>
+                    )}
                 </div>
                 <div className="team_details_summary_menu">
                     <div className="team_details_summary_header" onClick={toggleTeamDetails}>
