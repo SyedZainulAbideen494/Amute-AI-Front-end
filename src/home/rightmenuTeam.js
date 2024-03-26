@@ -1,13 +1,16 @@
-import React,{useEffect} from "react";
-import './home.css'
-import { API_ROUTES } from "../app-modules/api_routes";
+import React from "react";
+import './home.css';
 
-const RightMenuTeam = () => {
-    return<div className="rightmenu_team_main_div">
-        <div className="right_menu_Header">
-        <h2>Summary</h2>
+const RightMenuSummary = () => {
+    return (
+        <div className="rightmenu_summary_main_div">
+            <div className="right_menu_summary_header">
+                <h2>Summary</h2>
+            </div>
+            <div className="summary_details">
+            </div>
         </div>
-    </div>
+    );
 }
 
-export default RightMenuTeam
+export default RightMenuSummary;

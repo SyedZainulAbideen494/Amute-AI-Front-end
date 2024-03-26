@@ -116,6 +116,33 @@
 .menu-toggle {
   display: none;
 }
+
+.rightmenu_summary_main_div {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 240px; /* Adjust width as needed */
+  background-color: #131313; /* Dark background color */
+  color: #fff; /* Light text color */
+  border-left: none; /* Border color */
+  z-index: 1000; /* Ensure it appears above other content */
+  padding: 20px; /* Padding for content */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
+}
+
+.right_menu_summary_header {
+  margin-bottom: 20px; /* Add some space below the header */
+}
+
+.right_menu_summary_header h2 {
+  color: #fff; /* Header text color */
+  text-align: center;
+}
+
+.summary_details {
+  /* Add styles for additional details here */
+}
 }
 
 @media screen and (max-width: 850px) {
