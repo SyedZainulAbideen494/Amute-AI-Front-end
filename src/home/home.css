@@ -67,6 +67,7 @@
   padding: 6px 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   border: 2px solid #1F1F1F;
+  margin-top: 5px;
 }
 
 .dashvoard_team_header {
@@ -75,9 +76,10 @@
   justify-content: space-between;
 }
 
-.dashvoard_team_header h2 {
+.dashvoard_team_header h3 {
   margin: 0;
-  font-size: 24px;
+  cursor: grab;
+  font-size: 20px;
 }
 
 .dashvoard_team_header button {
@@ -90,9 +92,9 @@
 }
 
 .setting_btn_dashboard_team:hover {
-  background-color: #4b4a4a;
+  background-color: #1a1919;
   transition: 0.3s;
-  padding: 12px;
+  padding: 9px;
   border-radius: 12px;
 }
 
@@ -109,6 +111,10 @@
   align-items: center;
   justify-content: center;
   padding: 5px;
+}
+.notification_dashboard_icon:hover {
+  background-color: #1a1919;
+  transition: 0.3s;
 }
 .main_div_team_dashboard_smallscreen {
   display: none;
