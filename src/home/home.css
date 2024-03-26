@@ -1,4 +1,4 @@
-@media screen and (min-width: 1025px){
+@media screen and (min-width: 851px){
 .left-sidebar_team {
     background-color: #131313;
     color: #fff;
@@ -118,7 +118,7 @@
 }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
   .left-sidebar_team {
     width: 240px;
     background-color: #1F1F1F;
