@@ -252,37 +252,24 @@
     overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
   }
   .right_menu_summary_header {
-    margin-bottom: 20px; /* Add some space below the header */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    cursor: pointer;
   }
   
   .right_menu_summary_header h2 {
     color: #fff; /* Header text color */
-    text-align: center;
     font-size: 30px;
-    margin-bottom: 40px;
+    margin: 0; /* Remove default margin */
     font-weight: 700;
     text-align: center;
-  }
-  .team_details_summary_menu {
-    margin-bottom: 10px;
-  }
-  
-  .team_details_summary_header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-  }
-  
-  .team_details_summary_header h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
   }
   
   .toggle_arrow {
-    width: 16px; /* Adjust arrow size as needed */
-    height: 16px; /* Adjust arrow size as needed */
+    width: 20px; /* Adjust arrow size as needed */
+    height: 20px; /* Adjust arrow size as needed */
+    margin-left: 10px; /* Add margin between heading and arrow */
     transition: transform 0.3s ease; /* Smooth transition for rotation */
   }
   
@@ -306,7 +293,7 @@
     align-items: center;
     justify-content: space-between;
     color: #fff; /* Text color */
-    font-size: 12px;
+    font-size: 18px;
     margin-bottom: 10px;
   }
   
