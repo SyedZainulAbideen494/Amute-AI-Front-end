@@ -138,13 +138,19 @@
 .right_menu_summary_header h2 {
   color: #fff; /* Header text color */
   text-align: center;
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-align: center;
 }
 
-.summary_details {
-  /* Add styles for additional details here */
-}
-}
 
+}
+@media screen and (max-width: 1113px)  {
+  .rightmenu_area_Team_dashboard {
+    display: none;
+  }
+}
 @media screen and (max-width: 850px) {
   .left-sidebar_team {
     width: 240px;
