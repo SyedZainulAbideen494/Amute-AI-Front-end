@@ -108,7 +108,6 @@
   align-items: center;
   justify-content: center;
   padding: 5px;
-  border: 1px solid white;
 }
 .main_div_team_dashboard_smallscreen {
   display: none;
@@ -260,7 +259,6 @@
     align-items: center;
     justify-content: center;
     padding: 5px;
-    border: 1px solid white;
   }
   .dashvoard_team_header h3 {
     margin-left: 48px;
