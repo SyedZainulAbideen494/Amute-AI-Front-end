@@ -6,11 +6,13 @@ import arrowUp from '../images/icons8-arrow-up.png';
 import Calander from "./calander";
 import backIcon from '../images/icons8-arrow-left.png';
 import { Link } from "react-router-dom";
+import AmuteAi from "../amute AI/amuteAi";
 const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
-    const [isCalendarDetailsOpen, setIsCalendarDetailsOpen] = useState(true);
+    const [isCalendarDetailsOpen, setIsCalendarDetailsOpen] = useState(false);
+    const [isAmuteOpen, setIsAmuteOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(new Date());
 
     useEffect(() => {
@@ -51,6 +53,10 @@ const RightMenuSummary = () => {
     const toggleCalendarDetails = () => {
         setIsCalendarDetailsOpen(!isCalendarDetailsOpen);
     };
+    const toggleAmuteAi = () => {
+        setIsAmuteOpen(!isAmuteOpen);
+    };
+
 
 
     return (
@@ -107,6 +113,15 @@ const RightMenuSummary = () => {
                     </div>
                     {isCalendarDetailsOpen && (
                        <Calander/>
+                    )}
+                </div>
+                <div className="team_details_summary_menu">
+                    <div className="team_details_summary_header" onClick={toggleAmuteAi}>
+                        <h3>Amute AI</h3>
+                        <img src={isAmuteOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                    </div>
+                    {isAmuteOpen && (
+                       <AmuteAi/>
                     )}
                 </div>
             </div>
