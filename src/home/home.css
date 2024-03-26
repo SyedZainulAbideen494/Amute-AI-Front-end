@@ -61,10 +61,10 @@
   
 
 .dashvoard_team_header {
-  background-color: #1F1F1F;
+  background-color: #000000;
   color: #fff;
   border-radius: 25px;
-  padding: 6px 15px;
+  padding: 6px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
