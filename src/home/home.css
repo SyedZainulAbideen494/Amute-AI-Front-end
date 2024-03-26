@@ -286,6 +286,7 @@
     border-radius: 5px; /* Rounded corners */
     padding: 20px;
     margin-top: 10px;
+    width: 350px;
   }
   
   .calendar-header {
