@@ -11,6 +11,7 @@ const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
+    const [isCompanyDetailsOpen, setIsCompanyDetailsOpen] = useState(false);
     const [isCalendarDetailsOpen, setIsCalendarDetailsOpen] = useState(false);
     const [isAmuteOpen, setIsAmuteOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -56,6 +57,10 @@ const RightMenuSummary = () => {
     const toggleAmuteAi = () => {
         setIsAmuteOpen(!isAmuteOpen);
     };
+    const toggleCompanyDetails = () => {
+        setIsCompanyDetailsOpen(!isCompanyDetailsOpen);
+    };
+
 
 
 
@@ -68,6 +73,13 @@ const RightMenuSummary = () => {
     <h2>Summary</h2>
   </div>
             <div className="summary_details">
+            <div className="team_details_summary_menu">
+                    <div className="team_details_summary_header" onClick={toggleCompanyDetails}>
+                        <h3>Company</h3>
+                        <img src={isCompanyDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                    </div>
+                   
+                </div>
                 <div className="team_details_summary_menu">
                     <div className="team_details_summary_header" onClick={toggleTeamDetails}>
                         <h3>Team</h3>
