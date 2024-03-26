@@ -79,11 +79,13 @@ const RightMenuSummary = () => {
                         <img src={isCompanyDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
                     </div>
                     {isCompanyDetailsOpen && (
-                        <div className="team_details_summary_content_company_area">
+                        <div className="team_details_summary_content_company_area" style={{textAlign: 'center'}}>
                             <p> {userInfo.role === 'Leader' ? (
+                                <Link to='/create-company'>
                                 <button className="right_menu_btn_company_area">
                                     Create Company
                                 </button>
+                                </Link>
                             ) : (
                                 <button className="right_menu_btn">
                                     {userInfo.status}

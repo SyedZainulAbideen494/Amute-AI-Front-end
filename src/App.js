@@ -11,6 +11,7 @@ import Signinform from "./auth/signinform";
 import Loginform from "./auth/loginform";
 import Website from "./website/website";
 import Summary from "./home/summary";
+import CompanyCreate from "./company/createCompany";
 
 const router = createBrowserRouter([
   { path: "/dashboard", element: <HomeTeam /> },
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signinform/>},
   { path: "/login", element: <Loginform/>},
   { path: '/summary', element: <Summary/>},
+  { path: '/create-company', element: <CompanyCreate/>}
 ]);
 
 

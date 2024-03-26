@@ -468,3 +468,12 @@
     display: none;
   }
 }
+
+.right_menu_btn_company_area {
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+}
