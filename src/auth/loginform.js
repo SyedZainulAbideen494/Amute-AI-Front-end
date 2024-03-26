@@ -75,7 +75,7 @@ const Loginform = () => {
           </Link>
           <p style={{ color: 'white' }}>Don't have an account?</p>
           <div className="loginct">
-            <Link to="/signin">
+            <Link to="/signup">
               <p style={{ color: 'white' }}>Sign up</p>
             </Link>
           </div>

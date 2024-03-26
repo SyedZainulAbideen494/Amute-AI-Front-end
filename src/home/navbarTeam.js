@@ -65,10 +65,17 @@ const NavBarTeam = () => {
                         <img src={messageicon} alt="Messages" className="nav-icon" />
                         Messages
                     </button>
-                    <button className="nav-button_team">
-                        <img src={performaceicon} alt="Performance" className="nav-icon" />
-                        My Performance
-                    </button>
+                    {userInfo.role === 'Leader' ? (
+                        <button className="nav-button_team">
+                            <img src={performaceicon} alt="Team Performance" className="nav-icon" />
+                            Team Performance
+                        </button>
+                    ) : (
+                        <button className="nav-button_team">
+                            <img src={performaceicon} alt="My Performance" className="nav-icon" />
+                            My Performance
+                        </button>
+                    )}
                     <button className="nav-button_team">
                         <img src={porfileicon} alt="Profile" className="nav-icon" />
                         My Profile

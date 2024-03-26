@@ -1,6 +1,6 @@
 @media screen and (min-width: 1025px){
 .left-sidebar_team {
-    background-color: #1F1F1F;
+    background-color: #131313;
     color: #fff;
     width: 250px;
     height: 100vh;
@@ -233,6 +233,9 @@
     margin-left: 48px;
   }
   .main_div_team_dashboard {
+    display: none;
+  }
+  .rightmenu_area_Team_dashboard {
     display: none;
   }
 }
