@@ -260,8 +260,7 @@
   
   .right_menu_summary_header h2 {
     color: #fff; /* Header text color */
-    font-size: 30px;
-    margin: 0; /* Remove default margin */
+    font-size: 27px;
     font-weight: 700;
     text-align: center;
   }
@@ -286,7 +285,6 @@
     border-radius: 5px; /* Rounded corners */
     padding: 20px;
     margin-top: 10px;
-    width: 350px;
   }
   
   .calendar-header {
