@@ -4,7 +4,8 @@ import { API_ROUTES } from "../app-modules/api_routes";
 import arrowDown from '../images/icons8-arrow-down.png';
 import arrowUp from '../images/icons8-arrow-up.png';
 import Calander from "./calander";
-
+import backIcon from '../images/icons8-arrow-left.png';
+import { Link } from "react-router-dom";
 const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
@@ -54,9 +55,12 @@ const RightMenuSummary = () => {
 
     return (
         <div className="rightmenu_summary_main_div">
-            <div className="right_menu_summary_header">
-                <h2>Summary</h2>
-            </div>
+             <div className="right_menu_summary_header">
+             <Link to='/dashboard'>
+    <img src={backIcon} alt="Back" className="back_button_Right_menu_mobile"/>
+    </Link>
+    <h2>Summary</h2>
+  </div>
             <div className="summary_details">
                 <div className="team_details_summary_menu">
                     <div className="team_details_summary_header" onClick={toggleTeamDetails}>

@@ -330,10 +330,21 @@
   .live-date {
     background-color: #5C33F6; /* Blue color for current date */
   }
+  .back_button_Right_menu_mobile {
+    display: inline-block; /* Display the back button for smaller screens */
+    width: 24px; /* Adjust width as needed */
+    height: 24px; /* Adjust height as needed */
+    margin-right: 14px; /* Add margin between back button and heading */
+    margin-top: 8px;
+    cursor: pointer;
+  }
 }
 @media screen and (min-width: 1113px){
   .mobl_btn_dashboard_btn_summary {
     display: none;
+  }
+  .back_button_Right_menu_mobile {
+    display: none; /* Initially hide the back button */
   }
 }
 
