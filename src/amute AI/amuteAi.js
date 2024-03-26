@@ -22,7 +22,7 @@ const AmuteAi = () => {
 
   return (
     <div className="amute-ai-container">
-      <h3>ChatBot</h3>
+      <h3>Amute AI</h3>
       <div className="amute-ai-response">{response}</div>
       <input
         type="text"
