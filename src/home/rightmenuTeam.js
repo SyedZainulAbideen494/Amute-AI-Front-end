@@ -51,29 +51,6 @@ const RightMenuSummary = () => {
         setIsCalendarDetailsOpen(!isCalendarDetailsOpen);
     };
 
-    const daysInMonth = () => {
-        const year = currentDate.getFullYear();
-        const month = currentDate.getMonth() + 1;
-        return new Date(year, month, 0).getDate();
-    };
-
-    const renderCalendarDays = () => {
-        const totalDays = daysInMonth();
-        const calendarDays = [];
-        for (let i = 1; i <= totalDays; i++) {
-            calendarDays.push(
-                <div className={`calendar-day ${i === currentDate.getDate() ? 'live-date' : ''}`} key={i}>
-                    {i}
-                </div>
-            );
-        }
-        return calendarDays;
-    };
-
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June", "July",
-        "August", "September", "October", "November", "December"
-    ];
 
     return (
         <div className="rightmenu_summary_main_div">
