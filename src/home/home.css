@@ -238,7 +238,119 @@
   .rightmenu_area_Team_dashboard {
     display: none;
   }
+  .rightmenu_summary_main_div {
+    position: fixed;
+    top: 0;
+    left: 0; /* Adjust to cover the whole screen */
+    bottom: 0;
+    width: 100%; /* Cover the whole screen */
+    background-color: #131313; /* Dark background color */
+    color: #fff; /* Light text color */
+    border-left: none; /* Border color */
+    z-index: 1000; /* Ensure it appears above other content */
+    padding: 20px; /* Padding for content */
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
+  }
+  .right_menu_summary_header {
+    margin-bottom: 20px; /* Add some space below the header */
+  }
+  
+  .right_menu_summary_header h2 {
+    color: #fff; /* Header text color */
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .team_details_summary_menu {
+    margin-bottom: 10px;
+  }
+  
+  .team_details_summary_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .team_details_summary_header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .toggle_arrow {
+    width: 16px; /* Adjust arrow size as needed */
+    height: 16px; /* Adjust arrow size as needed */
+    transition: transform 0.3s ease; /* Smooth transition for rotation */
+  }
+  
+  .team_details_summary_content {
+    padding-left: 20px; /* Add indentation for content */
+  }
+  
+  .team_details_summary_content button {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  .calendar {
+    background-color: #212027; /* Dark background color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px;
+    margin-top: 10px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff; /* Text color */
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-header button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .calendar-header button:hover {
+    color: #9F9BEA;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
+    gap: 5px; /* Gap between days */
+  }
+  
+  .calendar-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%; /* Circular shape */
+    background-color: #151418; /* Dark gray background color */
+    color: #fff; /* Text color */
+    font-size: 16px;
+    padding: 2px;
+  }
+  
+  .live-date {
+    background-color: #5C33F6; /* Blue color for current date */
+  }
 }
+@media screen and (min-width: 1113px){
+  .mobl_btn_dashboard_btn_summary {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 850px) {
   .left-sidebar_team {
     width: 240px;
