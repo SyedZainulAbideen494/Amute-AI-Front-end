@@ -1,43 +1,54 @@
-import React,{useCallback, useEffect, useState} from "react";
-import { API_ROUTES } from "../app-modules/api_routes";
-import { useNavigate } from "react-router-dom";
-import './company.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { API_ROUTES } from '../app-modules/api_routes';
+import './company.css';
 
-const CompanyCreate = () => {
-    const [userInfo, setUserInfo] = useState([]);
-    const nav = useNavigate()
-    useEffect(() => {
-        const token = localStorage.getItem('token');
+const CreateCompany = () => {
+  const [companyName, setCompanyName] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
-        if (!token) {
-            console.error('Token not found');
-            return;
-        }
+  const handleInputChange = (event) => {
+    setCompanyName(event.target.value);
+  };
 
-        fetch(API_ROUTES.fetchUserDetails, {
-            method: 'GET',
-            headers: {
-                'Authorization': token
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                console.error('Error fetching user:', data.error);
-                return;
-            }
-            setUserInfo(data);
-        })
-        .catch(error => {
-            console.error('Error fetching user:', error);
-        });
-    }, []);
-    useEffect(() => {
-        if (userInfo.role === 'member') {
-            nav('/dashboard');
-        }
-    }, [userInfo.role, nav]);
-    return
-}
+  const handleCreateCompany = async () => {
+    try {
+      const response = await axios.post(API_ROUTES.createCompany, { name: companyName });
+      console.log('Company created:', response.data);
+      setSuccessMessage('Company created successfully! Please refesh the page');
+      setCompanyName(''); // Clear the input field
+      // After successfully creating the company, add the user to the company
+      await addCurrentUserToCompany(response.data.id);
+    } catch (error) {
+      console.error('Error creating company:', error);
+      setSuccessMessage('Failed to create company');
+    }
+  };
 
-export default CompanyCreate
+  const addCurrentUserToCompany = async (companyId) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.post(API_ROUTES.addUserToCompany, { companyId, token });
+      console.log('User added to company:', response.data);
+    } catch (error) {
+      console.error('Error adding user to company:', error);
+    }
+  };
+
+  return (
+    <div className="create-company-container">
+      <h2 className="create-company-title">Create Company</h2>
+      <input
+        type="text"
+        className="company-name-input"
+        placeholder="Company Name"
+        value={companyName}
+        onChange={handleInputChange}
+      />
+      <button className="create-company-button" onClick={handleCreateCompany}>Create</button>
+      {successMessage && <p className="success-message">{successMessage}</p>}
+    </div>
+  );
+};
+
+export default CreateCompany;

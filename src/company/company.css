@@ -1,0 +1,72 @@
+.create-company-container {
+    background-color: #202124;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 10px 0px;
+  }
+  
+  .create-company-title {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .company-name-input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #292b2f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .create-company-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .create-company-button:hover {
+    background-color: #0056b3;
+  }
+
+  /* joinedCompanies.css */
+
+  .joined-companies-container {
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Ensure companies wrap to the next line if needed */
+  }
+  
+  .company-box {
+    background-color: #1C1B21;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 9px;
+    margin: 5px;
+    font-size: 13px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  .company-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .company-list-item {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .company-list-item:last-child {
+    margin-bottom: 0;
+  }

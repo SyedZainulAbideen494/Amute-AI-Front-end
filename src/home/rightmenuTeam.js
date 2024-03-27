@@ -7,15 +7,19 @@ import Calander from "./calander";
 import backIcon from '../images/icons8-arrow-left.png';
 import { Link } from "react-router-dom";
 import AmuteAi from "../amute AI/amuteAi";
+import CreateCompany from "../company/createCompany";
+import JoinedCompanies from "../company/companiesDisplay";
+
 const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
     const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
     const [isCompanyDetailsOpen, setIsCompanyDetailsOpen] = useState(false);
     const [isCalendarDetailsOpen, setIsCalendarDetailsOpen] = useState(false);
+    const [isMyCompaniesDetailsOpen, setIsMyCompaniesDetailsOpen] = useState(false);
     const [isAmuteOpen, setIsAmuteOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(new Date());
-
+    const [isCreateCompanyOpen, setIsCreateCompanyOpen] = useState(false); // State for toggling the "Create Company" component
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -61,6 +65,13 @@ const RightMenuSummary = () => {
         setIsCompanyDetailsOpen(!isCompanyDetailsOpen);
     };
 
+    const toggleCreateCompany = () => {
+        setIsCreateCompanyOpen(!isCreateCompanyOpen);
+      };
+
+    const toggleMyCompanies = () => {
+        setIsMyCompaniesDetailsOpen(!isMyCompaniesDetailsOpen);
+      };
 
 
 
@@ -79,20 +90,34 @@ const RightMenuSummary = () => {
                         <img src={isCompanyDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
                     </div>
                     {isCompanyDetailsOpen && (
-                        <div className="team_details_summary_content_company_area" style={{textAlign: 'center'}}>
-                            <p> {userInfo.role === 'Leader' ? (
-                                <Link to='/create-company'>
-                                <button className="right_menu_btn_company_area">
-                                    Create Company
-                                </button>
-                                </Link>
+                    <div className="team_details_summary_content_company_area" style={{ textAlign: 'center' }}>
+                        <p> {userInfo.role === 'Leader' ? (
+                                 <p>
+                                 <div className="team_details_summary_header"onClick={toggleCreateCompany}>
+                                 <h3 style={{marginLeft: '10px'}}>Create Company</h3>
+                                 <img src={isCreateCompanyOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                             </div>
+                             {isCreateCompanyOpen && <CreateCompany />}
+                                 </p>
                             ) : (
-                                <button className="right_menu_btn">
-                                    {userInfo.status}
-                                </button>
+                                <p>
+                                <div className="team_details_summary_header"onClick={toggleCreateCompany}>
+                                <h3 style={{marginLeft: '10px'}}>Join Company</h3>
+                                <img src={isCreateCompanyOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                            </div>
+                                </p>
                             )}</p>
-                        </div>
-                    )}
+                             <p>
+             <div className="team_details_summary_header"onClick={toggleMyCompanies}>
+                <h3 style={{marginLeft: '10px'}}>My Companies</h3>
+                  <img src={isMyCompaniesDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+             </div>
+             {isMyCompaniesDetailsOpen && <JoinedCompanies/>}
+            </p>
+                    </div>
+                )}
+            </div>
+            
                 </div>
                 <div className="team_details_summary_menu">
                     <div className="team_details_summary_header" onClick={toggleTeamDetails}>
@@ -151,7 +176,6 @@ const RightMenuSummary = () => {
                     )}
                 </div>
             </div>
-        </div>
     );
 }
 
