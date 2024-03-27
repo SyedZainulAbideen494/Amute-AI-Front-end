@@ -38,6 +38,7 @@
 }
 .signup_form button {
   margin-left: 6px;
+  cursor: pointer;
 }
 
 /* Style for submit button */

@@ -10,6 +10,33 @@ import AmuteAi from "../amute AI/amuteAi";
 import CreateCompany from "../company/createCompany";
 import JoinedCompanies from "../company/companiesDisplay";
 
+const QuickShare = ({ status }) => {
+    const handleShare = async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: 'Share Status Code',
+            text: `Join my team with this status code: ${status}`,
+          });
+        } catch (error) {
+          console.error('Error sharing status code:', error);
+        }
+      } else {
+        // Fallback for browsers that don't support Web Share API
+        const shareText = `Join my team with this status code: ${status}`;
+        const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+        window.location.href = shareURL;
+      }
+    };
+  
+    return (
+        <div className="quick-share-container">
+        <p>Share Code To Join Team:</p>
+        <button className="quick-share-button">{status} Share</button>
+      </div>
+    );
+  };
+
 const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
@@ -101,10 +128,7 @@ const RightMenuSummary = () => {
                                  </p>
                             ) : (
                                 <p>
-                                <div className="team_details_summary_header"onClick={toggleCreateCompany}>
-                                <h3 style={{marginLeft: '10px'}}>Join Company</h3>
-                                <img src={isCreateCompanyOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                            </div>
+                               
                                 </p>
                             )}</p>
                              <p>
@@ -131,9 +155,9 @@ const RightMenuSummary = () => {
                                     Create Team
                                 </button>
                             ) : (
-                                <button className="right_menu_btn">
-                                    Join Team
-                                </button>
+                                <div className="team_details_summary_header">
+    <QuickShare status={userInfo.status} />
+  </div>
                             )}</p>
                         </div>
                     )}

@@ -477,3 +477,27 @@
   font-size: 17px;
   cursor: pointer;
 }
+
+.quick-share-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.quick-share-button {
+  background-color: #007bff; /* Primary color */
+  color: #fff; /* Light text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.quick-share-button:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}

@@ -94,22 +94,6 @@ const Signinform = () => {
       <form className="signup_form" onSubmit={handleSubmit}>
         <h2 className="sign-heading">Sign Up</h2>
         <div className="signup_info">
-         
-        <div className="input-container-gender">
-      <label htmlFor="gender">Gender</label><br/>
-      <select
-        id="gender"
-        name="gender"
-        value={gender}
-        onChange={genderHandler}
-        required
-        className="select-input-gender"
-      >
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-      </select>
-    </div>
           <div className="inp">
             <label htmlFor="fname">Name</label>
             <br />
@@ -188,6 +172,21 @@ const Signinform = () => {
         <option value="">Select Role</option>
         <option value="Leader">Team Leader</option>
         <option value="Member">Team Member</option>
+      </select>
+    </div>
+    <div className="input-container-gender">
+      <label htmlFor="gender">Gender</label><br/>
+      <select
+        id="gender"
+        name="gender"
+        value={gender}
+        onChange={genderHandler}
+        required
+        className="select-input-gender"
+      >
+        <option value="">Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
       </select>
     </div>
           </div>
