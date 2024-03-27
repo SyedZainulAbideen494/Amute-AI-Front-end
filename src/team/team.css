@@ -131,3 +131,29 @@
     transform: translateY(-50%);
     color: red; /* Change color as needed */
   }
+
+  .team-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  
+  .team-box {
+    background-color: #1C1B21;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 9px;
+    margin: 5px;
+    font-size: 13px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1C1B21;
+  }
+  
+  .team-box:hover {
+    background-color: #2C2B31;
+  }
+  
+  
+  .team-name:last-child {
+    margin-bottom: 0;
+  }

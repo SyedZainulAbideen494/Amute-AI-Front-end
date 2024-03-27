@@ -63,12 +63,7 @@ const AddTeamMember = () => {
       const userResponse = await axios.post(API_ROUTES.getUserIdByCode, { code: uniqueCode });
       const memberId = userResponse.data.userId;
 
-      // Check if the user is already in the team
-      const checkEmployeeResponse = await axios.post(API_ROUTES.checkEmployee, { teamId, userId: memberId });
-      if (checkEmployeeResponse.data.alreadyInTeam) {
-        setErrorMessage('User is already in the team.');
-        return;
-      }
+
 
       // Add the user to the selected team
       const addToTeamResponse = await axios.post(API_ROUTES.addToTeam, { teamId, userId: memberId });
