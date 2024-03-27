@@ -94,19 +94,40 @@
   }
   
   .add-team-member-container button {
-    background-color: #007bff;
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
     color: #fff;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     cursor: pointer;
   }
+
+  .add-team-member-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .add-team-member-container button:disabled:hover {
+    background-color: red;
+    cursor: not-allowed;
+  }
+  .error-msg {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+  }
   
   .add-team-member-container button:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #72C3EE 0%, #9F9BEA 100%);
   }
   
   .success-msg {
     color: #28a745;
     margin-top: 10px;
+  }
+  .validation-mark {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: red; /* Change color as needed */
   }
