@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import AmuteAi from "../amute AI/amuteAi";
 import CreateCompany from "../company/createCompany";
 import JoinedCompanies from "../company/companiesDisplay";
+import CreateTeam from "../team/createTeam";
 
 const QuickShare = ({ status }) => {
     const handleShare = async () => {
@@ -47,6 +48,8 @@ const RightMenuSummary = () => {
     const [isAmuteOpen, setIsAmuteOpen] = useState(false);
     const [currentDate, setCurrentDate] = useState(new Date());
     const [isCreateCompanyOpen, setIsCreateCompanyOpen] = useState(false); // State for toggling the "Create Company" component
+    const [isCreateTeamOpen, setisCreateTeamOpen] = useState(false);
+    
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -100,6 +103,10 @@ const RightMenuSummary = () => {
         setIsMyCompaniesDetailsOpen(!isMyCompaniesDetailsOpen);
       };
 
+      const toggleCreateTeam = () => {
+        setisCreateTeamOpen(!isCreateTeamOpen);
+      };
+
 
 
     return (
@@ -151,9 +158,13 @@ const RightMenuSummary = () => {
                     {isTeamDetailsOpen && (
                         <div className="team_details_summary_content">
                             <p> {userInfo.role === 'Leader' ? (
-                                <button className="right_menu_btn">
-                                    Create Team
-                                </button>
+                                <p>
+                                <div className="team_details_summary_header"onClick={toggleCreateTeam}>
+                                <h3 style={{marginLeft: '10px'}}>Create Team</h3>
+                                <img src={isCreateTeamOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                            </div>
+                            {isCreateTeamOpen && <CreateTeam />}
+                                </p>
                             ) : (
                                 <div className="team_details_summary_header">
     <QuickShare status={userInfo.status} />
