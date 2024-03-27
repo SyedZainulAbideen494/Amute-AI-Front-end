@@ -25,7 +25,7 @@
   .create-company-button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background:  linear-gradient(to right, #72C3EE 0%, #9F9BEA 100%);
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -33,7 +33,7 @@
   }
   
   .create-company-button:hover {
-    background-color: #0056b3;
+    background:  linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
   }
 
   /* joinedCompanies.css */
