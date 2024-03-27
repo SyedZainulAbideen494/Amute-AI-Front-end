@@ -16,7 +16,7 @@ const QuickShare = ({ status }) => {
         try {
           await navigator.share({
             title: 'Share Status Code',
-            text: `Join my team with this status code: ${status}`,
+            text: `Add me to the team with this code: ${status}`,
           });
         } catch (error) {
           console.error('Error sharing status code:', error);
@@ -31,7 +31,7 @@ const QuickShare = ({ status }) => {
   
     return (
         <div className="quick-share-container">
-        <p>Share Code To Join Team:</p>
+        <p>Share this code to Join a Team:</p>
         <button className="quick-share-button" onClick={handleShare}>{status} Share</button>
       </div>
     );

@@ -481,7 +481,7 @@
 .quick-share-container {
   justify-content: space-between;
   align-items: center;
-  background-color: #333; /* Dark background color */
+  background-color: #131313; /* Dark background color */
   color: #fff; /* Light text color */
   padding: 10px 20px;
   border-radius: 5px;
@@ -489,7 +489,7 @@
 }
 
 .quick-share-button {
-  background-color: #007bff; /* Primary color */
+  background-color: #5C33F6; /* Primary color */
   color: #fff; /* Light text color */
   border: none;
   border-radius: 5px;
@@ -498,5 +498,6 @@
 }
 
 .quick-share-button:hover {
-  background-color: #0056b3; /* Darker color on hover */
+  background-color: #7d5aff; /* Darker color on hover */
+  transition: 0.3s;
 }
