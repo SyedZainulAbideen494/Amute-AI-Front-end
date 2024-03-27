@@ -479,8 +479,6 @@
 }
 
 .quick-share-container {
-  justify-content: space-between;
-  align-items: center;
   background-color: #131313; /* Dark background color */
   color: #fff; /* Light text color */
   padding: 10px 20px;

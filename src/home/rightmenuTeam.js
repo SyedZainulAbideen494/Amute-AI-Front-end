@@ -34,7 +34,6 @@ const QuickShare = ({ status }) => {
   
     return (
         <div className="quick-share-container">
-        <p>Share this code to Join a Team:</p>
         <button className="quick-share-button" onClick={handleShare}>{status} Share</button>
       </div>
     );
@@ -53,6 +52,7 @@ const RightMenuSummary = () => {
     const [isCreateTeamOpen, setisCreateTeamOpen] = useState(false);
     const [isAddTeamMemberOpen, setisAddTeamMemberOpen] = useState(false);
     const [isTeamOpen, setisTeamOpen] = useState(false);
+    const [isQuickShareOpen, setisQuickShareOpen] = useState(false);
     
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -119,6 +119,9 @@ const RightMenuSummary = () => {
         setisTeamOpen(!isTeamOpen);
       };
 
+      const toggleQuickShare = () => {
+        setisQuickShareOpen(!isQuickShareOpen);
+      };
 
 
     return (
@@ -184,9 +187,16 @@ const RightMenuSummary = () => {
                           
                                 </p>
                             ) : (
+                                <div>
                                 <div className="team_details_summary_header">
-    <QuickShare status={userInfo.status} />
-  </div>
+                                    <div className="team_details_summary_header"onClick={toggleQuickShare}>
+                                <h3 style={{marginLeft: '10px'}}>Join Team</h3>
+                                <img src={isQuickShareOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                            </div>
+                            
+                        </div>
+                        {isQuickShareOpen && <QuickShare status={userInfo.status} />}
+                        </div>
                             )}</p>
                             <div className="team_details_summary_header"onClick={toggleMyTeam}>
                                 <h3 style={{marginLeft: '10px'}}>My Team</h3>
