@@ -32,7 +32,7 @@ const QuickShare = ({ status }) => {
     return (
         <div className="quick-share-container">
         <p>Share Code To Join Team:</p>
-        <button className="quick-share-button">{status} Share</button>
+        <button className="quick-share-button" onClick={handleShare}>{status} Share</button>
       </div>
     );
   };
