@@ -55,6 +55,7 @@
     margin: 5px;
     font-size: 13px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #1C1B21;
   }
   .company-list {
     list-style-type: none;
