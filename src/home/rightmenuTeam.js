@@ -10,6 +10,7 @@ import AmuteAi from "../amute AI/amuteAi";
 import CreateCompany from "../company/createCompany";
 import JoinedCompanies from "../company/companiesDisplay";
 import CreateTeam from "../team/createTeam";
+import AddTeamMember from "../team/addteammember";
 
 const QuickShare = ({ status }) => {
     const handleShare = async () => {
@@ -49,6 +50,7 @@ const RightMenuSummary = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [isCreateCompanyOpen, setIsCreateCompanyOpen] = useState(false); // State for toggling the "Create Company" component
     const [isCreateTeamOpen, setisCreateTeamOpen] = useState(false);
+    const [isAddTeamMemberOpen, setisAddTeamMemberOpen] = useState(false);
     
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -105,6 +107,10 @@ const RightMenuSummary = () => {
 
       const toggleCreateTeam = () => {
         setisCreateTeamOpen(!isCreateTeamOpen);
+      };
+
+      const toggleAddTeamMember = () => {
+        setisAddTeamMemberOpen(!isAddTeamMemberOpen);
       };
 
 
@@ -164,6 +170,11 @@ const RightMenuSummary = () => {
                                 <img src={isCreateTeamOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
                             </div>
                             {isCreateTeamOpen && <CreateTeam />}
+                            <div className="team_details_summary_header"onClick={toggleAddTeamMember}>
+                                <h3 style={{marginLeft: '10px'}}>Add Team member</h3>
+                                <img src={isAddTeamMemberOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                            </div>
+                            {isAddTeamMemberOpen && <AddTeamMember />}
                                 </p>
                             ) : (
                                 <div className="team_details_summary_header">

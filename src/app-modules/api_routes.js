@@ -11,4 +11,8 @@ export const API_ROUTES = {
   getUserCompanies: `${API_URL}/getUserCompanies`,
   createTeam: `${API_URL}/createTeam`,
   getUserId: `${API_URL}/getUserId`,
+  getUserTeams: `${API_URL}/getUserTeams`,
+  getUserIdByCode: `${API_URL}/getUserByCode`,
+  addToTeam: `${API_URL}/addToTeam`,
+  updateUserStatus: `${API_URL}/updateUserStatus`
 };
