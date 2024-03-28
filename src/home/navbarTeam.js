@@ -8,11 +8,12 @@ import taskicon from '../images/icons8-tasks-24.png';
 import teamicon from '../images/icons8-team-24.png';
 import porfileicon from '../images/icons8-user-profile-48.png';
 import dashboardicon from '../images/icons8-dashboard-50.png';
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBarTeam = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [showNav, setShowNav] = useState(false);
-
+    const nav = useNavigate()
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -44,16 +45,23 @@ const NavBarTeam = () => {
         setShowNav(!showNav);
     };
 
+    const handleTeamPageRedirect = () => {
+        nav('/team')
+    }
+    const handledashboardPageRedirect = () => {
+        nav('/dashboard')
+    }
+
     return (
         <div>
             <div className={`left-sidebar_team ${showNav ? 'show-nav' : ''}`}>
                 <div className="welcome-message_team">Welcome, {userInfo.name}!</div>
                 <div className="nav-buttons_team">
-                    <button className="nav-button_team">
+                    <button className="nav-button_team" onClick={handledashboardPageRedirect}>
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
                         Dashboard
                     </button>
-                    <button className="nav-button_team">
+                    <button className="nav-button_team" onClick={handleTeamPageRedirect}>
                         <img src={teamicon} alt="Team" className="nav-icon" />
                         Team
                     </button>

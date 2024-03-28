@@ -12,6 +12,7 @@ import Loginform from "./auth/loginform";
 import Website from "./website/website";
 import Summary from "./home/summary";
 import CompanyCreate from "./company/createCompany";
+import TeamPage from "./team/TeamPage";
 
 const router = createBrowserRouter([
   { path: "/dashboard", element: <HomeTeam /> },
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signinform/>},
   { path: "/login", element: <Loginform/>},
   { path: '/summary', element: <Summary/>},
+  { path: '/team', element: <TeamPage/>},
 ]);
 
 
