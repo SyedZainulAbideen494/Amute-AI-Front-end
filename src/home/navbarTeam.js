@@ -8,12 +8,13 @@ import taskicon from '../images/icons8-tasks-24.png';
 import teamicon from '../images/icons8-team-24.png';
 import porfileicon from '../images/icons8-user-profile-48.png';
 import dashboardicon from '../images/icons8-dashboard-50.png';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBarTeam = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [showNav, setShowNav] = useState(false);
     const nav = useNavigate()
+    const location = useLocation(); // Use useLocation hook
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -52,16 +53,20 @@ const NavBarTeam = () => {
         nav('/dashboard')
     }
 
+    const isActive = (path) => {
+        return location.pathname === path ? 'active' : '';
+    };
+
     return (
         <div>
             <div className={`left-sidebar_team ${showNav ? 'show-nav' : ''}`}>
                 <div className="welcome-message_team">Welcome, {userInfo.name}!</div>
                 <div className="nav-buttons_team">
-                    <button className="nav-button_team" onClick={handledashboardPageRedirect}>
+                    <button className={`nav-button_team ${isActive('/dashboard')}`} onClick={handledashboardPageRedirect}>
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
                         Dashboard
                     </button>
-                    <button className="nav-button_team" onClick={handleTeamPageRedirect}>
+                    <button className={`nav-button_team ${isActive('/team')}`} onClick={handleTeamPageRedirect}>
                         <img src={teamicon} alt="Team" className="nav-icon" />
                         Team
                     </button>
