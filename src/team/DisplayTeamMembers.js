@@ -55,10 +55,6 @@ const DisplayTeamMembers = () => {
             <p className="member-name">{user.name}</p>
             <p className="member-role">{user.role}</p>
         </div>
-        <div className="member-status">
-            <div className={`active-dot ${user.active ? 'active' : 'inactive'}`}></div>
-            <span className={`active-status ${user.active ? 'active' : 'inactive'}`}>{user.active ? '' : ''}</span>
-        </div>
         <p className="member-position">{user.position}</p>
     </li>
 ))}
