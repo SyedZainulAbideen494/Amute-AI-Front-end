@@ -90,7 +90,7 @@ const NavBarTeam = () => {
                         </button>
                     )}
                     <button className="nav-button_team">
-                        <img src={porfileicon} alt="Profile" className="nav-icon" />
+                    <img src={`${API_ROUTES.displayImages}/${userInfo.profilePic}`} style={{borderRadius: '50%'}} alt="Profile" className="nav-icon" />
                         My Profile
                     </button>
                     <button className="nav-button_team">

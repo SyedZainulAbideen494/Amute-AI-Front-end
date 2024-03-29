@@ -4,6 +4,8 @@ import axios from "axios";
 import { API_ROUTES } from "../app-modules/api_routes";
 import notificationicon from '../images/icons8-notifications-64.png';
 import settingsicon from '../images/icons8-settings-50.png'
+import DisplayTeam from "./displayTeam";
+import DisplayTeamMembers from "./DisplayTeamMembers";
 
 const Team = () => {
  const [userTeams, setUserTeams] = useState([]);
@@ -35,20 +37,7 @@ const Team = () => {
                 <button className="setting_btn_dashboard_team"><img src={settingsicon} alt="Settings" className="notification_dashboard_icon" /></button>
                 <button className="notification_icon"><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
             </div>
-            <div className="team-section-container"> {/* Apply container class */}
-      <h2 className="section-title">Your Teams</h2>
-      {isLoading ? (
-        <p>Loading teams...</p>
-      ) : (
-        <ul className="team-list"> {/* Apply list class */}
-          {userTeams.map(team => (
-            <li key={team.id} className="team-item"> {/* Apply item class */}
-              {team.name}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+            <DisplayTeamMembers/>
         </div>
     </Fragment>
 }

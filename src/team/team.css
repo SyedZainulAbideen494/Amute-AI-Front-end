@@ -158,28 +158,75 @@
     margin-bottom: 0;
   }
 
-  /*Team PAge */
+  /*Team member Page */
 
-  .team-section-container {
-    color: #ffffff; /* Text color */
-    background-color: #2b2d3c; /* Dark background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .section-title {
-    font-size: 24px;
+  .team-members-container {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.team-members-title {
+    font-size: 20px;
     margin-bottom: 10px;
-  }
-  
-  .team-list {
+}
+
+.team-members-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
-  }
-  
-  .team-item {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
+}
+
+.team-member-item {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.member-profile-pic {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.member-details {
+    flex-grow: 1;
+}
+
+.member-name {
+    font-weight: bold;
+}
+
+.member-role {
+    font-style: italic;
+}
+
+.member-status {
+    margin-left: auto;
+}
+
+.active-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.active-status {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Styling for active and inactive status */
+.active-dot.active {
+    background-color: green;
+}
+
+.active-dot.inactive {
+    background-color: red;
+}

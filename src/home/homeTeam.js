@@ -3,8 +3,10 @@ import './home.css'
 import NavBarTeam from "./navbarTeam";
 import DashboardTeam from "./dashboardTeam";
 import RightMenuTeam from "./rightmenuTeam";
+import useActivityTracker from '../app-modules/activeStatus'
 
 const HomeTeam = () => {
+    const isActive = useActivityTracker();
     return<Fragment><div className="main_div_team_dashboard">
         <div className="nav_bar_area_Team_dashboard">
             <NavBarTeam/>

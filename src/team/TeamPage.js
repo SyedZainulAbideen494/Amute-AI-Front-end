@@ -4,9 +4,10 @@ import NavBarTeam from "../home/navbarTeam";
 import RightMenuSummary from "../home/rightmenuTeam";
 import RightMenuTeam from '../home/rightmenuTeam'
 import Team from "./Team";
-
+import useActivityTracker from "../app-modules/activeStatus";
 
 const TeamPage = () => {
+    const isActive = useActivityTracker();
     return<Fragment>
         <Fragment><div className="main_div_team_dashboard">
         <div className="nav_bar_area_Team_dashboard">

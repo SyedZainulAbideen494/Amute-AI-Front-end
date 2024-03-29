@@ -13,6 +13,7 @@ import Website from "./website/website";
 import Summary from "./home/summary";
 import CompanyCreate from "./company/createCompany";
 import TeamPage from "./team/TeamPage";
+import ProfilePicUpload from "./My Profile/EditMyProfile";
 
 const router = createBrowserRouter([
   { path: "/dashboard", element: <HomeTeam /> },
