@@ -42,26 +42,28 @@ const DisplayTeamMembers = () => {
 
     return (
         <div className="team-members-container">
-        {isLoading ? (
-            <p>Loading...</p>
-        ) : (
-            <div>
-                <h2 className="team-members-title">Team Members</h2>
-                <ul className="team-members-list">
-                {userDetails.map(user => (
-    <li key={user.id} className="team-member-item">
-      <img src={`${API_ROUTES.displayImages}/${user.profilePic}`} alt={user.name} className="member-profile-pic" />
-        <div className="member-details">
-            <p className="member-name">{user.name}</p>
-            <p className="member-role">{user.role}</p>
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : userDetails.length === 0 ? (
+                <p>No team members to display</p>
+            ) : (
+                <div>
+                    <h2 className="team-members-title">Team Members</h2>
+                    <ul className="team-members-list">
+                        {userDetails.map(user => (
+                            <li key={user.id} className="team-member-item">
+                                <img src={`${API_ROUTES.displayImages}/${user.profilePic}`} alt={user.name} className="member-profile-pic" />
+                                <div className="member-details">
+                                    <p className="member-name">{user.name}</p>
+                                    <p className="member-role">{user.role}</p>
+                                </div>
+                                <p className="member-position">{user.position}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
-        <p className="member-position">{user.position}</p>
-    </li>
-))}
-                </ul>
-            </div>
-        )}
-    </div>
     );
 }
 
