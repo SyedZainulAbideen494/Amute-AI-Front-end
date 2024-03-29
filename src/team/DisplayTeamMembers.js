@@ -45,7 +45,7 @@ const DisplayTeamMembers = () => {
             {isLoading ? (
                 <p>Loading...</p>
             ) : userDetails.length === 0 ? (
-                <p>No team members to display</p>
+                <p style={{textAlign: 'center'}}>No team members to display</p>
             ) : (
                 <div>
                     <h2 className="team-members-title">Team Members</h2>
