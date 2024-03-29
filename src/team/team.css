@@ -161,7 +161,7 @@
   /*Team member Page */
 
   .team-members-container {
-    background-color: #1c1c1c;
+    background-color: transparent;
     color: #ffffff;
     padding: 15px;
     border-radius: 8px;
@@ -170,7 +170,8 @@
 
 .team-members-title {
     font-size: 20px;
-    margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .team-members-list {
@@ -182,15 +183,16 @@
 .team-member-item {
     display: flex;
     align-items: center;
-    background-color: #333;
-    border-radius: 6px;
+    background-color: #080808;
+    border-radius: 25px;
     padding: 10px;
     margin-bottom: 15px;
+    border: 1px solid #222;
 }
 
 .member-profile-pic {
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
     width: 40px;
     height: 40px;
 }
@@ -204,7 +206,7 @@
 }
 
 .member-role {
-    font-style: italic;
+    color: #555555;
 }
 
 .member-status {
