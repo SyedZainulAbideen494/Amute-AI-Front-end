@@ -12,8 +12,10 @@ import Loginform from "./auth/loginform";
 import Website from "./website/website";
 import Summary from "./home/summary";
 import CompanyCreate from "./company/createCompany";
-import TeamPage from "./team/TeamPage";
+import TeamPage from "./team/Main Team Page/TeamPage";
 import ProfilePicUpload from "./My Profile/EditMyProfile";
+import TaskPage from "./Task/Taskpage";
+import ManagerTeam from "./team/Manage Team/ManageTeam";
 
 const router = createBrowserRouter([
   { path: "/dashboard", element: <HomeTeam /> },
@@ -22,6 +24,8 @@ const router = createBrowserRouter([
   { path: "/login", element: <Loginform/>},
   { path: '/summary', element: <Summary/>},
   { path: '/team', element: <TeamPage/>},
+  { path: '/task', element: <TaskPage/>},
+  { path: '/team/:id', element: <ManagerTeam/>},
 ]);
 
 

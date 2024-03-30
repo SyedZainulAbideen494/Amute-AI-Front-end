@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './team.css'
-import { API_ROUTES } from "../app-modules/api_routes";
+import { API_ROUTES } from "../../app-modules/api_routes";
 
 const DisplayTeamMembers = () => {
     const [isLoading, setIsLoading] = useState(true);

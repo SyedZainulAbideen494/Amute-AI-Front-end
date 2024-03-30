@@ -52,6 +52,9 @@ const NavBarTeam = () => {
     const handledashboardPageRedirect = () => {
         nav('/dashboard')
     }
+    const handleTaskPageRedirect = () => {
+        nav('/task')
+    }
 
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
@@ -70,7 +73,7 @@ const NavBarTeam = () => {
                         <img src={teamicon} alt="Team" className="nav-icon" />
                         Team
                     </button>
-                    <button className="nav-button_team">
+                    <button className={`nav-button_team ${isActive('/task')}`} onClick={handleTaskPageRedirect}>
                         <img src={taskicon} alt="Tasks" className="nav-icon" />
                         Tasks
                     </button>

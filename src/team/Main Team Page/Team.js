@@ -1,9 +1,9 @@
 import React,{Fragment, useCallback, useEffect, useState} from "react";
 import './team.css'
 import axios from "axios";
-import { API_ROUTES } from "../app-modules/api_routes";
-import notificationicon from '../images/icons8-notifications-64.png';
-import settingsicon from '../images/icons8-settings-50.png'
+import { API_ROUTES } from "../../app-modules/api_routes";
+import notificationicon from '../../images/icons8-notifications-64.png';
+import settingsicon from '../../images/icons8-settings-50.png'
 import DisplayTeam from "./displayTeam";
 import DisplayTeamMembers from "./DisplayTeamMembers";
 

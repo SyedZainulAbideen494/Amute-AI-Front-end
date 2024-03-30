@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 import AmuteAi from "../amute AI/amuteAi";
 import CreateCompany from "../company/createCompany";
 import JoinedCompanies from "../company/companiesDisplay";
-import CreateTeam from "../team/createTeam";
-import AddTeamMember from "../team/addteammember";
-import DisplayTeam from "../team/displayTeam";
+import CreateTeam from "../team/Main Team Page/createTeam";
+import AddTeamMember from "../team/Main Team Page/addteammember";
+import DisplayTeam from "../team/Main Team Page/displayTeam";
 
 const QuickShare = ({ status }) => {
     const handleShare = async () => {

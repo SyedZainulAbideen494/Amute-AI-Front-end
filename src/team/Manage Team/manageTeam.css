@@ -1,0 +1,50 @@
+/* admin-category-team.css */
+
+.main_div_contaioner_add_team_catgry {
+    margin: 20px auto;
+    border: 1px solid #2b2b2c;
+    border-radius: 25px;
+    width: 50%;
+    background-color: transparent;
+    padding: 20px;
+}
+
+.main_div_contaioner_add_team_catgry h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #ffffff; /* Set text color to white */
+}
+
+.main_div_contaioner_add_team_catgry label {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #ffffff; /* Set text color to white */
+}
+
+.main_div_contaioner_add_team_catgry input {
+    width: 90%; /* Adjusted to 100% */
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #131316;
+    background-color: #131316;
+    border-radius: 4px;
+    color: #ffffff; /* Set text color to white */
+}
+
+.main_div_contaioner_add_team_catgry button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block; /* Adjusted to block for centering */
+    margin: 0 auto; /* Centering horizontally */
+}
+
+.main_div_contaioner_add_team_catgry button:hover {
+    background: linear-gradient(to right, #72C3EE 0%, #9F9BEA 100%);
+}

@@ -1,4 +1,4 @@
-import React,{useCallback, useEffect} from "react";
+import React,{Fragment, useCallback, useEffect} from "react";
 import './website.css'
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,9 @@ const Website = () => {
       }
       // If token is not present, do nothing
     }, [navigate]); // Ensure to include navigate in the dependency array
-    return
+    return<Fragment>
+      
+    </Fragment>
 }
 
 export default Website;

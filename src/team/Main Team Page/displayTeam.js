@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { API_ROUTES } from '../app-modules/api_routes';
+import { API_ROUTES } from '../../app-modules/api_routes';
 import './team.css'
+import { Link } from 'react-router-dom';
 
 const DisplayTeam = () => {
   const [userTeams, setUserTeams] = useState([]);
@@ -34,7 +35,9 @@ const DisplayTeam = () => {
     ) : (
       userTeams.map(team => (
         <div key={team.id} className="team-box">
+          <Link to={`/team/${team.id}`} style={{textDecoration: 'none'}}>
           <p className="team-name">{team.name}</p>
+          </Link>
         </div>
       ))
     )}
