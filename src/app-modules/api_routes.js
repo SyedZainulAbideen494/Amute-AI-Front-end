@@ -19,5 +19,6 @@ export const API_ROUTES = {
   userActiveStatus: `${API_URL}/updateUserActivity`,
   addProfilePic   : `${API_URL}/uploadProfilePic`,
   displayImages: `${API_URL}/images`,
-  addTeamCategory: `${API_URL}/addCategoryToTeam`
+  addTeamCategory: `${API_URL}/addCategoryToTeam`,
+  getSpecifyTeamMembers: `${API_URL}/api/team/members/specific`,
 };

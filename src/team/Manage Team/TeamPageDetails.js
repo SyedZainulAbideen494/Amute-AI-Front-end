@@ -4,6 +4,7 @@ import { API_ROUTES } from "../../app-modules/api_routes";
 import { Link, useParams } from "react-router-dom";
 import backBtnicon from '../../images/icons8-arrow-left.png'
 import AdminCategoryTeam from "./AdminCategoryTeam";
+import DisplaySpcificTeamMemberComponent from "./DisplaySpecificTeammember";
 
 const TeamPagedetails = () => {
     const [userInfo, setUserInfo] = useState(null);
@@ -44,7 +45,8 @@ const TeamPagedetails = () => {
                 <h3>Team</h3>
             </div>
         </div>
-    <AdminCategoryTeam/>
+        {userInfo && userInfo.role === 'Leader' ? <AdminCategoryTeam/> : <p></p>}
+        <DisplaySpcificTeamMemberComponent/>
     </div>
     </Fragment>
 }

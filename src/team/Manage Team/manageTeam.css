@@ -48,3 +48,108 @@
 .main_div_contaioner_add_team_catgry button:hover {
     background: linear-gradient(to right, #72C3EE 0%, #9F9BEA 100%);
 }
+
+.team-members-container {
+    max-height: 200px; /* Set max height for the container */
+    overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.team-members-container h3 {
+    text-align: center;
+}
+
+.team-members-list {
+    padding: 10px;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #111111;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+.team-member img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.team-member h2 {
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: 100;
+}
+
+.team-member p {
+    color: #616161;
+    margin: 0;
+}
+
+.member-options {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.options-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff; /* Dot color */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333; /* Dropdown background color */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    right: 0; /* Position dropdown on the right side of the dots */
+    top: 0;
+    margin-right: 30px;
+}
+
+.dropdown-content button {
+    background-color: transparent;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+}
+
+.dropdown-content button:hover {
+    background-color: #555; /* Hover color */
+}
+
+.team-member:hover .dropdown-content {
+    display: block;
+}
+
+/* Custom scrollbar */
+.team-members-container::-webkit-scrollbar {
+    border-radius: 25px;
+    width: 7px;
+}
+
+.team-members-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.team-members-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 25px;
+}
+
+.team-members-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
