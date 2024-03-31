@@ -5,13 +5,14 @@ import { useParams } from 'react-router-dom';
 
 function AdminCategoryTeam({ teamId }) {
   const [categoryName, setCategoryName] = useState('');
-  const params = useParams()
+  const [successMessage, setSuccessMessage] = useState('');
+  const params = useParams();
+
   const handleCategoryNameChange = (event) => {
     setCategoryName(event.target.value);
   };
 
-  const TeamId = params.id
-  console.log(params.id)
+  const TeamId = params.id;
 
   const handleAddCategory = async () => {
     try {
@@ -20,7 +21,8 @@ function AdminCategoryTeam({ teamId }) {
         categoryName
       });
       console.log(response.data);
-      // Handle success - e.g., show a success message, update UI, etc.
+      setSuccessMessage('Category added successfully');
+      setCategoryName(''); // Clear the input field
     } catch (error) {
       console.error('Error adding category to team:', error);
       // Handle error - e.g., show an error message, etc.
@@ -35,6 +37,7 @@ function AdminCategoryTeam({ teamId }) {
         <input type="text" value={categoryName} onChange={handleCategoryNameChange} />
       </label>
       <button onClick={handleAddCategory}>Add Category</button>
+      {successMessage && <p style={{textAlign: 'center', color: 'green'}}>{successMessage}</p>}
     </div>
   );
 }

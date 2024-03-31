@@ -6,7 +6,7 @@
     border-radius: 25px;
     width: 50%;
     background-color: transparent;
-    padding: 20px;
+    padding: 10px;
 }
 
 .main_div_contaioner_add_team_catgry h2 {
@@ -24,8 +24,8 @@
 }
 
 .main_div_contaioner_add_team_catgry input {
-    width: 90%; /* Adjusted to 100% */
-    padding: 8px;
+    width: 80%; /* Adjusted to 100% */
+    padding: 6px;
     font-size: 16px;
     border: 1px solid #131316;
     background-color: #131316;
@@ -34,7 +34,7 @@
 }
 
 .main_div_contaioner_add_team_catgry button {
-    padding: 10px 20px;
+    padding: 7px 12px;
     font-size: 16px;
     background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
     color: #fff;

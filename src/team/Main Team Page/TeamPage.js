@@ -44,9 +44,8 @@ const TeamPage = () => {
             <NavBarTeam/>
         </div>
         <div className="Dashboard_area_Team_dashboard">
-       
         <Team/>
-        {userInfo && userInfo.role === 'Leader' ? <ManagerTeamDisplay/> : <h1>You are a member</h1>}
+        {userInfo && userInfo.role === 'Leader' ? <ManagerTeamDisplay/> : <h1></h1>}
         </div>
         <div className="rightmenu_area_Team_dashboard">
             <RightMenuTeam/>
@@ -60,7 +59,7 @@ const TeamPage = () => {
         </div>
         <div className="Dashboard_area_Team_dashboard">
         <Team/>
-        {userInfo && userInfo.role === 'Leader' ? <ManagerTeamDisplay/> : <h1>You are a member</h1>}
+        {userInfo && userInfo.role === 'Leader' ? <ManagerTeamDisplay/> : <h1></h1>}
         </div>
         <div className="rightmenu_area_Team_dashboard">
             <RightMenuTeam/>
