@@ -21,4 +21,6 @@ export const API_ROUTES = {
   displayImages: `${API_URL}/images`,
   addTeamCategory: `${API_URL}/addCategoryToTeam`,
   getSpecifyTeamMembers: `${API_URL}/api/team/members/specific`,
+  removeTeamMember: `${API_URL}/api/team/members/remove`,
+  displayTeamDetails: `${API_URL}/team/details/display`
 };

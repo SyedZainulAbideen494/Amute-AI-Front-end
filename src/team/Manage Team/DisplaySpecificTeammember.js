@@ -8,6 +8,21 @@ function DisplaySpecificTeamMemberComponent() {
     const { id } = useParams();
     const [teamMembers, setTeamMembers] = useState([]);
     const [selectedMember, setSelectedMember] = useState(null); // To track which member's options are selected
+    const [teamData, setTeamData] = useState(null);
+  
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const response = await axios.post(API_ROUTES.displayTeamDetails, { id: id });
+            setTeamData(response.data);
+          } catch (error) {
+            console.error('Error fetching team data: ', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
+
 
     useEffect(() => {
         const fetchTeamMembers = async () => {
@@ -22,14 +37,33 @@ function DisplaySpecificTeamMemberComponent() {
         fetchTeamMembers();
     }, [id]);
 
-    const handleAction = (memberId, action) => {
-        // Handle the action (e.g., change role to leader or remove from the team)
-        console.log(`Member ID: ${memberId}, Action: ${action}`);
-        setSelectedMember(null); // Close dropdown after action is performed
+    const handleAction = async (memberId, teamId, action) => {
+        console.log('Removing member:', memberId);
+        console.log('Team ID:', teamId);
+
+        if (action === 'remove') {
+            try {
+                await axios.post(API_ROUTES.removeTeamMember, { teamId: teamId, userId: memberId });
+                // If removal is successful, update the team members list
+                setTeamMembers(prevMembers => prevMembers.filter(member => member.id !== memberId));
+                setSelectedMember(null); // Close dropdown after action is performed
+            } catch (error) {
+                console.error('Error removing team member:', error);
+                if (error.response) {
+                    console.log('Server Response:', error.response.data);
+                }
+                // Handle error
+            }
+        }
+    };
+
+    const handleRemoveMember = (memberId) => {
+        handleAction(memberId, id, 'remove');
     };
 
     const toggleDropdown = (memberId) => {
-        setSelectedMember(selectedMember === memberId ? null : memberId); // Toggle dropdown visibility
+        setSelectedMember(prevSelected => prevSelected === memberId ? null : memberId); // Toggle dropdown visibility
+        console.log(memberId)
     };
 
     return (
@@ -48,8 +82,8 @@ function DisplaySpecificTeamMemberComponent() {
                             <button className="options-btn" onClick={() => toggleDropdown(member.id)}>&#8942;</button>
                             {selectedMember === member.id && (
                                 <div className="dropdown-content">
-                                    <button onClick={() => handleAction(member.id, 'changeRole')}>Change to Leader</button>
-                                    <button onClick={() => handleAction(member.id, 'removeFromTeam')}>Remove from Team</button>
+                                    <button onClick={() => handleAction(member.id, id, 'changeRole')}>Change to Leader</button>
+                                    <button onClick={() => handleRemoveMember(member.id)}>Remove from Team</button>
                                 </div>
                             )}
                         </div>
