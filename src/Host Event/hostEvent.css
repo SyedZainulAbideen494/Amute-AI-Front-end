@@ -1,42 +1,125 @@
-.form-container_create_queue_form {
-    width: 300px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+/*Create Queue*/
+@media screen and (min-width: 851px){
+    .form-container_create_queue_form {
+      width: 300px;
+      margin: 5px auto; /* Added margin-top */
+      padding: 20px;
+      border: 1px solid #0C0F18;
+      border-radius: 9px;
+      background-color: #0C0F18;
+    }
+    
+    .form-container_create_queue_form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .form-container_create_queue_form input[type="text"],
+    .form-container_create_queue_form input[type="time"],
+    .form-container_create_queue_form input[type="date"] {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #0C0F18;
+      border-radius: 3px;
+      border-top: 1px solid #0C0F18;
+      border-left: 1px solid #0C0F18;
+      border-right: 1px solid #0C0F18;
+      border-bottom: 1px solid #ccc;
+      color: white; /* Added text color */
+      transition: border-color 0.3s; /* Added transition for smooth color change */
+    }
+    
+    
+    .form-container_create_queue_form input[type="text"]::placeholder,
+    .form-container_create_queue_form input[type="time"]::placeholder,
+    .form-container_create_queue_form input[type="date"]::placeholder {
+      color: white; /* Placeholder color */
+    }
+    
+    .form-container_create_queue_form input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    
+    .form-container_create_queue_form button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .form-container_create_queue_form button:hover {
+      background-color: #0056b3;
+    }
+    .form-container_create_queue_form label {
+      color: white;
+    }
   }
-  
-  .form-container_create_queue_form label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .form-container_create_queue_form input[type="text"],
-  .form-container_create_queue_form input[type="time"],
-  .form-container_create_queue_form input[type="date"] {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .form-container_create_queue_form input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .form-container_create_queue_form button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .form-container_create_queue_form button:hover {
-    background-color: #0056b3;
+
+  /*Create Queue*/
+@media screen and (max-width: 850px){
+    .form-container_create_queue_form {
+      width: 300px;
+      margin: 5px auto; /* Added margin-top */
+      padding: 20px;
+      border: 1px solid #0C0F18;
+      border-radius: 9px;
+      background-color: #0C0F18;
+    }
+    
+    .form-container_create_queue_form label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+    .form-container_create_queue_form input[type="text"],
+    .form-container_create_queue_form input[type="time"],
+    .form-container_create_queue_form input[type="date"] {
+      width: 90%;
+      padding: 8px;
+      margin-top: 5px;
+      background-color: #0C0F18;
+      border-radius: 3px;
+      border-top: 1px solid #0C0F18;
+      border-left: 1px solid #0C0F18;
+      border-right: 1px solid #0C0F18;
+      border-bottom: 1px solid #ccc;
+      color: white; /* Added text color */
+      transition: border-color 0.3s; /* Added transition for smooth color change */
+    }
+    
+    
+    .form-container_create_queue_form input[type="text"]::placeholder,
+    .form-container_create_queue_form input[type="time"]::placeholder,
+    .form-container_create_queue_form input[type="date"]::placeholder {
+      color: white; /* Placeholder color */
+    }
+    
+    .form-container_create_queue_form input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    
+    .form-container_create_queue_form button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    .form-container_create_queue_form button:hover {
+      background-color: #0056b3;
+    }
+    .form-container_create_queue_form label {
+      color: white;
+    }
   }

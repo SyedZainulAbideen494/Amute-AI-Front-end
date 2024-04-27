@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import "./hostEvent.css";
 
 const NewEventForm = () => {
@@ -24,9 +24,14 @@ const NewEventForm = () => {
       };
     
       return (
+        <Fragment>
         <form className="form-container_create_queue_form" onSubmit={handleSubmit}>
+        <h2>
+  <span style={{ color: '#fff' }}>New </span>
+  <span style={{ color: '#979CE1' }}>Queue</span>
+ </h2>
           <label>
-            Name:
+            Queue Name:
             <input
               type="text"
               name="name"
@@ -83,6 +88,7 @@ const NewEventForm = () => {
           </label>
           <button type="submit" className="dark-theme_create_queue_button">Create Queue</button>
         </form>
+        </Fragment>
       );
     };
 

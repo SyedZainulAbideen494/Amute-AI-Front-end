@@ -28,6 +28,7 @@ const HostEventPage = () => {
     </div>
     <div className="Dashboard_area_Team_dashboard">
         <DashboardTeam/>
+        <NewEventForm/>
     </div>
     <div className="rightmenu_area_Team_dashboard">
     </div>
