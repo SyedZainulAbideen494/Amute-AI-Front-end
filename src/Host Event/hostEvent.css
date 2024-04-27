@@ -59,6 +59,10 @@
     .form-container_create_queue_form label {
       color: white;
     }
+    .form-container_create_queue_form input[type="date"]:disabled {
+        opacity: 0.5; /* Adjust opacity to visually indicate disabled state */
+        pointer-events: none; /* Disable pointer events to prevent interaction */
+      }
   }
 
   /*Create Queue*/
@@ -76,6 +80,11 @@
       display: block;
       margin-bottom: 10px;
     }
+    .form-container_create_queue_form input[type="date"]:disabled {
+        opacity: 0.5; /* Adjust opacity to visually indicate disabled state */
+        pointer-events: none; /* Disable pointer events to prevent interaction */
+        cursor: not-allowed;
+      }
     
     .form-container_create_queue_form input[type="text"],
     .form-container_create_queue_form input[type="time"],
