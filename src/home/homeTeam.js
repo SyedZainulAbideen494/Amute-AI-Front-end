@@ -3,7 +3,6 @@ import './home.css'
 import NavBarTeam from "./navbarTeam";
 import DashboardTeam from "./dashboardTeam";
 import RightMenuTeam from "./rightmenuTeam";
-import useActivityTracker from '../app-modules/activeStatus'
 
 const HomeTeam = () => {
   

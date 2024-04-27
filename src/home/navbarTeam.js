@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import './home.css';
 import { API_ROUTES } from "../app-modules/api_routes";
 import helpicon from '../images/icons8-help-50.png';
-import messageicon from '../images/icons8-messages-50.png';
-import performaceicon from '../images/icons8-performance-24.png';
-import taskicon from '../images/icons8-tasks-24.png';
-import teamicon from '../images/icons8-team-24.png';
+import joinedevents from '../images/joined-events.png'
+import myevents from '../images/my-events.png'
 import porfileicon from '../images/icons8-user-profile-48.png';
 import dashboardicon from '../images/icons8-dashboard-50.png';
+import add from '../images/add+.png'
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavBarTeam = () => {
@@ -69,29 +68,18 @@ const NavBarTeam = () => {
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
                         Dashboard
                     </button>
-                    <button className={`nav-button_team ${isActive('/team')}`} onClick={handleTeamPageRedirect}>
-                        <img src={teamicon} alt="Team" className="nav-icon" />
-                        Team
+                    <button className={`nav-button_team ${isActive('/host/new/event')}`} onClick={handleTeamPageRedirect}>
+                        <img src={add} alt="Team" className="nav-icon" />
+                        Host
                     </button>
                     <button className={`nav-button_team ${isActive('/task')}`} onClick={handleTaskPageRedirect}>
-                        <img src={taskicon} alt="Tasks" className="nav-icon" />
-                        Tasks
+                        <img src={myevents} alt="Tasks" className="nav-icon" />
+                        My Events
                     </button>
                     <button className="nav-button_team">
-                        <img src={messageicon} alt="Messages" className="nav-icon" />
-                        Messages
+                        <img src={joinedevents} alt="Messages" className="nav-icon" />
+                        joined Events 
                     </button>
-                    {userInfo.role === 'Leader' ? (
-                        <button className="nav-button_team">
-                            <img src={performaceicon} alt="Team Performance" className="nav-icon" />
-                            Team Performance
-                        </button>
-                    ) : (
-                        <button className="nav-button_team">
-                            <img src={performaceicon} alt="My Performance" className="nav-icon" />
-                            My Performance
-                        </button>
-                    )}
                     <button className="nav-button_team">
                     <img src={`${API_ROUTES.displayImages}/${userInfo.profilePic}`} style={{borderRadius: '50%'}} alt="Profile" className="nav-icon" />
                         My Profile

@@ -56,8 +56,7 @@ const Signinform = () => {
       !password ||
       !Position ||
       !phone_no ||
-      !Role ||
-      !gender
+      !Role
     ) {
       console.log("Please fill in all fields");
       return; // Don't proceed if any required field is empty
@@ -69,7 +68,6 @@ const Signinform = () => {
       password: password,
       Position: Position,
       phone_no: phone_no,
-      gender: gender,
       Role: Role
     };
 
@@ -147,7 +145,7 @@ const Signinform = () => {
             />
           </div>
           <div className="inp">
-            <label htmlFor="occupation">Position</label>
+            <label htmlFor="occupation">Position eg.Software Developer</label>
             <br />
             <input
               type="text"
@@ -158,6 +156,7 @@ const Signinform = () => {
               placeholder="Enter Occupation"
               required
             />
+              
           </div>
           <div className="input-container-gender">
       <label htmlFor="Role">Role</label><br/>
@@ -172,21 +171,6 @@ const Signinform = () => {
         <option value="">Select Role</option>
         <option value="Leader">Team Leader</option>
         <option value="Member">Team Member</option>
-      </select>
-    </div>
-    <div className="input-container-gender">
-      <label htmlFor="gender">Gender</label><br/>
-      <select
-        id="gender"
-        name="gender"
-        value={gender}
-        onChange={genderHandler}
-        required
-        className="select-input-gender"
-      >
-        <option value="">Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
       </select>
     </div>
           </div>

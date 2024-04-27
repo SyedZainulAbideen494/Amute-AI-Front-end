@@ -5,13 +5,7 @@ import arrowDown from '../images/icons8-arrow-down.png';
 import arrowUp from '../images/icons8-arrow-up.png';
 import Calander from "./calander";
 import backIcon from '../images/icons8-arrow-left.png';
-import { Link } from "react-router-dom";
-import AmuteAi from "../amute AI/amuteAi";
-import CreateCompany from "../company/createCompany";
-import JoinedCompanies from "../company/companiesDisplay";
-import CreateTeam from "../team/Main Team Page/createTeam";
-import AddTeamMember from "../team/Main Team Page/addteammember";
-import DisplayTeam from "../team/Main Team Page/displayTeam";
+import { Link, useNavigate } from "react-router-dom";
 
 const QuickShare = ({ status }) => {
     const handleShare = async () => {
@@ -41,19 +35,29 @@ const QuickShare = ({ status }) => {
 
 const RightMenuSummary = () => {
     const [userInfo, setUserInfo] = useState([]);
-    const [isTeamDetailsOpen, setIsTeamDetailsOpen] = useState(false);
-    const [isTaskDetailsOpen, setIsTaskDetailsOpen] = useState(false);
-    const [isCompanyDetailsOpen, setIsCompanyDetailsOpen] = useState(false);
-    const [isCalendarDetailsOpen, setIsCalendarDetailsOpen] = useState(false);
-    const [isMyCompaniesDetailsOpen, setIsMyCompaniesDetailsOpen] = useState(false);
-    const [isAmuteOpen, setIsAmuteOpen] = useState(false);
-    const [currentDate, setCurrentDate] = useState(new Date());
-    const [isCreateCompanyOpen, setIsCreateCompanyOpen] = useState(false); // State for toggling the "Create Company" component
-    const [isCreateTeamOpen, setisCreateTeamOpen] = useState(false);
-    const [isAddTeamMemberOpen, setisAddTeamMemberOpen] = useState(false);
-    const [isTeamOpen, setisTeamOpen] = useState(false);
-    const [isQuickShareOpen, setisQuickShareOpen] = useState(false);
-    
+    const [isAccountOpen, setisAccountOpen] = useState(false);
+    const [auth, setauth] = useState(false);
+    const nav = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        // Redirect the user to the login page
+        nav("/login");
+      };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setauth(true);
+    }
+  }, []);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setauth(true);
+    } else {
+      setauth(false);
+    }
+  }, []);
+  if (auth === false) {
+    nav("/login");
+  }
     useEffect(() => {
         const token = localStorage.getItem('token');
 
@@ -81,46 +85,9 @@ const RightMenuSummary = () => {
             });
     }, []);
 
-    const toggleTeamDetails = () => {
-        setIsTeamDetailsOpen(!isTeamDetailsOpen);
-    };
 
-    const toggleTaskDetails = () => {
-        setIsTaskDetailsOpen(!isTaskDetailsOpen);
-    };
-
-    const toggleCalendarDetails = () => {
-        setIsCalendarDetailsOpen(!isCalendarDetailsOpen);
-    };
-    const toggleAmuteAi = () => {
-        setIsAmuteOpen(!isAmuteOpen);
-    };
-    const toggleCompanyDetails = () => {
-        setIsCompanyDetailsOpen(!isCompanyDetailsOpen);
-    };
-
-    const toggleCreateCompany = () => {
-        setIsCreateCompanyOpen(!isCreateCompanyOpen);
-      };
-
-    const toggleMyCompanies = () => {
-        setIsMyCompaniesDetailsOpen(!isMyCompaniesDetailsOpen);
-      };
-
-      const toggleCreateTeam = () => {
-        setisCreateTeamOpen(!isCreateTeamOpen);
-      };
-
-      const toggleAddTeamMember = () => {
-        setisAddTeamMemberOpen(!isAddTeamMemberOpen);
-      };
-
-      const toggleMyTeam = () => {
-        setisTeamOpen(!isTeamOpen);
-      };
-
-      const toggleQuickShare = () => {
-        setisQuickShareOpen(!isQuickShareOpen);
+      const toggleAccount = () => {
+        setisAccountOpen(!isAccountOpen);
       };
 
 
@@ -132,115 +99,13 @@ const RightMenuSummary = () => {
     </Link>
     <h2>Summary</h2>
   </div>
-            <div className="summary_details">
-            <div className="team_details_summary_menu">
-                    <div className="team_details_summary_header" onClick={toggleCompanyDetails}>
-                        <h3>Company</h3>
-                        <img src={isCompanyDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                    </div>
-                    {isCompanyDetailsOpen && (
-                    <div className="team_details_summary_content_company_area" style={{ textAlign: 'center' }}>
-                        <p> {userInfo.role === 'Leader' ? (
-                                 <p>
-                                 <div className="team_details_summary_header"onClick={toggleCreateCompany}>
-                                 <h3 style={{marginLeft: '10px'}}>Create Company</h3>
-                                 <img src={isCreateCompanyOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                             </div>
-                             {isCreateCompanyOpen && <CreateCompany />}
-                                 </p>
-                            ) : (
-                                <p>
-                               
-                                </p>
-                            )}</p>
-                             <p>
-             <div className="team_details_summary_header"onClick={toggleMyCompanies}>
-                <h3 style={{marginLeft: '10px'}}>My Companies</h3>
-                  <img src={isMyCompaniesDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-             </div>
-             {isMyCompaniesDetailsOpen && <JoinedCompanies/>}
-            </p>
-                    </div>
-                )}
-            </div>
-            
-                </div>
                 <div className="team_details_summary_menu">
-                    <div className="team_details_summary_header" onClick={toggleTeamDetails}>
-                        <h3>Team</h3>
-                        <img src={isTeamDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
+                    <div className="team_details_summary_header" onClick={toggleAccount}>
+                        <h3>Account</h3>
+                        <img src={isAccountOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
                     </div>
-                    {isTeamDetailsOpen && (
-                        <div className="team_details_summary_content">
-                            <p> {userInfo.role === 'Leader' ? (
-                                <p>
-                                <div className="team_details_summary_header"onClick={toggleCreateTeam}>
-                                <h3 style={{marginLeft: '10px'}}>Create Team</h3>
-                                <img src={isCreateTeamOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                            </div>
-                            {isCreateTeamOpen && <CreateTeam />}
-                            <div className="team_details_summary_header"onClick={toggleAddTeamMember}>
-                                <h3 style={{marginLeft: '10px'}}>Add Team member</h3>
-                                <img src={isAddTeamMemberOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                            </div>
-                            {isAddTeamMemberOpen && <AddTeamMember />}
-                          
-                                </p>
-                            ) : (
-                                <div>
-                                <div className="team_details_summary_header">
-                                    <div className="team_details_summary_header"onClick={toggleQuickShare}>
-                                <h3 style={{marginLeft: '10px'}}>Join Team</h3>
-                                <img src={isQuickShareOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                            </div>
-                            
-                        </div>
-                        {isQuickShareOpen && <QuickShare status={userInfo.status} />}
-                        </div>
-                            )}</p>
-                            <div className="team_details_summary_header"onClick={toggleMyTeam}>
-                                <h3 style={{marginLeft: '10px'}}>My Team</h3>
-                                <img src={isTeamOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                            </div>
-                            {isTeamOpen && <DisplayTeam/>}
-                        </div>
-                    )}
-                </div>
-                <div className="team_details_summary_menu">
-                    <div className="team_details_summary_header" onClick={toggleTaskDetails}>
-                        <h3>Tasks</h3>
-                        <img src={isTaskDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                    </div>
-                    {isTaskDetailsOpen && (
-                        <div className="team_details_summary_content">
-                            <p> {userInfo.role === 'Leader' ? (
-                                <button className="right_menu_btn">
-                                    Assign Tasks
-                                </button>
-                            ) : (
-                                <button className="right_menu_btn">
-                                    My Tasks
-                                </button>
-                            )}</p>
-                        </div>
-                    )}
-                </div>
-                <div className="team_details_summary_menu">
-                    <div className="team_details_summary_header" onClick={toggleCalendarDetails}>
-                        <h3>Schedule</h3>
-                        <img src={isCalendarDetailsOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                    </div>
-                    {isCalendarDetailsOpen && (
-                       <Calander/>
-                    )}
-                </div>
-                <div className="team_details_summary_menu">
-                    <div className="team_details_summary_header" onClick={toggleAmuteAi}>
-                        <h3>Amute AI</h3>
-                        <img src={isAmuteOpen ? arrowUp : arrowDown} alt="Toggle Arrow" className="toggle_arrow" />
-                    </div>
-                    {isAmuteOpen && (
-                       <AmuteAi/>
+                    {isAccountOpen && (
+                       <p style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleLogout}>Logout</p>
                     )}
                 </div>
             </div>
