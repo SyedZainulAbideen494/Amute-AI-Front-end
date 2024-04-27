@@ -8,10 +8,7 @@ const DashboardTeam = () => {
     return (
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
-                <h3>Dashboard</h3>
-                <Link to='/summary'>
-                <button className="mobl_btn_dashboard_btn_summary">Summary</button>
-                </Link>
+                <h3>Amute</h3>
                 <button className="setting_btn_dashboard_team"><img src={settingsicon} alt="Settings" className="notification_dashboard_icon" /></button>
                 <button className="notification_icon"><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
             </div>

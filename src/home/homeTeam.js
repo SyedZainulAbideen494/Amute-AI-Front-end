@@ -14,7 +14,6 @@ const HomeTeam = () => {
             <DashboardTeam/>
         </div>
         <div className="rightmenu_area_Team_dashboard">
-            <RightMenuTeam/>
         </div>
     </div>
 
@@ -27,7 +26,6 @@ const HomeTeam = () => {
             <DashboardTeam/>
         </div>
         <div className="rightmenu_area_Team_dashboard">
-            <RightMenuTeam/>
         </div>
     </div>
     </Fragment>

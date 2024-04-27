@@ -45,14 +45,14 @@ const NavBarTeam = () => {
         setShowNav(!showNav);
     };
 
-    const handleTeamPageRedirect = () => {
-        nav('/team')
+    const handleHostEventPageRedirect = () => {
+        nav('/host/new/event')
     }
     const handledashboardPageRedirect = () => {
         nav('/dashboard')
     }
-    const handleTaskPageRedirect = () => {
-        nav('/task')
+    const handleMyEventsRedirect = () => {
+        nav('/MyEvents')
     }
 
     const isActive = (path) => {
@@ -68,11 +68,11 @@ const NavBarTeam = () => {
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
                         Dashboard
                     </button>
-                    <button className={`nav-button_team ${isActive('/host/new/event')}`} onClick={handleTeamPageRedirect}>
+                    <button className={`nav-button_team ${isActive('/host/new/event')}`} onClick={handleHostEventPageRedirect}>
                         <img src={add} alt="Team" className="nav-icon" />
                         Host
                     </button>
-                    <button className={`nav-button_team ${isActive('/task')}`} onClick={handleTaskPageRedirect}>
+                    <button className={`nav-button_team ${isActive('/MyEvents')}`} onClick={handleMyEventsRedirect}>
                         <img src={myevents} alt="Tasks" className="nav-icon" />
                         My Events
                     </button>
