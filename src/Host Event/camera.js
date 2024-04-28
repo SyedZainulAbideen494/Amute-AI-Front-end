@@ -1,61 +1,38 @@
 import React, { useRef, useState } from 'react';
-import jsQR from 'jsqr';
+import qrReaderRef from 'react-qr-reader';
+import './hostEvent.css'; // Import CSS file for styling
 
-const CameraScanner = () => {
-    const videoRef = useRef(null);
-    const [scanning, setScanning] = useState(false);
-  
-    const startScanning = () => {
-      setScanning(true);
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-          if (videoRef.current) {
-            videoRef.current.srcObject = stream;
-          }
-        })
-        .catch((error) => {
-          console.error('Error accessing camera:', error);
-          setScanning(false);
-        });
-    };
-  
-    const stopScanning = () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-        videoRef.current.srcObject.getTracks().forEach(track => track.stop());
-        setScanning(false);
-      }
-    };
-  
-    const handleScan = () => {
-      const canvas = document.createElement('canvas');
-      const video = videoRef.current;
-  
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-  
-      const imageData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-      const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
-  
-      if (qrCode) {
-        const url = qrCode.data;
-        window.location.href = url;
-      } else {
-        alert('No QR code found!');
-      }
-    };
-  
-    return (
-      <div>
-        {scanning ? (
-          <button onClick={stopScanning}>Stop Scanning</button>
-        ) : (
-          <button onClick={startScanning}>Start Scanning</button>
-        )}
-  
-        <video ref={videoRef} autoPlay playsInline style={{ width: '100%', maxWidth: '500px' }} />
-      </div>
-    );
+const QRScanner = () => {
+  const qrReaderRef = useRef(null);
+  const [result, setResult] = useState(null);
+
+  const handleScan = (data) => {
+    if (data) {
+      setResult(data);
+    }
   };
 
-export default CameraScanner;
+  const handleError = (err) => {
+    console.error(err);
+  };
+
+  return (
+    <div className="qr-scanner-container">
+      <qrReaderRef
+        ref={qrReaderRef}
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ width: '100%', height: '100%' }}
+        facingMode="environment" // Use the back camera
+      />
+      {result && (
+        <div className="qr-result-box">
+          <p>{result}</p>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default QRScanner;
