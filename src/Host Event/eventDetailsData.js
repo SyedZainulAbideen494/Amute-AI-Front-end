@@ -71,7 +71,6 @@ const EventDetailsData = () => {
     <div className="event-details-container">
       {eventDetails && (
         <div>
-          <h2 className="event-details-heading">Event Details</h2>
           <div className="event-details">
             <div className="qr-code-container">
               <QRCode value={`http://localhost:3000/join/event/${eventDetails.id}`} onScan={handleQRScan} />

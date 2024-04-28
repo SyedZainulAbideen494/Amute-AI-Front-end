@@ -1,5 +1,5 @@
 .event-details-container_joined_event {
-    background-color: #1A1A24;
+    background-color: #131313;
     color: #ffffff;
     padding: 20px;
     border-radius: 9px;
@@ -13,7 +13,7 @@
   
   .queue-details {
     margin-bottom: 20px;
-    background-color: #232534;
+    background-color: #151516;
     border-radius: 9px;
     padding: 10px;
   }
@@ -21,7 +21,7 @@
   /*hosted events*/
 /* Hosted Queues Container */
 .hosted-queues-container {
-    background-color: #1A1A24;
+    background-color: #131313;
     color: #ffffff;
     padding: 20px;
     border-radius: 5px;
@@ -41,7 +41,7 @@
     display: flex;
     align-items: center; /* Align items horizontally */
     justify-content: space-between; /* Spread items across */
-    background-color: #232534;
+    background-color: #151516;
     color: #ffffff;
     padding: 20px;
     border-radius: 5px;
@@ -150,7 +150,7 @@
     background-color: #72C3EE;
     color: white;
     border: 1px solid #72C3EE;
-    margin: 5px;
+    margin: 7px;
     padding: 6px 10px;
     border-radius: 9px;
     cursor: pointer;
@@ -164,3 +164,77 @@
     border-radius: 9px;
     cursor: pointer;
 }
+
+/* Edit Modal */
+.edit-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it's on top of everything */
+  }
+  
+  /* Edit Modal Content */
+  .edit-modal-content {
+    background-color: #131313;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px; /* Adjust the width as needed */
+    text-align: center;
+  }
+  
+  /* Edit Modal Buttons */
+  .edit-modal-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  /* Edit Modal Inputs */
+.edit-modal-input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Edit Modal Buttons */
+  .edit-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Edit Button */
+  .edit-modal-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Cancel Button */
+  .cancel-modal-button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
