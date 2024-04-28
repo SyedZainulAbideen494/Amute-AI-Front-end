@@ -3,6 +3,7 @@ import QrReader from 'react-qr-scanner';
 
 const QRScanner = () => {
   const [qrData, setQrData] = useState('');
+  const [facingMode, setFacingMode] = useState('environment'); // Initial value: back camera
 
   // Function to handle QR code scanning
   const handleScan = useCallback((data) => {
@@ -18,6 +19,11 @@ const QRScanner = () => {
     console.error('QR code scanning error:', error);
   }, []);
 
+  // Function to toggle camera facing mode
+  const toggleFacingMode = () => {
+    setFacingMode((prevMode) => (prevMode === 'environment' ? 'user' : 'environment'));
+  };
+
   return (
     <div>
       {/* QR scanner component */}
@@ -26,10 +32,12 @@ const QRScanner = () => {
         onError={handleError}
         onScan={handleScan}
         style={{ width: '100%' }}
-        facingMode="environment" // Use the back camera
+        facingMode={facingMode} // Switch between back and front camera
       />
+      {/* Button to toggle camera facing mode */}
+      <button onClick={toggleFacingMode}>Switch Camera</button>
       {/* Display QR data if available */}
-      {qrData && <p style={{color: 'white'}}>QR Code Data: {qrData}</p>}
+      {qrData && <p>QR Code Data: {qrData}</p>}
     </div>
   );
 };
