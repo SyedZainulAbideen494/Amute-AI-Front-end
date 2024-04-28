@@ -480,28 +480,6 @@
   cursor: pointer;
 }
 
-.quick-share-container {
-  background-color: #131313; /* Dark background color */
-  color: #fff; /* Light text color */
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-.quick-share-button {
-  background-color: #5C33F6; /* Primary color */
-  color: #fff; /* Light text color */
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.quick-share-button:hover {
-  background-color: #7d5aff; /* Darker color on hover */
-  transition: 0.3s;
-}
-
 .nav-button_team.active {
   background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
 }

@@ -132,3 +132,45 @@
       color: white;
     }
   }
+
+  /* Event Details */
+.event-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .event-details-container h2 {
+    margin-bottom: 15px;
+  }
+  
+  .event-details-container p {
+    margin-bottom: 10px;
+  }
+  
+  .qr-code-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .qr-code-container canvas {
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .quick-share-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .quick-share-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .quick-share-link a:hover {
+    text-decoration: underline;
+  }

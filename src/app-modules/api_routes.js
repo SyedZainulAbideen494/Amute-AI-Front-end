@@ -6,4 +6,5 @@ export const API_ROUTES = {
   fetchUserDetails: `${API_URL}/api/fetch/user/info`,
   addProfilePic   : `${API_URL}/uploadProfilePic`,
   displayImages: `${API_URL}/images`,
+  addQueue: `${API_URL}/add/queue`
 };
