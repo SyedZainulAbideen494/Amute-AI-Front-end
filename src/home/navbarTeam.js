@@ -55,6 +55,10 @@ const NavBarTeam = () => {
         nav('/MyEvents')
     }
 
+    const handleJoinedEventsRedirect = () => {
+        nav('/joinedEvents')
+    }
+
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
@@ -76,7 +80,7 @@ const NavBarTeam = () => {
                         <img src={myevents} alt="Tasks" className="nav-icon" />
                         My Events
                     </button>
-                    <button className="nav-button_team">
+                    <button className={`nav-button_team ${isActive('/joinedEvents')}`} onClick={handleJoinedEventsRedirect}>
                         <img src={joinedevents} alt="Messages" className="nav-icon" />
                         joined Events 
                     </button>

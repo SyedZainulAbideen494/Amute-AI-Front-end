@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import "./hostEvent.css";
 
 const NewEventForm = () => {
@@ -7,8 +7,41 @@ const NewEventForm = () => {
     startTime: "",
     endTime: "",
     date: "",
-    isForever: false
+    isForever: false,
+    user_id: null // Initialize user_id as null
   });
+
+  useEffect(() => {
+    // Fetch user information using the token from local storage
+    const fetchUserInfo = async () => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('Token not found in localStorage');
+            return;
+        }
+        try {
+            const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+                headers: {
+                    Authorization: token
+                }
+            });
+            if (response.ok) {
+                const userInfo = await response.json();
+                // Set the user_id in the formData state
+                setFormData(prevFormData => ({
+                  ...prevFormData,
+                  user_id: userInfo.id
+                }));
+            } else {
+                console.error('Failed to fetch user info');
+            }
+        } catch (error) {
+            console.error('Error fetching user info:', error);
+        }
+    };
+
+    fetchUserInfo();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -39,7 +72,8 @@ const NewEventForm = () => {
           startTime: "",
           endTime: "",
           date: "",
-          isForever: false
+          isForever: false,
+          user_id: formData.user_id // Preserve the user_id
         });
       } else {
         console.error('Failed to submit form data');

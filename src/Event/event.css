@@ -1,0 +1,125 @@
+.event-details-container_joined_event {
+    background-color: #1A1A24;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 10px;
+  }
+  
+  .detail-label_joined_event {
+    font-weight: bold;
+  }
+  
+  .queue-details {
+    margin-bottom: 20px;
+    background-color: #232534;
+    border-radius: 9px;
+    padding: 10px;
+  }
+
+  /*hosted events*/
+/* Hosted Queues Container */
+.hosted-queues-container {
+    background-color: #1A1A24;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    max-height: 400px; /* Example maximum height */
+    overflow-y: auto; /* Enable vertical scrolling when content exceeds max height */
+  }
+  
+  /* Hosted Queues Heading */
+  .hosted-queues-heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  /* Queue Details Container */
+  .queue-details {
+    display: flex;
+    align-items: center; /* Align items horizontally */
+    justify-content: space-between; /* Spread items across */
+    background-color: #232534;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    position: relative; /* Set position relative for absolute positioning of buttons */
+  }
+  
+  /* Queue Details Content */
+  .queue-details-content {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  /* QR Code Container */
+  .qr-code-container {
+    margin-left: 20px; /* Adjust margin between QR code and details */
+  }
+  
+  /* QR Code */
+  .qr-code {
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Detail Label */
+  .detail-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Edit and Delete Buttons */
+  .queue-actions {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Edit Button */
+  .edit-button,
+  .delete-button {
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px; /* Adjust margin between buttons */
+  }
+  
+  /* Edit Button Hover */
+  .edit-button:hover,
+  .delete-button:hover {
+    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+  }
+  
+  /* Scrollbar Track */
+  .hosted-queues-container::-webkit-scrollbar-track {
+    background-color: #2c3e50; /* Same as container background */
+  }
+  
+  /* Scrollbar Handle */
+  .hosted-queues-container::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of the scrollbar handle */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Scrollbar Handle Hover */
+  .hosted-queues-container::-webkit-scrollbar-thumb:hover {
+    background-color: #aaaaaa; /* Color of the scrollbar handle on hover */
+  }
+  
+  /* Scrollbar Track */
+  .hosted-queues-container::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  /* Scrollbar Corner */
+  .hosted-queues-container::-webkit-scrollbar-corner {
+    background-color: transparent; /* Hide scrollbar corner */
+  }
+  

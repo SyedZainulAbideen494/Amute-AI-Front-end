@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './attendeeEvent.css';
 import QRCode from 'qrcode.react';
 
@@ -11,6 +11,7 @@ const AttendeeEventData = () => {
     const [confirmDisabled, setConfirmDisabled] = useState(true); // To disable the Confirm button
     const [userId, setUserId] = useState(null); // To store the user ID
     const { id } = useParams();
+    const nav = useNavigate()
 
     useEffect(() => {
         // Fetch event details using the ID from the URL
@@ -115,6 +116,8 @@ const AttendeeEventData = () => {
             if (response.ok) {
                 // Handle success
                 console.log('Time slot confirmed successfully');
+                // Redirect to '/Myevents'
+                nav('/joinedEvents');
             } else {
                 console.error('Failed to confirm time slot');
             }

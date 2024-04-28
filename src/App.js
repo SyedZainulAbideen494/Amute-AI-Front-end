@@ -14,6 +14,8 @@ import Summary from "./home/summary";
 import HostEventPage from "./Host Event/HostEventPage";
 import EventDetails from "./Host Event/eventDetails";
 import AttendeeEventJoin from "./Attendee Event/attendeeJoinEvent";
+import JoinedEvents from "./Event/JoinedEvents";
+import MyEvent from "./Event/MyEvent";
 
 
 const router = createBrowserRouter([
@@ -24,6 +26,8 @@ const router = createBrowserRouter([
   { path: '/host/new/event', element: <HostEventPage/> },
   { path: '/event/host/admin/:id', element: <EventDetails/> },
   { path: '/join/event/:id', element: <AttendeeEventJoin/> },
+  { path: '/joinedEvents', element: <JoinedEvents/> },
+  { path: '/MyEvents', element: <MyEvent/>},
 ]);
 
 
