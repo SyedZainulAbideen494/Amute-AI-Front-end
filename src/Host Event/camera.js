@@ -26,9 +26,10 @@ const QRScanner = () => {
         onError={handleError}
         onScan={handleScan}
         style={{ width: '100%' }}
+        facingMode="environment" // Use the back camera
       />
       {/* Display QR data if available */}
-      {qrData && <p>QR Code Data: {qrData}</p>}
+      {qrData && <p style={{color: 'white'}}>QR Code Data: {qrData}</p>}
     </div>
   );
 };
