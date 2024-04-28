@@ -1,43 +1,36 @@
-import React, { useState, useCallback } from 'react';
+import React, { useRef, useState } from 'react';
 import QrReader from 'react-qr-scanner';
 
 const QRScanner = () => {
-  const [qrData, setQrData] = useState('');
-  const [facingMode, setFacingMode] = useState('environment'); // Initial value: back camera
+  const [camera, setCamera] = useState('environment'); // 'user' for front camera, 'environment' for back camera
+  const qrRef = useRef(null);
 
-  // Function to handle QR code scanning
-  const handleScan = useCallback((data) => {
+  const handleScan = (data) => {
     if (data) {
-      setQrData(data);
-      // Redirect to the URL in the QR code
+      // Redirect to the scanned link
       window.location.href = data;
     }
-  }, []);
+  };
 
-  // Function to handle errors during scanning
-  const handleError = useCallback((error) => {
-    console.error('QR code scanning error:', error);
-  }, []);
+  const handleError = (error) => {
+    console.error('Error scanning QR code:', error);
+  };
 
-  // Function to toggle camera facing mode
-  const toggleFacingMode = () => {
-    setFacingMode((prevMode) => (prevMode === 'environment' ? 'user' : 'environment'));
+  const switchCamera = () => {
+    setCamera((prevCamera) => (prevCamera === 'user' ? 'environment' : 'user'));
   };
 
   return (
     <div>
-      {/* QR scanner component */}
       <QrReader
+        ref={qrRef}
         delay={300}
         onError={handleError}
         onScan={handleScan}
         style={{ width: '100%' }}
-        facingMode={facingMode} // Switch between back and front camera
+        facingMode={camera}
       />
-      {/* Button to toggle camera facing mode */}
-      <button onClick={toggleFacingMode}>Switch Camera</button>
-      {/* Display QR data if available */}
-      {qrData && <p>QR Code Data: {qrData}</p>}
+      <button onClick={switchCamera}>Switch Camera</button>
     </div>
   );
 };
