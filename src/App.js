@@ -13,6 +13,7 @@ import Website from "./website/website";
 import Summary from "./home/summary";
 import HostEventPage from "./Host Event/HostEventPage";
 import EventDetails from "./Host Event/eventDetails";
+import CameraScanner from "./Host Event/camera";
 
 const router = createBrowserRouter([
   { path: "/dashboard", element: <HomeTeam /> },
@@ -20,7 +21,8 @@ const router = createBrowserRouter([
   { path: "/signup", element: <Signinform/>},
   { path: "/login", element: <Loginform/>},
   { path: '/host/new/event', element: <HostEventPage/> },
-  { path: '/event/host/admin/:id', element: <EventDetails/> }
+  { path: '/event/host/admin/:id', element: <EventDetails/> },
+  {path: '/camera', element: <CameraScanner/>}
 ]);
 
 
