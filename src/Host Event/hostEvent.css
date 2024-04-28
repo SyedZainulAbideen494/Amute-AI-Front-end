@@ -133,44 +133,51 @@
     }
   }
 
-  /* Event Details */
-.event-details-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  /*Event details*/
+
+  .event-details-container {
+    margin: 20px;
+    color: #fff;
+    text-align: center;
   }
   
-  .event-details-container h2 {
-    margin-bottom: 15px;
+  .event-details-heading {
+    color: #fff;
+    font-size: 20px;
   }
   
-  .event-details-container p {
-    margin-bottom: 10px;
+  .event-details {
+    background-color: #0C0F18;
+    border-radius: 9px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .detail-label {
+    font-weight: bold;
   }
   
   .qr-code-container {
-    margin-top: 20px;
-    text-align: center;
+    margin-bottom: 20px;
   }
   
-  .qr-code-container canvas {
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  .quick-share-label {
+    font-weight: bold;
+    margin-bottom: 5px;
   }
   
-  .quick-share-link {
-    display: block;
-    margin-top: 20px;
-    text-align: center;
+  .quick-share-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
   }
   
-  .quick-share-link a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .quick-share-link a:hover {
-    text-decoration: underline;
+  .quick-share-button:hover {
+    background-color: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+    border-color: #9F9BEA;
   }
