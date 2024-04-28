@@ -26,7 +26,37 @@ const QuickShare = ({ joinQueueURL }) => {
     );
   };
 
-const QueueDetails = ({ queue }) => {
+const QueueDetails = ({ queue, onDelete }) => {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const handleDeleteClick = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleDeleteConfirmation = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/delete/queue/${queue.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        // Refresh the queues list upon successful deletion
+        onDelete();
+        setShowConfirmation(false); // Hide the delete confirmation modal
+      } else {
+        console.error('Failed to delete queue');
+      }
+    } catch (error) {
+      console.error('Error deleting queue:', error);
+    }
+  };
+
+  const handleCancelDelete = () => {
+    setShowConfirmation(false);
+  };
+
   const handleQRScan = (data) => {
     // Check if the scanned data is a join queue link
     if (isJoinQueueLink(data)) {
@@ -54,17 +84,27 @@ const QueueDetails = ({ queue }) => {
       </div>
       <div className="queue-actions">
         <button className="edit-button">Edit</button>
-        <button className="delete-button">Delete</button>
+        <button className="delete-button" onClick={handleDeleteClick}>Delete</button>
         <QuickShare joinQueueURL={`http://localhost:3000/join/event/${queue.id}`} />
       </div>
+      {showConfirmation && (
+        <div className="delete-confirmation-modal">
+          <div className="delete-confirmation-content">
+            <p>Are you sure you want to delete this queue?</p>
+            <div className="delete-confirmation-buttons">
+              <button onClick={handleDeleteConfirmation} className='delete_quue_modle_btn_delete'>Delete</button>
+              <button onClick={handleCancelDelete} className='delete_quue_modle_btn_cancel'>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 const MyEventsData = () => {
-  const [queues, setQueues] = useState([]);
-
-  useEffect(() => {
+    const [queues, setQueues] = useState([]);
+  
     const fetchQueues = async () => {
       try {
         const token = localStorage.getItem('token');
@@ -94,20 +134,26 @@ const MyEventsData = () => {
         console.error('Error fetching queues:', error);
       }
     };
-
-    fetchQueues();
-  }, []);
-
-  return (
-    <div className="hosted-queues-container">
-      <h2 className="hosted-queues-heading">Hosted Queues</h2>
-      <div className="hosted-queues-list">
-        {queues.map(queue => (
-          <QueueDetails key={queue.id} queue={queue} />
-        ))}
+  
+    useEffect(() => {
+      fetchQueues();
+    }, []);
+  
+    const handleQueueDelete = () => {
+      // Refresh the queues list upon deletion
+      fetchQueues();
+    };
+  
+    return (
+      <div className="hosted-queues-container">
+        <h2 className="hosted-queues-heading" style={{textAlign: 'center'}}>Hosted Queues</h2>
+        <div className="hosted-queues-list">
+          {queues.map(queue => (
+            <QueueDetails key={queue.id} queue={queue} onDelete={handleQueueDelete} />
+          ))}
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default MyEventsData;
+    );
+  };
+  
+  export default MyEventsData;
