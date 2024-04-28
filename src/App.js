@@ -13,6 +13,7 @@ import Website from "./website/website";
 import Summary from "./home/summary";
 import HostEventPage from "./Host Event/HostEventPage";
 import EventDetails from "./Host Event/eventDetails";
+import AttendeeEventJoin from "./Attendee Event/attendeeJoinEvent";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   { path: "/login", element: <Loginform/>},
   { path: '/host/new/event', element: <HostEventPage/> },
   { path: '/event/host/admin/:id', element: <EventDetails/> },
+  { path: '/join/event/:id', element: <AttendeeEventJoin/> },
 ]);
 
 
