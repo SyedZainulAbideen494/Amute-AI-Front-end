@@ -3,20 +3,20 @@ import QRCode from 'qrcode.react';
 import { useParams } from 'react-router-dom';
 import './hostEvent.css'; // Import your CSS file
 
-const QuickShare = ({ status }) => {
+const QuickShare = ({ joinQueueURL }) => {
   const handleShare = async () => {
     if (navigator.share) {
       try {
         await navigator.share({
           title: 'Join the queue',
-          text: `Add me to the team with this code: ${status}`,
+          text: `Join the queue with this link: ${joinQueueURL}`,
         });
       } catch (error) {
-        console.error('Error sharing status code:', error);
+        console.error('Error sharing:', error);
       }
     } else {
       // Fallback for browsers that don't support Web Share API
-      const shareText = `Join my team with this status code: ${status}`;
+      const shareText = `Join the queue with this link: ${joinQueueURL}`;
       const shareURL = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
       window.location.href = shareURL;
     }
@@ -73,15 +73,15 @@ const EventDetailsData = () => {
         <div>
           <h2 className="event-details-heading">Event Details</h2>
           <div className="event-details">
-          <div className="qr-code-container">
-            <QRCode value={`http://localhost:3000/join/event/${eventDetails.id}`} onScan={handleQRScan} />
-          </div>
+            <div className="qr-code-container">
+              <QRCode value={`http://localhost:3000/join/event/${eventDetails.id}`} onScan={handleQRScan} />
+            </div>
             <p><span className="detail-label">Name:</span> {eventDetails.name}</p>
             <p><span className="detail-label">Start Time:</span> {eventDetails.startTime}</p>
             <p><span className="detail-label">End Time:</span> {eventDetails.endTime}</p>
             <p><span className="detail-label">Date:</span> {eventDetails.date}</p>
             <p><span className="detail-label">Forever:</span> {eventDetails.isForever ? 'Yes' : 'No'}</p>
-          <QuickShare status={`http://localhost:3000/join/event/${eventDetails.id}`} />
+            <QuickShare joinQueueURL={`http://localhost:3000/join/event/${eventDetails.id}`} />
           </div>
         </div>
       )}
