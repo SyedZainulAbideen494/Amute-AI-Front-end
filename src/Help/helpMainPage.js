@@ -25,6 +25,7 @@ const HelpHome = () => {
         </div>
         <div className="Dashboard_area_Team_dashboard">
             <DashboardTeam/>
+            <HelpMainPageData/>
         </div>
         <div className="rightmenu_area_Team_dashboard">
         </div>
