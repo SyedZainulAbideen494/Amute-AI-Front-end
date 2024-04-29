@@ -18,6 +18,8 @@ import JoinedEvents from "./Event/JoinedEvents";
 import MyEvent from "./Event/MyEvent";
 import MyProfile from "./My Profile/myProfile";
 import QRScanner from "./QR Code Scanner/qrscanner";
+import Passwordreset from "./passwordreset/password-reset";
+import ResetPassword from "./passwordreset/password-reset-page";
 
 
 const router = createBrowserRouter([
@@ -31,6 +33,8 @@ const router = createBrowserRouter([
   { path: '/joinedEvents', element: <JoinedEvents/> },
   { path: '/MyEvents', element: <MyEvent/>},
   {path: '/MyProfile', element: <MyProfile/>},
+  {path: '/forgot-password', element: <Passwordreset/>},
+  {path: `/resetpassword/:email`, element: <ResetPassword/>},
 ]);
 
 

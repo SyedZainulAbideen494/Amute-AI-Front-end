@@ -64,7 +64,7 @@ const Loginform = () => {
             <button onClick={login} style={{ cursor: 'pointer' }}>Login</button>
           </span>
           <span className="loginbtn">
-            <Link to='/website'>
+            <Link to='/dashboard'>
               <button>Cancel</button>
             </Link>
           </span>
