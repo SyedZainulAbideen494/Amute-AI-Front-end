@@ -7,7 +7,7 @@ const QRScanner = () => {
 
   const handleScan = (data) => {
     if (data) {
-      setResult(data);
+      setResult(';');
     }
   };
 
