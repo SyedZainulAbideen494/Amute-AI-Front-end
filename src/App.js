@@ -31,7 +31,6 @@ const router = createBrowserRouter([
   { path: '/joinedEvents', element: <JoinedEvents/> },
   { path: '/MyEvents', element: <MyEvent/>},
   {path: '/MyProfile', element: <MyProfile/>},
-  {path: '/QrScanner', element: <QRScanner/>}
 ]);
 
 

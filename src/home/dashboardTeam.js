@@ -8,9 +8,8 @@ const DashboardTeam = () => {
     const nav = useNavigate()
 
     const handleRedirectQrScanner = () => {
-        nav('/https://qrcodescan.in/#google_vignette')
-    }
-
+        window.location.href = 'https://qrcodescan.in/#google_vignette';
+    };
     return (
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
