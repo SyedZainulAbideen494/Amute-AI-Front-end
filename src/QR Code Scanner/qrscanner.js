@@ -1,36 +1,52 @@
-import React, { useState } from 'react';
-import useQrReader from 'react-qr-reader';
+import React, { useState, useRef } from 'react';
 
 const QRScanner = () => {
+  const videoRef = useRef(null);
+  const [scanning, setScanning] = useState(false);
   const [result, setResult] = useState('');
 
-  const handleScan = data => {
-    if (data) {
-      setResult(data);
-    }
-  }
+  const startScanner = () => {
+    setScanning(true);
+    setResult('');
 
-  const handleError = err => {
-    
-  }
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+      .then(stream => {
+        videoRef.current.srcObject = stream;
+        videoRef.current.play();
+      })
+      .catch(error => {
+        console.error('Error accessing camera:', error);
+      });
+  };
 
-  const handleRedirect = () => {
-    if (result) {
-      window.location.href = result; // Redirect to the scanned QR code's link
+  const stopScanner = () => {
+    setScanning(false);
+    const stream = videoRef.current.srcObject;
+    if (stream) {
+      const tracks = stream.getTracks();
+      tracks.forEach(track => track.stop());
     }
-  }
+  };
+
+  const handleScan = (event) => {
+    const code = event.target.value;
+    setResult(code);
+    stopScanner();
+  };
 
   return (
     <div>
-      <useQrReader
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
-        style={{ width: '100%' }}
-      />
-      <button onClick={handleRedirect}>Go to Link</button>
+      {!scanning ? (
+        <button onClick={startScanner}>Start Scan</button>
+      ) : (
+        <div>
+          <video ref={videoRef} style={{ width: '100%' }} onScan={handleScan}></video>
+          <button onClick={stopScanner}>Stop Scan</button>
+        </div>
+      )}
+      {result && <p>Scanned QR code: {result}</p>}
     </div>
   );
-}
+};
 
 export default QRScanner;
