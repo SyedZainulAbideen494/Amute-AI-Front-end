@@ -124,7 +124,7 @@ const QuickShare = ({ joinQueueURL }) => {
       <div className="queue-actions">
         <button className="edit-button" onClick={handleEditClick}>Edit</button>
         <button className="delete-button" onClick={() => setShowDeleteConfirmation(true)}>Delete</button>
-        <QuickShare joinQueueURL={`https://amute.vercel.app/join/event/${queue.id}`} />
+        <QuickShare joinQueueURL={`https://amute.vercel.app/join/queue/${queue.id}`} />
       </div>
 
       {showDeleteConfirmation && (
