@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 import './hostEvent.css'; // Import your CSS file
+import axios from 'axios';
 
 const QuickShare = ({ joinQueueURL }) => {
   const handleShare = async () => {
@@ -29,11 +30,55 @@ const QuickShare = ({ joinQueueURL }) => {
   );
 };
 
+const AttendeesModal = ({ attendees, onClose }) => {
+  const handleRemoveAttendee = async (attendeeId) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/api/remove/attendee/${attendeeId}`);
+      if (response.status === 200) {
+        // Remove the attendee from the local state
+        
+      } else {
+        console.error('Failed to remove attendee');
+      }
+    } catch (error) {
+      console.error('Error removing attendee:', error);
+    }
+  };
+
+  const handleChatAttendee = (phoneNo) => {
+    // Handle opening WhatsApp chat with the given phone number
+    const shareText = `Let's chat on WhatsApp!`;
+    const shareURL = `whatsapp://send?phone=${phoneNo}&text=${encodeURIComponent(shareText)}`;
+    window.open(shareURL);
+  };
+
+  return (
+    <div className="modal-container_event_attendee_details">
+      <div className="modal-content_event_attendee_details">
+        <button className="modal-close_event_attendee_details" onClick={onClose}>Close</button>
+        <h2>Attendees</h2>
+        <ul>
+          {attendees.map((attendee, index) => (
+            <li key={index} className="attendee-item">
+              <p>Name: {attendee.name}</p>
+              <p>Phone: {attendee.phone_no}</p>
+              <p>Time: {attendee.hour}-{attendee.minute}</p>
+              <button className="attendee-action" onClick={() => handleChatAttendee(attendee.phone_no)}>Chat</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
 const EventDetailsData = () => {
   const [eventDetails, setEventDetails] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [attendees, setAttendees] = useState([]);
+  const [showAttendees, setShowAttendees] = useState(false);
   const { id } = useParams();
   const nav = useNavigate();
 
@@ -85,6 +130,25 @@ const EventDetailsData = () => {
     fetchEventDetails();
   }, [id]);
 
+  useEffect(() => {
+    // Fetch attendees when event details are loaded
+    if (eventDetails) {
+      const fetchAttendees = async () => {
+        try {
+          const response = await axios.get(`http://localhost:8080/api/fetch/attendees/${id}`);
+          if (response.status === 200) {
+            setAttendees(response.data);
+          } else {
+            console.error('Failed to fetch attendees');
+          }
+        } catch (error) {
+          console.error('Error fetching attendees:', error);
+        }
+      };
+      fetchAttendees();
+    }
+  }, [eventDetails, id]);
+
   // Function to handle QR code scan
   const handleQRScan = (data) => {
     // Check if the scanned data is a join queue link
@@ -108,6 +172,14 @@ const EventDetailsData = () => {
     }
   }, [userInfo, eventDetails, nav]);
 
+  const handleViewAttendees = () => {
+    setShowAttendees(true);
+  };
+
+  const handleCloseAttendees = () => {
+    setShowAttendees(false);
+  };
+
   return (
     <div className="event-details-container">
       {eventDetails && (
@@ -122,7 +194,9 @@ const EventDetailsData = () => {
             <p><span className="detail-label">Date:</span> {eventDetails.date}</p>
             <p><span className="detail-label">Forever:</span> {eventDetails.isForever ? 'Yes' : 'No'}</p>
             <QuickShare joinQueueURL={`http://localhost:3000/join/event/${eventDetails.id}`} />
+            <button className="quick-share-button" onClick={handleViewAttendees} style={{marginTop:' 5px'}}>View Attendees</button>
           </div>
+          {showAttendees && <AttendeesModal attendees={attendees} onClose={handleCloseAttendees} />}
         </div>
       )}
     </div>
