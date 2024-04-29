@@ -119,12 +119,12 @@ const QuickShare = ({ joinQueueURL }) => {
         <p><span className="detail-label">Date:</span> {queue.date}</p>
       </div>
       <div className="qr-code-container">
-        <QRCode value={`https://amute.vercel.app/join/queue/${queue.id}`} onScan={() => {}} className="qr-code" />
+        <QRCode value={`https://amute.vercel.app/join/event/${queue.id}`} onScan={() => {}} className="qr-code" />
       </div>
       <div className="queue-actions">
         <button className="edit-button" onClick={handleEditClick}>Edit</button>
         <button className="delete-button" onClick={() => setShowDeleteConfirmation(true)}>Delete</button>
-        <QuickShare joinQueueURL={`https://amute.vercel.app/join/queue/${queue.id}`} />
+        <QuickShare joinQueueURL={`https://amute.vercel.app/join/event/${queue.id}`} />
       </div>
 
       {showDeleteConfirmation && (

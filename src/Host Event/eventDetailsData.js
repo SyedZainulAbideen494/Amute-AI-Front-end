@@ -186,14 +186,14 @@ const EventDetailsData = () => {
         <div>
           <div className="event-details">
             <div className="qr-code-container">
-              <QRCode value={`https://amute.vercel.app/join/queue/${eventDetails.id}`} onScan={handleQRScan} />
+              <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} onScan={handleQRScan} />
             </div>
             <p><span className="detail-label">Name:</span> {eventDetails.name}</p>
             <p><span className="detail-label">Start Time:</span> {eventDetails.startTime}</p>
             <p><span className="detail-label">End Time:</span> {eventDetails.endTime}</p>
             <p><span className="detail-label">Date:</span> {eventDetails.date}</p>
             <p><span className="detail-label">Forever:</span> {eventDetails.isForever ? 'Yes' : 'No'}</p>
-            <QuickShare joinQueueURL={`http://localhost:3000/join/queue/${eventDetails.id}`} />
+            <QuickShare joinQueueURL={`https://amute.vercel.app/join/event/${eventDetails.id}`} />
             <button className="quick-share-button" onClick={handleViewAttendees} style={{marginTop:' 5px'}}>View Attendees</button>
           </div>
           {showAttendees && <AttendeesModal attendees={attendees} onClose={handleCloseAttendees} />}
