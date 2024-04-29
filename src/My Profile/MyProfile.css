@@ -1,0 +1,166 @@
+/* Base styles */
+.profile-container {
+    background-color: #131313;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .username {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .bio {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-count {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .user_profile_actions_btns {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user_profile_actions_btns button {
+    background-color: #555555;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .user_profile_actions_btns button:hover {
+    background-color: #777777;
+  }
+  
+  .queues-container_MyProfile {
+    margin-top: 20px;
+  }
+  
+  .queue-list_MyProfile {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .queue-item_MyProfile {
+    background-color: #444444;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .queue-item_MyProfile span {
+    font-size: 18px;
+  }
+  
+  /* Media queries for responsive design */
+  @media screen and (max-width: 768px) {
+    .profile-container {
+      padding: 10px;
+    }
+  
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      margin-right: 15px;
+    }
+  
+    .username {
+      font-size: 20px;
+    }
+  
+    .bio {
+      font-size: 14px;
+    }
+  
+    .stats {
+      margin-bottom: 15px;
+    }
+  
+    .stat-count {
+      font-size: 16px;
+    }
+  
+    .user_profile_actions_btns button {
+      padding: 8px 16px;
+      margin-left: 8px;
+    }
+  
+    .queue-item_MyProfile {
+      padding: 8px;
+    }
+  
+    .queue-item_MyProfile span {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .profile-pic {
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+  
+    .username {
+      font-size: 18px;
+    }
+  
+    .bio {
+      font-size: 12px;
+    }
+  
+    .stat-count {
+      font-size: 14px;
+    }
+  
+    .user_profile_actions_btns button {
+      padding: 6px 12px;
+      margin-left: 6px;
+    }
+  
+    .queue-item_MyProfile {
+      padding: 6px;
+    }
+  
+    .queue-item_MyProfile span {
+      font-size: 14px;
+    }
+  }

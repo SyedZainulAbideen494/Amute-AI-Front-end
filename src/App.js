@@ -16,6 +16,7 @@ import EventDetails from "./Host Event/eventDetails";
 import AttendeeEventJoin from "./Attendee Event/attendeeJoinEvent";
 import JoinedEvents from "./Event/JoinedEvents";
 import MyEvent from "./Event/MyEvent";
+import MyProfile from "./My Profile/myProfile";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   { path: '/join/event/:id', element: <AttendeeEventJoin/> },
   { path: '/joinedEvents', element: <JoinedEvents/> },
   { path: '/MyEvents', element: <MyEvent/>},
+  {path: '/MyProfile', element: <MyProfile/>},
 ]);
 
 
