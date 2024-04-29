@@ -11,7 +11,7 @@ const QRScanner = () => {
   }
 
   const handleError = err => {
-    console.error(err);
+    
   }
 
   const handleRedirect = () => {
