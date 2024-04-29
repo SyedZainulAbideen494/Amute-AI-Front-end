@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './MyProfile.css'; // Import your CSS file for styling
+import './MyProfile.css';
 import ProfilePicUpload from './EditMyProfile';
 
 const MyProfileData = () => {
@@ -9,7 +9,7 @@ const MyProfileData = () => {
   const [queues, setQueues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showUpload, setShowUpload] = useState(false); // State to manage the visibility of upload component
+  const [showUpload, setShowUpload] = useState(false);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -27,7 +27,7 @@ const MyProfileData = () => {
         if (response.ok) {
           const data = await response.json();
           setUserInfo(data);
-          fetchPostCount(data.id);
+          fetchPostCount(data.id); // Fetch post count after getting user info
           fetchUserQueues(data.id);
         } else {
           setError('Failed to fetch user info');
@@ -43,15 +43,35 @@ const MyProfileData = () => {
   }, []);
 
   const fetchPostCount = async (userId) => {
-    // Fetch post count similar to your implementation
+    try {
+      const response = await fetch(`http://localhost:8080/api/count/posts?userId=${userId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setPostCount(data.postCount);
+      } else {
+        setError('Failed to fetch post count');
+      }
+    } catch (error) {
+      setError('Error fetching post count: ' + error.message);
+    }
   };
 
   const fetchUserQueues = async (userId) => {
-    // Fetch user queues similar to your implementation
+    try {
+      const response = await fetch(`http://localhost:8080/api/fetch/queues/${userId}`);
+      if (response.ok) {
+        const data = await response.json();
+        setQueues(data); // Update queues state with fetched data
+      } else {
+        setError('Failed to fetch user queues');
+      }
+    } catch (error) {
+      setError('Error fetching user queues: ' + error.message);
+    }
   };
 
   const handleProfilePicClick = () => {
-    setShowUpload(!showUpload); // Set showUpload to true when profile pic is clicked
+    setShowUpload(!showUpload);
   };
 
   if (loading) {
@@ -64,12 +84,13 @@ const MyProfileData = () => {
 
   return (
     <div className="profile-container">
-      {showUpload && <ProfilePicUpload onClose={() => setShowUpload(false)} />} {/* Render ProfilePicUpload component if showUpload is true */}
+      {showUpload && <ProfilePicUpload onClose={() => setShowUpload(false)} />}
       <div className="profile-header">
         <img src={`http://localhost:8080/images/${userInfo.profilePic}`} alt="Profile Pic" className="profile-pic" onClick={handleProfilePicClick} style={{cursor: 'pointer'}} />
         <div className="profile-info">
           <h2 className="username">{userInfo.name}</h2>
           <p className="bio">{userInfo.email}</p>
+          <p className="bio">{userInfo.phone_no}</p>
           <div className="stats">
             <div className="stat">
               <span className="stat-count">{postCount}</span> Queues
