@@ -17,6 +17,7 @@ import AttendeeEventJoin from "./Attendee Event/attendeeJoinEvent";
 import JoinedEvents from "./Event/JoinedEvents";
 import MyEvent from "./Event/MyEvent";
 import MyProfile from "./My Profile/myProfile";
+import QRScanner from "./QR Code Scanner/qrscanner";
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
   { path: '/joinedEvents', element: <JoinedEvents/> },
   { path: '/MyEvents', element: <MyEvent/>},
   {path: '/MyProfile', element: <MyProfile/>},
+  {path: '/QrScanner', element: <QRScanner/>},
 ]);
 
 
