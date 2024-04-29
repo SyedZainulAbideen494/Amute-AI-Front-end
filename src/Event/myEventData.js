@@ -103,6 +103,7 @@ const QuickShare = ({ joinQueueURL }) => {
     // Simple check to see if the data starts with 'http://localhost:8080/join/queue/'
     return data.startsWith('http://localhost:8080/join/queue/');
   };
+  
 
   return (
     <div className="queue-details">
