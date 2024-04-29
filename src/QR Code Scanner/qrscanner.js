@@ -7,7 +7,7 @@ const QRScanner = () => {
 
   const handleScan = (data) => {
     if (data) {
-      setResult('data');
+      setResult(data);
     }
   };
 
@@ -16,8 +16,14 @@ const QRScanner = () => {
   };
 
   const flipCamera = async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-    videoRef.current.srcObject = stream;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+      console.log('Camera flipped successfully');
+      console.log('Camera stream:', stream);
+      videoRef.current.srcObject = stream;
+    } catch (error) {
+      console.error('Error flipping camera:', error);
+    }
   };
 
   return (
