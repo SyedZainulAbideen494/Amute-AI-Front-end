@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import QRCode from 'qrcode.react';
-import { useParams } from 'react-router-dom';
 import './hostEvent.css'; // Import your CSS file
 
 const QuickShare = ({ joinQueueURL }) => {
@@ -31,7 +31,40 @@ const QuickShare = ({ joinQueueURL }) => {
 
 const EventDetailsData = () => {
   const [eventDetails, setEventDetails] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { id } = useParams();
+  const nav = useNavigate();
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setError('Token not found in localStorage');
+          return;
+        }
+        const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+          headers: {
+            Authorization: token
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserInfo(data);
+        } else {
+          setError('Failed to fetch user info');
+        }
+      } catch (error) {
+        setError('Error fetching user info: ' + error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
 
   useEffect(() => {
     // Fetch event details using the ID from the URL
@@ -66,6 +99,14 @@ const EventDetailsData = () => {
     // Simple check to see if the data starts with 'http://localhost:3000/join/event/'
     return data.startsWith('http://localhost:3000/join/event/');
   };
+
+  // Check if user_id of the event matches the id of the user
+  useEffect(() => {
+    if (userInfo && eventDetails && userInfo.id != eventDetails.user_id) {
+      // Redirect to dashboard if user_id does not match
+      nav('/dashboard');
+    }
+  }, [userInfo, eventDetails, nav]);
 
   return (
     <div className="event-details-container">

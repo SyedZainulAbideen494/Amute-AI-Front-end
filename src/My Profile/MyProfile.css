@@ -26,11 +26,13 @@
   .username {
     font-size: 24px;
     margin-bottom: 5px;
+    font-weight: 400;
   }
   
   .bio {
     font-size: 16px;
     margin-bottom: 10px;
+    color: #aaa;
   }
   
   .stats {
@@ -79,7 +81,7 @@
   }
   
   .queue-item_MyProfile {
-    background-color: #444444;
+    background-color: #1f1e1e;
     color: #ffffff;
     padding: 10px;
     border-radius: 5px;

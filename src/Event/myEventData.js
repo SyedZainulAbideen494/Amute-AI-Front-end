@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 import './event.css'; // Import your CSS file
 
@@ -106,7 +107,12 @@ const QuickShare = ({ joinQueueURL }) => {
   return (
     <div className="queue-details">
       <div className="queue-details-content">
+      <Link
+             to={`/event/host/admin/${queue.id}`}
+             style={{textDecoration: 'none'}}
+           >
         <p><span className="detail-label">Queue Name:</span> {queue.name}</p>
+        </Link>
         <p><span className="detail-label">Start Time:</span> {queue.startTime}</p>
         <p><span className="detail-label">End Time:</span> {queue.endTime}</p>
         <p><span className="detail-label">Date:</span> {queue.date}</p>

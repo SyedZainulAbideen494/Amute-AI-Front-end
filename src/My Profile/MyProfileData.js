@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './MyProfile.css'; // Import your CSS file for styling
 
 const MyProfileData = () => {
@@ -93,20 +94,23 @@ const MyProfileData = () => {
             <div className="stat">
             </div>
             <div className="user_profile_actions_btns">
-            <button className="user_profile_actions_btns_share">Share</button>
-            <button className="user_profile_actions_btns_edit">Edit</button>
           </div>
           </div>
         </div>
       </div>
       {/* Display user's queues */}
       <div className="queues-container_MyProfile">
-        <h3>My Queues</h3>
+        <h3 style={{textAlign: 'center'}}>My Queues</h3>
         <ul className="queue-list_MyProfile">
           {queues.map(queue => (
+             <Link
+             to={`/event/host/admin/${queue.id}`}
+             style={{textDecoration: 'none'}}
+           >
             <li key={queue.id} className="queue-item_MyProfile">
               <span>{queue.name}</span>
             </li>
+            </Link>
           ))}
         </ul>
       </div>
