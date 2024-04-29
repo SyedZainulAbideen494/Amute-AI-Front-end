@@ -44,6 +44,7 @@ const QRScanner = () => {
           <button onClick={stopScanner}>Stop Scan</button>
         </div>
       )}
+      <h2>Hello</h2>
       {result && <p style={{color: 'white'}}>Scanned QR code: {result}</p>}
     </div>
   );
