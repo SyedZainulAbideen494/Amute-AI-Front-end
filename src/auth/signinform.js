@@ -54,9 +54,7 @@ const Signinform = () => {
       !Name ||
       !email ||
       !password ||
-      !Position ||
-      !phone_no ||
-      !Role
+      !phone_no 
     ) {
       console.log("Please fill in all fields");
       return; // Don't proceed if any required field is empty
@@ -66,9 +64,7 @@ const Signinform = () => {
       Name: Name,
       email: email,
       password: password,
-      Position: Position,
       phone_no: phone_no,
-      Role: Role
     };
 
     try {
@@ -144,35 +140,6 @@ const Signinform = () => {
               required
             />
           </div>
-          <div className="inp">
-            <label htmlFor="occupation">Position eg.Software Developer</label>
-            <br />
-            <input
-              type="text"
-              id="occupation"
-              name="occupation"
-              value={Position}
-              onChange={PositionHandler}
-              placeholder="Enter Occupation"
-              required
-            />
-              
-          </div>
-          <div className="input-container-gender">
-      <label htmlFor="Role">Role</label><br/>
-      <select
-        id="Role"
-        name="Role"
-        value={Role}
-        onChange={RoleHandler}
-        required
-        className="select-input-gender"
-      >
-        <option value="">Select Role</option>
-        <option value="Leader">Team Leader</option>
-        <option value="Member">Team Member</option>
-      </select>
-    </div>
           </div>
         <div className="submit-btn">
           <button type="submit" className="btn btn-primary">

@@ -9,7 +9,6 @@ const DashboardTeam = () => {
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
-                <button className="setting_btn_dashboard_team"><img src={settingsicon} alt="Settings" className="notification_dashboard_icon" /></button>
                 <button className="notification_icon"><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
             </div>
         </div>
