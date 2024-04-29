@@ -30,7 +30,7 @@ const NavBarTeam = () => {
       setauth(true);
     } else {
       setauth(false);
-      nav('/login')
+      
     }
   }, []);
 
