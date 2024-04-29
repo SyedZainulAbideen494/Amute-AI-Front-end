@@ -8,11 +8,30 @@ import porfileicon from '../images/icons8-user-profile-48.png';
 import dashboardicon from '../images/icons8-dashboard-50.png';
 import add from '../images/add+.png'
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import logoutImg from '../images/logout.png'
+import loginImg from '../images/login.png'
 
 const NavBarTeam = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [showNav, setShowNav] = useState(false);
-    const nav = useNavigate()
+    const [auth, setauth] = useState(false);
+    const nav = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setauth(true);
+    }
+  }, []);
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      setauth(true);
+    } else {
+      setauth(false);
+    }
+  }, []);
+
     const location = useLocation(); // Use useLocation hook
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -63,9 +82,15 @@ const NavBarTeam = () => {
         nav('/MyProfile')
     }
 
+    const handleLoginPageRedirect = () => {
+        nav('/login')
+    }
+
+
     const isActive = (path) => {
         return location.pathname === path ? 'active' : '';
     };
+
 
     return (
         <div>
@@ -96,6 +121,17 @@ const NavBarTeam = () => {
                         <img src={helpicon} alt="Help" className="nav-icon" />
                         Help
                     </button>
+                    {auth ? (
+              <button className="nav-button_team" onClick={handleLogout}>
+              <img src={logoutImg} alt="Help" className="nav-icon" />
+              Logout
+          </button>
+            ) : (
+                <button className="nav-button_team" onClick={handleLoginPageRedirect}>
+                <img src={loginImg} alt="Help" className="nav-icon" />
+                    Login
+                    </button>
+            )}
                 </div>
             </div>
             <div className="menu-toggle" onClick={toggleNav}>
