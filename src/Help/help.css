@@ -1,0 +1,52 @@
+.help-container {
+    background-color: #1f1f1f; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.accordion-item {
+    margin-bottom: 20px;
+}
+
+.accordion-heading {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-heading h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.accordion-heading img {
+    width: 10px;
+    height: 10px;
+}
+
+.accordion-content {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.terms-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    color: #333; /* Dark text color */
+    border-radius: 8px;
+}
+
+.terms-container h1, .terms-container h2 {
+    color: #949494; /* Darker text color for headings */
+    font-size: 15px;
+}
+
+.terms-container p {
+    margin-bottom: 20px;
+}

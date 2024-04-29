@@ -16,9 +16,10 @@ const NavBarTeam = () => {
     const [showNav, setShowNav] = useState(false);
     const [auth, setauth] = useState(false);
     const nav = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-  };
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.reload(); // Reload the page after logout
+      };
   useEffect(() => {
     if (localStorage.getItem("token")) {
       setauth(true);
@@ -29,6 +30,7 @@ const NavBarTeam = () => {
       setauth(true);
     } else {
       setauth(false);
+      nav('/login')
     }
   }, []);
 
@@ -82,6 +84,10 @@ const NavBarTeam = () => {
         nav('/MyProfile')
     }
 
+    const handleHelpRedirect = () => {
+        nav('/help')
+    }
+
     const handleLoginPageRedirect = () => {
         nav('/login')
     }
@@ -117,7 +123,7 @@ const NavBarTeam = () => {
                     <img src={`${API_ROUTES.displayImages}/${userInfo.profilePic}`} style={{borderRadius: '50%'}} alt="Profile" className="nav-icon" />
                         My Profile
                     </button>
-                    <button className="nav-button_team">
+                    <button className={`nav-button_team ${isActive('/help')}`} onClick={handleHelpRedirect}>
                         <img src={helpicon} alt="Help" className="nav-icon" />
                         Help
                     </button>

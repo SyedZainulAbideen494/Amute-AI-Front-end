@@ -1,11 +1,10 @@
 import React,{Fragment, useCallback} from "react";
-import './home.css'
-import NavBarTeam from "./navbarTeam";
-import DashboardTeam from "./dashboardTeam";
-import RightMenuTeam from "./rightmenuTeam";
-import JoinedEventsData from "../Event/JoinedEventsData";
+import './help.css'
+import NavBarTeam from "../home/navbarTeam";
+import DashboardTeam from "../home/dashboardTeam";
+import HelpMainPageData from "./helpMainPageData";
 
-const HomeTeam = () => {
+const HelpHome = () => {
   
     return<Fragment><div className="main_div_team_dashboard">
         <div className="nav_bar_area_Team_dashboard">
@@ -13,7 +12,7 @@ const HomeTeam = () => {
         </div>
         <div className="Dashboard_area_Team_dashboard">
             <DashboardTeam/>
-            <JoinedEventsData/>
+            <HelpMainPageData/>
         </div>
         <div className="rightmenu_area_Team_dashboard">
         </div>
@@ -26,7 +25,6 @@ const HomeTeam = () => {
         </div>
         <div className="Dashboard_area_Team_dashboard">
             <DashboardTeam/>
-            <JoinedEventsData/>
         </div>
         <div className="rightmenu_area_Team_dashboard">
         </div>
@@ -34,4 +32,4 @@ const HomeTeam = () => {
     </Fragment>
 }
 
-export default HomeTeam;
+export default HelpHome;

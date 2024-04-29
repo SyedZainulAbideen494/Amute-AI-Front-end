@@ -20,6 +20,7 @@ import MyProfile from "./My Profile/myProfile";
 import QRScanner from "./QR Code Scanner/qrscanner";
 import Passwordreset from "./passwordreset/password-reset";
 import ResetPassword from "./passwordreset/password-reset-page";
+import HelpHome from "./Help/helpMainPage";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
   {path: '/MyProfile', element: <MyProfile/>},
   {path: '/forgot-password', element: <Passwordreset/>},
   {path: `/resetpassword/:email`, element: <ResetPassword/>},
+  {path: '/help', element: <HelpHome/>},
 ]);
 
 
