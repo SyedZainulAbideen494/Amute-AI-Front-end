@@ -170,3 +170,12 @@
   justify-content: center;
   margin-top: 20px; /* Adjust margin as needed */
 }
+
+.confirm-btn-time-slot:disabled {
+  opacity: 20%;
+}
+
+.confirm-btn-time-slot:disabled:hover{
+  background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
+  border: 1px solid #9F9BEA;
+}
