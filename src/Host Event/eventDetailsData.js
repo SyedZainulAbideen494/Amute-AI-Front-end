@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import QRCode from 'qrcode.react';
 import './hostEvent.css'; // Import your CSS file
 import axios from 'axios';
+import AmuteLogo from '../images/Untitled design.png'
 
 const QuickShare = ({ joinQueueURL }) => {
   const handleShare = async () => {
@@ -79,6 +80,7 @@ const EventDetailsData = () => {
   const [error, setError] = useState(null);
   const [attendees, setAttendees] = useState([]);
   const [showAttendees, setShowAttendees] = useState(false);
+  const [showQRModal, setShowQRModal] = useState(false); // State for showing/hiding QR modal
   const { id } = useParams();
   const nav = useNavigate();
 
@@ -180,12 +182,24 @@ const EventDetailsData = () => {
     setShowAttendees(false);
   };
 
+  const handleQRClick = () => {
+    setShowQRModal(true);
+  };
+
+  const handleCloseQRModal = () => {
+    setShowQRModal(false);
+  };
+
+  const handlePrintQR = () => {
+    window.print();
+  };
+
   return (
     <div className="event-details-container">
       {eventDetails && (
         <div>
           <div className="event-details">
-            <div className="qr-code-container">
+            <div className="qr-code-container" onClick={handleQRClick}>
               <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} onScan={handleQRScan} />
             </div>
             <p><span className="detail-label">Name:</span> {eventDetails.name}</p>
@@ -197,6 +211,16 @@ const EventDetailsData = () => {
             <button className="quick-share-button" onClick={handleViewAttendees} style={{marginTop:' 5px'}}>View Attendees</button>
           </div>
           {showAttendees && <AttendeesModal attendees={attendees} onClose={handleCloseAttendees} />}
+          {showQRModal && (
+        <div className="qr-modal" onClick={handleCloseQRModal}>
+          <div className="qr-content">
+            <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} />
+            <p style={{ color: "#fff", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
+  <h3>Amute</h3>
+  <button className="print-button" onClick={(e) => { e.stopPropagation(); handlePrintQR() }}>Print QR Code</button>
+          </div>
+        </div>
+      )}
         </div>
       )}
     </div>
