@@ -1,22 +1,38 @@
 .event-details-container_joined_event {
-    background-color: #131313;
-    color: #ffffff;
-    padding: 20px;
-    border-radius: 9px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    margin-top: 10px;
-  }
-  
-  .detail-label_joined_event {
-    font-weight: bold;
-  }
-  
-  .queue-details {
-    margin-bottom: 20px;
-    background-color: #151516;
-    border-radius: 9px;
-    padding: 10px;
-  }
+  background-color: #131313;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.event-details-container_joined_event::-webkit-scrollbar {
+  width: 8px;
+}
+
+.event-details-container_joined_event::-webkit-scrollbar-thumb {
+  background-color: #9F9BEA; /* Change this to your preferred color */
+  border-radius: 10px;
+}
+
+.event-details-container_joined_event::-webkit-scrollbar-track {
+  background-color: #2a2a2a; /* Change this to your preferred background color */
+  border-radius: 10px;
+}
+
+.detail-label_joined_event {
+  font-weight: bold;
+}
+
+.queue-details {
+  margin-bottom: 20px;
+  background-color: #151516;
+  border-radius: 9px;
+  padding: 10px;
+}
 
   /*hosted events*/
 /* Hosted Queues Container */

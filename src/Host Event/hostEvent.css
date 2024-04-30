@@ -278,7 +278,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 1); /* semi-transparent black background */
+  background-color: rgba(255, 255, 255, 255); /* semi-transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -303,8 +303,8 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 10px;
-  background-color: #fff;
-  color: #333;
+  background-color: #9F9BEA;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   cursor: pointer;

@@ -123,7 +123,8 @@ const AttendeeEventData = () => {
                 body: JSON.stringify({
                     queueId: id,
                     userId: userId,
-                    selectedTime
+                    selectedTime,
+                    queueName: eventDetails.name // Adding queue name to the request body
                 })
             });
             if (response.ok) {
@@ -150,7 +151,6 @@ const AttendeeEventData = () => {
                             <p><span className="detail-label_attendee">Start Time:</span> {eventDetails.startTime}</p>
                             <p><span className="detail-label_attendee">End Time:</span> {eventDetails.endTime}</p>
                             <p><span className="detail-label_attendee">Date:</span> {eventDetails.date}</p>
-                            <p><span className="detail-label_attendee">Forever:</span> {eventDetails.isForever ? 'Yes' : 'No'}</p>
                             <button onClick={handleJoinClick}>Join</button>
                         </div>
                     </div>

@@ -82,7 +82,7 @@ const JoinedEventsData = () => {
                 ) : (
                     userQueues.map(queue => (
                         <div key={queue.id} className="queue-details">
-                            <p><span className="detail-label_joined_event">Queue Name:</span> {queue.name}</p>
+                            <p><span className="detail-label_joined_event">Queue Name:</span> {queue.queue_name}</p>
                             <p><span className="detail-label_joined_event">Time:</span> {formatTime(queue.hour, queue.minute)}</p>
                         </div>
                     ))

@@ -217,8 +217,8 @@ const EventDetailsData = () => {
             <div className="qr-modal" onClick={handleCloseQRModal}>
               <div className="qr-content">
                 <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} />
-                <p style={{ color: "#fff", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
-                <h3>Amute</h3>
+                <p style={{ color: "#aaa", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
+                <h3 style={{color: '#aaa'}}>Amute</h3>
                 <button className="print-button" onClick={(e) => { e.stopPropagation(); handlePrintQR() }}>Print QR Code</button>
                 <button className='close_btn_qr_host' onClick={handleCloseQRModal}>Close</button>
               </div>
