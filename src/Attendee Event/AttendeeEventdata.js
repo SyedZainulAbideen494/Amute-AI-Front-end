@@ -72,10 +72,23 @@ const AttendeeEventData = () => {
     const handlecloseTimer = () => {
         setShowModal(false)
     }
-
     const handleTimeSelection = async (hour, minute) => {
         setSelectedTime({ hour, minute });
         
+        // Combine event date and selected time to create a Date object
+        const selectedDateTime = new Date(`${eventDetails.date}T${hour}:${minute}:00`);
+        
+        // Convert event start and end times to Date objects
+        const startTime = new Date(`${eventDetails.date}T${eventDetails.startTime}`);
+        const endTime = new Date(`${eventDetails.date}T${eventDetails.endTime}`);
+    
+        // Check if the selected time is within the event's time range
+        if (selectedDateTime < startTime || selectedDateTime > endTime) {
+            // Selected time is outside the event's time range
+            setTimeSlotAvailability(false);
+            return;
+        }
+    
         // Send request to backend to check time slot availability
         try {
             const response = await fetch('http://localhost:8080/checkTimeSlotAvailability', {
