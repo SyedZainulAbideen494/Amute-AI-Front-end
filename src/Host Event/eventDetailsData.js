@@ -199,9 +199,11 @@ const EventDetailsData = () => {
       {eventDetails && (
         <div>
           <div className="event-details">
-            <div className="qr-code-container" onClick={handleQRClick}>
-              <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} onScan={handleQRScan} />
-            </div>
+            {!showQRModal && (
+              <div className="qr-code-container" onClick={handleQRClick}>
+                <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} onScan={handleQRScan} />
+              </div>
+            )}
             <p><span className="detail-label">Name:</span> {eventDetails.name}</p>
             <p><span className="detail-label">Start Time:</span> {eventDetails.startTime}</p>
             <p><span className="detail-label">End Time:</span> {eventDetails.endTime}</p>
@@ -212,15 +214,15 @@ const EventDetailsData = () => {
           </div>
           {showAttendees && <AttendeesModal attendees={attendees} onClose={handleCloseAttendees} />}
           {showQRModal && (
-        <div className="qr-modal" onClick={handleCloseQRModal}>
-          <div className="qr-content">
-            <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} />
-            <p style={{ color: "#fff", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
-  <h3>Amute</h3>
-  <button className="print-button" onClick={(e) => { e.stopPropagation(); handlePrintQR() }}>Print QR Code</button>
-          </div>
-        </div>
-      )}
+            <div className="qr-modal" onClick={handleCloseQRModal}>
+              <div className="qr-content">
+                <QRCode value={`https://amute.vercel.app/join/event/${eventDetails.id}`} />
+                <p style={{ color: "#fff", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
+                <h3>Amute</h3>
+                <button className="print-button" onClick={(e) => { e.stopPropagation(); handlePrintQR() }}>Print QR Code</button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
