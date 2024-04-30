@@ -75,7 +75,7 @@
 
 /* Close button */
 .modal-content p {
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -86,7 +86,7 @@
 
 /* Time Section */
 .time-section {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .time-section h3 {
