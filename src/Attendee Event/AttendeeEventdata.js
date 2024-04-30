@@ -161,7 +161,7 @@ const AttendeeEventData = () => {
                     <div className="modal-content">
                         <p onClick={handlecloseTimer}>x</p>
                         <h2>Select Time</h2>
-                        <p style={{fontFamily: 'Arial, sans-serif', fontSize: '16px', color: '#aaa', marginBottom: '10px'}}>
+                        <p style={{fontFamily: 'Arial, sans-serif', fontSize: '16px', color: '#333', marginBottom: '10px'}}>
   If the event is set to 'forever', the chosen time slot will be applicable for today's date.
 </p>
                         <div className="selected-time">

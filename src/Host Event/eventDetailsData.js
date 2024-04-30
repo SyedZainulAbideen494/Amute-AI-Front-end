@@ -220,6 +220,7 @@ const EventDetailsData = () => {
                 <p style={{ color: "#fff", marginTop: "10px" }}>Scan this with any QR app to book a slot in the queue</p>
                 <h3>Amute</h3>
                 <button className="print-button" onClick={(e) => { e.stopPropagation(); handlePrintQR() }}>Print QR Code</button>
+                <button className='close_btn_qr_host' onClick={handleCloseQRModal}>Close</button>
               </div>
             </div>
           )}

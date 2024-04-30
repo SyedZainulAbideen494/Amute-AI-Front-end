@@ -278,7 +278,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); /* semi-transparent black background */
+  background-color: rgba(0, 0, 0, 1); /* semi-transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -309,10 +309,20 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
+.close_btn_qr_host {
+  background-color: #9F9BEA;
+  border: 1px solid #9F9BEA;
+  border-radius: 9px;
+  color: white;
+  cursor: pointer;
+  padding: 9px 19px;
+}
 /* Hide print button when printing */
 @media print {
   .print-button {
+    display: none;
+  }
+  .close_btn_qr_host {
     display: none;
   }
 }
