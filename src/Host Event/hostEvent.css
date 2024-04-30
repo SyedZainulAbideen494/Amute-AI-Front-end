@@ -202,6 +202,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     max-width: 80%;
     overflow-y: auto;
+    height: 400px;
   }
   
   .modal-close_event_attendee_details {
@@ -246,3 +247,27 @@
   .attendee-action:hover {
     background-color: #7e7cc8;
   }
+
+  /* Scrollbar styles */
+.modal-content_event_attendee_details {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #9F9BEA #131313; /* Firefox */
+}
+
+.modal-content_event_attendee_details::-webkit-scrollbar {
+  width: 8px; /* Chrome, Safari, Opera */
+}
+
+.modal-content_event_attendee_details::-webkit-scrollbar-track {
+  background: #131313; /* Color of the track */
+}
+
+.modal-content_event_attendee_details::-webkit-scrollbar-thumb {
+  background-color: #9F9BEA; /* Color of the scroll thumb */
+  border-radius: 4px; /* Roundness of the scroll thumb */
+  border: 2px solid #131313; /* Border around the scroll thumb */
+}
+
+.modal-content_event_attendee_details::-webkit-scrollbar-thumb:hover {
+  background-color: #7e7cc8; /* Color of the scroll thumb on hover */
+}
