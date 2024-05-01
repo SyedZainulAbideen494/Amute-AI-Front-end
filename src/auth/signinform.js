@@ -51,7 +51,6 @@ const Signinform = () => {
 
     // Check if required fields are empty
     if (
-      !Name ||
       !email ||
       !password ||
       !phone_no 
@@ -61,7 +60,6 @@ const Signinform = () => {
     }
 
     const userData = {
-      Name: Name,
       email: email,
       password: password,
       phone_no: phone_no,
@@ -88,19 +86,6 @@ const Signinform = () => {
       <form className="signup_form" onSubmit={handleSubmit}>
         <h2 className="sign-heading">Sign Up</h2>
         <div className="signup_info">
-          <div className="inp">
-            <label htmlFor="fname">Name</label>
-            <br />
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              value={Name}
-              onChange={nameHandler}
-              placeholder="Enter Name"
-              required
-            />
-          </div>
           <div className="inp">
             <label htmlFor="email">Email</label>
             <br />

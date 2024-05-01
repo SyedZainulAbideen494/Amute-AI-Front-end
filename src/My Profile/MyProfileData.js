@@ -88,9 +88,8 @@ const MyProfileData = () => {
       <div className="profile-header">
         <img src={`http://localhost:8080/images/${userInfo.profilePic}`} alt="Profile Pic" className="profile-pic" onClick={handleProfilePicClick} style={{cursor: 'pointer'}} />
         <div className="profile-info">
-          <h2 className="username">{userInfo.name}</h2>
+          <h2 className="username">{userInfo.phone_no}</h2>
           <p className="bio">{userInfo.email}</p>
-          <p className="bio">{userInfo.phone_no}</p>
           <div className="stats">
             <div className="stat">
               <span className="stat-count">{postCount}</span> Queues

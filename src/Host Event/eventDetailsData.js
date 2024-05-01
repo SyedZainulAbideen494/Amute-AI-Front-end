@@ -61,9 +61,8 @@ const AttendeesModal = ({ attendees, onClose }) => {
         <ul>
           {attendees.map((attendee, index) => (
             <li key={index} className="attendee-item">
-              <p>Name: {attendee.name}</p>
               <p>Phone: {attendee.phone_no}</p>
-              <p>Time: {attendee.hour}-{attendee.minute}</p>
+              <p>Time: {attendee.hour}:{attendee.minute}</p>
               <button className="attendee-action" onClick={() => handleChatAttendee(attendee.phone_no)}>Chat</button>
             </li>
           ))}
