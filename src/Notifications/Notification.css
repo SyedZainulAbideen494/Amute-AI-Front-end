@@ -1,0 +1,60 @@
+.modal_notiModal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content_notiModal {
+    background-color: #0C0F18;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    max-width: 600px;
+    width: 90%;
+    overflow-y: auto;
+    max-height: 80vh; /* Limiting height to ensure scrollbars appear when needed */
+}
+
+.modal-content_notiModal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.close_notiModal {
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.modal-content_notiModal h2 {
+    color: #ffffff;
+    margin-top: 0;
+}
+
+.notification-box {
+    background-color: #1E232F;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.notification-message {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.notification-timestamp {
+    color: #888;
+    font-size: 0.8rem;
+}
