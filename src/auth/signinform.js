@@ -100,19 +100,6 @@ const Signinform = () => {
             />
           </div>
           <div className="inp">
-            <label htmlFor="password">Password</label>
-            <br />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={passwordHandler}
-              placeholder="Enter Password"
-              required
-            />
-          </div>
-          <div className="inp">
             <label htmlFor="phone_no">Phone No</label>
             <br />
             <input
@@ -122,6 +109,19 @@ const Signinform = () => {
               value={phone_no}
               onChange={phone_nohandler}
               placeholder="Enter Phone No"
+              required
+            />
+          </div>
+          <div className="inp">
+            <label htmlFor="password">Password</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={passwordHandler}
+              placeholder="Enter Password"
               required
             />
           </div>
