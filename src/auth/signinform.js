@@ -52,8 +52,8 @@ const Signinform = () => {
     // Check if required fields are empty
     if (
       !email ||
-      !password ||
-      !phone_no 
+      !phone_no ||
+      !password 
     ) {
       console.log("Please fill in all fields");
       return; // Don't proceed if any required field is empty
