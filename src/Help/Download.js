@@ -31,7 +31,7 @@ const DownloadAPK = () => {
 
   return (
     <div style={containerStyle}>
-      <h2 style={headingStyle}>Download My App APK</h2>
+      <h2 style={headingStyle}>Download For Android</h2>
       <button style={buttonStyle} onClick={handleDownload}>Download</button>
     </div>
   );
