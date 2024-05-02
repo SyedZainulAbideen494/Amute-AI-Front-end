@@ -101,7 +101,7 @@ const NavBarTeam = () => {
     return (
         <div>
             <div className={`left-sidebar_team ${showNav ? 'show-nav' : ''}`}>
-                <div className="welcome-message_team">Welcome, {userInfo.name}!</div>
+                <div className="welcome-message_team">Amute</div>
                 <div className="nav-buttons_team">
                     <button className={`nav-button_team ${isActive('/dashboard')}`} onClick={handledashboardPageRedirect}>
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
