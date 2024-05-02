@@ -103,7 +103,7 @@ const AttendeeEventData = () => {
                 },
                 body: JSON.stringify({
                     queueId: id,
-                    selectedTime: { hour, minute }
+                    selectedTime: { hour, minute },
                 })
             });
             if (response.ok) {
@@ -129,7 +129,8 @@ const AttendeeEventData = () => {
                     queueId: id,
                     userId: userId,
                     selectedTime,
-                    queueName: eventDetails.name // Adding queue name to the request body
+                    queueName: eventDetails.name, // Adding queue name to the request body
+                    date: eventDetails.date,
                 })
             });
             if (response.ok) {
@@ -157,7 +158,7 @@ const AttendeeEventData = () => {
                             <p><span className="detail-label_attendee">End Time:</span> {eventDetails.endTime}</p>
                             <p><span className="detail-label_attendee">Date:</span> {eventDetails.date}</p>
                             {eventDetails.status === 'expired' ? (
-                        <p>This Queue time Period has expired</p>
+                        <p>This Queue Time Period Has <b>expired</b></p>
                     ) : (
                         <button onClick={handleJoinClick}>Join</button>
                     )}

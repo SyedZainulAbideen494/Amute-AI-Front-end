@@ -73,23 +73,51 @@ const JoinedEventsData = () => {
         return `${formattedHour}:${formattedMinute}`;
     };
 
+    const [showExpired, setShowExpired] = useState(false);
+
+    const handleToggle = () => {
+        setShowExpired(!showExpired);
+    };
+
     return (
         <Fragment>
             <div className="event-details-container_joined_event">
-                <h2 className="event-details-heading_attendee" style={{textAlign: 'center' }}><span style={{ color: '#9F9BEA'}}>Joined</span> Queues</h2>
+                <h2 className="event-details-heading_attendee" style={{ textAlign: 'center' }}>
+                    <span style={{ color: '#9F9BEA' }}>Joined</span> Queues
+                </h2>
                 {userQueues.length === 0 ? (
                     <p style={{ textAlign: 'center' }}>No queues</p>
                 ) : (
-                    userQueues.map(queue => (
-                        <div key={queue.id} className="queue-details">
-                            <p><span className="detail-label_joined_event">Queue Name:</span> {queue.queue_name}</p>
-                            <p><span className="detail-label_joined_event">Time:</span> {formatTime(queue.hour, queue.minute)}</p>
-                        </div>
-                    ))
+                    <Fragment>
+                        <button
+    style={{
+        padding: '8px 16px',
+        backgroundColor: '#9F9BEA',
+        color: '#ffffff',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        marginBottom: '10px',
+    }}
+    onClick={handleToggle}
+>
+    {showExpired ? 'Show Active Queues' : 'Show Expired Queues'}
+</button>
+                        {userQueues
+                            .filter(queue => showExpired ? true : queue.status === 'active')
+                            .map(queue => (
+                                <div key={queue.id} className="queue-details">
+                                    <p><span className="detail-label_joined_event">Queue Name:</span> {queue.queue_name}</p>
+                                    <p><span className="detail-label_joined_event">Time:</span> {formatTime(queue.hour, queue.minute)}</p>
+                                    <p><b>Status: {queue.status === 'active' ? 'Active' : 'Expired'}</b></p>
+                                </div>
+                            ))
+                        }
+                    </Fragment>
                 )}
             </div>
         </Fragment>
     );
-}
+};
 
 export default JoinedEventsData;
