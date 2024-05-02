@@ -117,6 +117,7 @@ const QuickShare = ({ joinQueueURL }) => {
         <p><span className="detail-label">Start Time:</span> {queue.startTime}</p>
         <p><span className="detail-label">End Time:</span> {queue.endTime}</p>
         <p><span className="detail-label">Date:</span> {queue.date}</p>
+        <p><span className="detail-label">Status:</span> {queue.status}</p>
       </div>
       <div className="qr-code-container">
         <QRCode value={`https://amute.vercel.app/join/event/${queue.id}`} onScan={() => {}} className="qr-code" />

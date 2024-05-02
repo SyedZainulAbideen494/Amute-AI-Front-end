@@ -10,6 +10,7 @@ const AttendeeEventData = () => {
     const [timeSlotAvailability, setTimeSlotAvailability] = useState(null); // To store time slot availability
     const [confirmDisabled, setConfirmDisabled] = useState(true); // To disable the Confirm button
     const [userId, setUserId] = useState(null); // To store the user ID
+    const [expiredMsg, setExpiredMsg] = useState(false)
     const { id } = useParams();
     const nav = useNavigate()
 
@@ -71,6 +72,10 @@ const AttendeeEventData = () => {
 
     const handlecloseTimer = () => {
         setShowModal(false)
+    }
+
+    const handleexpiredMsg = () => {
+        setExpiredMsg(true)
     }
     const handleTimeSelection = async (hour, minute) => {
         setSelectedTime({ hour, minute });
@@ -151,9 +156,13 @@ const AttendeeEventData = () => {
                             <p><span className="detail-label_attendee">Start Time:</span> {eventDetails.startTime}</p>
                             <p><span className="detail-label_attendee">End Time:</span> {eventDetails.endTime}</p>
                             <p><span className="detail-label_attendee">Date:</span> {eventDetails.date}</p>
-                            <button onClick={handleJoinClick}>Join</button>
+                            {eventDetails.status === 'expired' ? (
+                        <p>This Queue time Period has expired</p>
+                    ) : (
+                        <button onClick={handleJoinClick}>Join</button>
+                    )}
+                </div>
                         </div>
-                    </div>
                 )}
             </div>
             {showModal && (
