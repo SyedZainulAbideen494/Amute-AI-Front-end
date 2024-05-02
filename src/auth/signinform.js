@@ -130,6 +130,9 @@ const Signinform = () => {
           <button type="submit" className="btn btn-primary">
             Sign Up
           </button>
+          <button className="btn btn-primary">
+            Cancel
+          </button>
         </div>
         <div className="already">
           <p>
