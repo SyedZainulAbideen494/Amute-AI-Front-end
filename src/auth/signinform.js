@@ -10,16 +10,9 @@ const Signinform = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [Name, setname] = useState("");
-  const [Position, setpostion] = useState("");
-  const [age, setage] = useState("");
-  const [gender, setGender] = useState(""); // State for gender
-  const [Role, setRole] = useState(""); // State for gender
   const [error, setError] = useState("")
   const nameHandler = (event) => {
     setname(event.target.value);
-  };
-  const genderHandler = (event) => {
-    setGender(event.target.value); // Update gender based on selected option
   };
 
   const emailHandler = (event) => {
@@ -34,14 +27,6 @@ const Signinform = () => {
     setphone_no(event.target.value);
   };
 
-  const PositionHandler = (event) => {
-    setpostion(event.target.value);
-  };
-
-  
-  const RoleHandler = (event) => {
-    setRole(event.target.value);
-  };
 
 
   const nav = useNavigate();
