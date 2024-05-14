@@ -19,7 +19,7 @@ const MyProfileData = () => {
           setError('Token not found in localStorage');
           return;
         }
-        const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+        const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
           headers: {
             Authorization: token
           }
@@ -44,7 +44,7 @@ const MyProfileData = () => {
 
   const fetchPostCount = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/count/posts?userId=${userId}`);
+      const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/api/count/posts?userId=${userId}`);
       if (response.ok) {
         const data = await response.json();
         setPostCount(data.postCount);
@@ -58,7 +58,7 @@ const MyProfileData = () => {
 
   const fetchUserQueues = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/fetch/queues/${userId}`);
+      const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/api/fetch/queues/${userId}`);
       if (response.ok) {
         const data = await response.json();
         setQueues(data); // Update queues state with fetched data
@@ -86,7 +86,7 @@ const MyProfileData = () => {
     <div className="profile-container">
       {showUpload && <ProfilePicUpload onClose={() => setShowUpload(false)} />}
       <div className="profile-header">
-        <img src={`http://localhost:8080/images/${userInfo.profilePic}`} alt="Profile Pic" className="profile-pic" onClick={handleProfilePicClick} style={{cursor: 'pointer'}} />
+        <img src={`https://ba90-122-172-80-187.ngrok-free.app/images/${userInfo.profilePic}`} alt="Profile Pic" className="profile-pic" onClick={handleProfilePicClick} style={{cursor: 'pointer'}} />
         <div className="profile-info">
           <h2 className="username">{userInfo.phone_no}</h2>
           <p className="bio">{userInfo.email}</p>

@@ -16,7 +16,7 @@ function Passwordreset() {
 
     try {
       // Send email to the server
-      await axios.post('http://localhost:8080/send-email', { email });
+      await axios.post('https://ba90-122-172-80-187.ngrok-free.app/send-email', { email });
       setEmailSent(true); // Set email sent status to true upon successful submission
     } catch (error) {
       console.error('Error sending email:', error.message);

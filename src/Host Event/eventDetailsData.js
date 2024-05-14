@@ -34,7 +34,7 @@ const QuickShare = ({ joinQueueURL }) => {
 const AttendeesModal = ({ attendees, onClose }) => {
   const handleRemoveAttendee = async (attendeeId) => {
     try {
-      const response = await axios.delete(`http://localhost:8080/api/remove/attendee/${attendeeId}`);
+      const response = await axios.delete(`https://ba90-122-172-80-187.ngrok-free.app/api/remove/attendee/${attendeeId}`);
       if (response.status === 200) {
         // Remove the attendee from the local state
         
@@ -91,7 +91,7 @@ const EventDetailsData = () => {
           setError('Token not found in localStorage');
           return;
         }
-        const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+        const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
           headers: {
             Authorization: token
           }
@@ -116,7 +116,7 @@ const EventDetailsData = () => {
     // Fetch event details using the ID from the URL
     const fetchEventDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/get/event/${id}`);
+        const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/get/event/${id}`);
         if (response.ok) {
           const eventData = await response.json();
           setEventDetails(eventData);
@@ -136,7 +136,7 @@ const EventDetailsData = () => {
     if (eventDetails) {
       const fetchAttendees = async () => {
         try {
-          const response = await axios.get(`http://localhost:8080/api/fetch/attendees/${id}`);
+          const response = await axios.get(`https://ba90-122-172-80-187.ngrok-free.app/api/fetch/attendees/${id}`);
           if (response.status === 200) {
             setAttendees(response.data);
           } else {

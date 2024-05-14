@@ -20,7 +20,7 @@ const NewEventForm = () => {
             return;
         }
         try {
-            const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+            const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
                 headers: {
                     Authorization: token
                 }
@@ -54,7 +54,7 @@ const NewEventForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/add/queue', {
+      const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/add/queue', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

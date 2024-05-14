@@ -34,7 +34,7 @@ const ProfilePicUpload = ({ onClose }) => {
 
     const handleRemove = () => {
       // Make a request to remove the profile picture
-      axios.put('http://localhost:8080/api/removeProfilePic', {
+      axios.put('https://ba90-122-172-80-187.ngrok-free.app/api/removeProfilePic', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

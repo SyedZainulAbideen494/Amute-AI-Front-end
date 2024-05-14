@@ -15,7 +15,7 @@ const NotificationModal = ({ onClose }) => {
                     setError('Token not found in localStorage');
                     return;
                 }
-                const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+                const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
                     headers: {
                         Authorization: token
                     }
@@ -45,7 +45,7 @@ const NotificationModal = ({ onClose }) => {
                         setError('Token not found in localStorage');
                         return;
                     }
-                    const response = await fetch(`http://localhost:8080/api/notifications/${userInfo.id}`, {
+                    const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/api/notifications/${userInfo.id}`, {
                         headers: {
                             Authorization: token
                         }

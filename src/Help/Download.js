@@ -3,7 +3,7 @@ import React from 'react';
 const DownloadAPK = () => {
   const handleDownload = () => {
     // Assuming your Node.js server is running on localhost:3001 and serves the APK as /download/myapp.apk
-    window.location.href = 'http://localhost:8080/download/myapp.apk';
+    window.location.href = 'https://ba90-122-172-80-187.ngrok-free.app/download/myapp.apk';
   };
 
   const buttonStyle = {

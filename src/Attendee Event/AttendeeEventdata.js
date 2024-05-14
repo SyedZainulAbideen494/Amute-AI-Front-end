@@ -18,7 +18,7 @@ const AttendeeEventData = () => {
         // Fetch event details using the ID from the URL
         const fetchEventDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/get/event/${id}`);
+                const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/get/event/${id}`);
                 if (response.ok) {
                     const eventData = await response.json();
                     setEventDetails(eventData);
@@ -42,7 +42,7 @@ const AttendeeEventData = () => {
                 return;
             }
             try {
-                const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+                const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
                     headers: {
                         Authorization: token
                     }
@@ -96,7 +96,7 @@ const AttendeeEventData = () => {
     
         // Send request to backend to check time slot availability
         try {
-            const response = await fetch('http://localhost:8080/checkTimeSlotAvailability', {
+            const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/checkTimeSlotAvailability', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -120,7 +120,7 @@ const AttendeeEventData = () => {
     const handleConfirmClick = async () => {
         // Send request to backend to confirm the time slot
         try {
-            const response = await fetch('http://localhost:8080/confirmTimeSlot', {
+            const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/confirmTimeSlot', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -43,7 +43,7 @@ const QuickShare = ({ joinQueueURL }) => {
   
     const handleEditSave = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/edit/queue/${queue.id}`, {
+        const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/edit/queue/${queue.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const QuickShare = ({ joinQueueURL }) => {
 
   const handleDeleteConfirmation = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/delete/queue/${queue.id}`, {
+      const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/delete/queue/${queue.id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -100,8 +100,8 @@ const QuickShare = ({ joinQueueURL }) => {
 
   // Function to check if the data is a join queue link
   const isJoinQueueLink = (data) => {
-    // Simple check to see if the data starts with 'http://localhost:8080/join/queue/'
-    return data.startsWith('http://localhost:8080/join/queue/');
+    // Simple check to see if the data starts with 'https://ba90-122-172-80-187.ngrok-free.app/join/queue/'
+    return data.startsWith('https://ba90-122-172-80-187.ngrok-free.app/join/queue/');
   };
   
 
@@ -211,7 +211,7 @@ const MyEventsData = () => {
           console.error('Token not found in localStorage');
           return;
         }
-        const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+        const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
           headers: {
             Authorization: token
           }
@@ -219,7 +219,7 @@ const MyEventsData = () => {
         if (response.ok) {
           const userInfo = await response.json();
           const userId = userInfo.id;
-          const queueResponse = await fetch(`http://localhost:8080/api/fetch/queues/${userId}`);
+          const queueResponse = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/api/fetch/queues/${userId}`);
           if (queueResponse.ok) {
             const queuesData = await queueResponse.json();
             setQueues(queuesData);

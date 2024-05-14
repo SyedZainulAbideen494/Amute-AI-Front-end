@@ -11,7 +11,7 @@ const ResetPassword = () => {
   const handlePasswordReset = async () => {
     try {
       // Make a request to your server to update the password
-      const response = await axios.post('http://localhost:8080/api/reset-password', { email, newPassword });
+      const response = await axios.post('https://ba90-122-172-80-187.ngrok-free.app/api/reset-password', { email, newPassword });
 
       // Assuming your server sends a success message
       setMessage(response.data.message);

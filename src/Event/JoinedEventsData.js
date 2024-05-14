@@ -16,7 +16,7 @@ const JoinedEventsData = () => {
                 return;
             }
             try {
-                const response = await fetch('http://localhost:8080/api/fetch/user/info', {
+                const response = await fetch('https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/info', {
                     headers: {
                         Authorization: token
                     }
@@ -37,7 +37,7 @@ const JoinedEventsData = () => {
 
     const fetchUserQueues = async (userId) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/fetch/user/queues/${userId}`);
+            const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/api/fetch/user/queues/${userId}`);
             if (response.ok) {
                 const userQueuesData = await response.json();
                 setUserQueues(userQueuesData);
@@ -53,7 +53,7 @@ const JoinedEventsData = () => {
 
     const fetchEventDetails = async (queueId) => {
         try {
-            const response = await fetch(`http://localhost:8080/get/event/${queueId}`);
+            const response = await fetch(`https://ba90-122-172-80-187.ngrok-free.app/get/event/${queueId}`);
             if (response.ok) {
                 const eventData = await response.json();
                 return eventData.name;

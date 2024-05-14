@@ -8,7 +8,7 @@ const ReportForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/report', { message });
+      await axios.post('https://ba90-122-172-80-187.ngrok-free.app/report', { message });
       setMessage(''); // Clear the input field after submitting
       alert('Report submitted successfully!');
     } catch (error) {
