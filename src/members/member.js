@@ -61,6 +61,7 @@ const Member = () => {
                             <div className="member_card">
                                 <p><strong>Name:</strong> {member.name}</p>
                                 <p><strong>Phone Number:</strong> {member.phoneNumber}</p>
+                                {/* Make sure 'room_type' exists in member object */}
                                 <p><strong>Room Type:</strong> {member.room_type}</p>
                             </div>
                         </li>
