@@ -36,9 +36,9 @@ const Loginform = () => {
           </label>
           <br />
           <input
-            type="email"
+            type="text"
             required
-            placeholder="email"
+            placeholder="id"
             onChange={(e) => {
               setemail(e.target.value);
             }}
@@ -68,17 +68,6 @@ const Loginform = () => {
               <button>Cancel</button>
             </Link>
           </span>
-        </div>
-        <div className="logintt">
-          <Link to='/forgot-password'>
-            <p style={{ color: 'white' }}>Forgot password</p>
-          </Link>
-          <p style={{ color: 'white' }}>Don't have an account?</p>
-          <div className="loginct">
-            <Link to="/signup">
-              <p style={{ color: 'white' }}>Sign up</p>
-            </Link>
-          </div>
         </div>
       </div>
     </Fragment>

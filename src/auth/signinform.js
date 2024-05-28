@@ -37,7 +37,6 @@ const Signinform = () => {
     // Check if required fields are empty
     if (
       !email ||
-      !phone_no ||
       !password 
     ) {
       console.log("Please fill in all fields");
@@ -46,8 +45,7 @@ const Signinform = () => {
 
     const userData = {
       email: email,
-      password: password,
-      phone_no: phone_no,
+      password: password
     };
 
     try {
@@ -75,25 +73,12 @@ const Signinform = () => {
             <label htmlFor="email">Email</label>
             <br />
             <input
-              type="email"
+              type="text"
               id="email"
               name="email"
               value={email}
               onChange={emailHandler}
               placeholder="Enter Email"
-              required
-            />
-          </div>
-          <div className="inp">
-            <label htmlFor="phone_no">Phone No</label>
-            <br />
-            <input
-              type="text"
-              id="phone_no"
-              name="phone_no"
-              value={phone_no}
-              onChange={phone_nohandler}
-              placeholder="Enter Phone No"
               required
             />
           </div>
