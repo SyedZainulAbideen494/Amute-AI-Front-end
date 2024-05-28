@@ -1,0 +1,24 @@
+.member_list {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.member_list h3 {
+    margin-bottom: 20px;
+}
+
+.member_card {
+    background-color: #2e2e2e;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.member_card p {
+    margin: 5px 0;
+}
+
+.member_card p strong {
+    color: #bbb;
+}
