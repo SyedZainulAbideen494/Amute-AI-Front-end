@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import notificationicon from '../images/icons8-notifications-64.png';
-import QrcodeImg from '../images/qrcode.png'
+import QrcodeImg from '../images/qrcode.png';
 import { Link, useNavigate } from "react-router-dom";
 import NotificationModal from "../Notifications/NotificationModal";
 import { API_ROUTES } from '../app-modules/api_routes';
@@ -13,6 +13,7 @@ const AddMember = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [roomType, setRoomType] = useState('3 sharing');
     const [formSubmitted, setFormSubmitted] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const nav = useNavigate();
 
     useEffect(() => {
@@ -51,14 +52,15 @@ const AddMember = () => {
             });
 
             if (response.ok) {
-                // Handle successful submission
                 setFormSubmitted(true);
+                setErrorMessage('');
             } else {
-                // Handle error
-                console.error('Error adding member:', response.statusText);
+                const errorText = await response.text();
+                setErrorMessage(errorText);
             }
         } catch (error) {
             console.error('Error adding member:', error);
+            setErrorMessage('An error occurred while adding the member.');
         }
     };
 
@@ -77,6 +79,7 @@ const AddMember = () => {
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit}>
+                        {errorMessage && <p className="error_message">{errorMessage}</p>}
                         <div className="form_group">
                             <label htmlFor="name">Name:</label>
                             <input

@@ -33,26 +33,6 @@ const HelpMainPageData = () => {
     return (
         <Fragment>
             <div className="help-container">
-            <div className="accordion-item">
-                <div className="accordion-heading" onClick={toggleAccordion1}>
-                    <h2>Terms and Conditions <img src={isOpen1 ? upArrow : downArrow} alt="Toggle" /></h2>
-                </div>
-                {isOpen1 && (
-                    <div className="accordion-content">
-                       <TermsAndConditions/>
-                    </div>
-                )}
-            </div>
-            <div className="accordion-item">
-                <div className="accordion-heading" onClick={toggleAccordion2}>
-                    <h2>About Amute <img src={isOpen2 ? upArrow : downArrow} alt="Toggle"/></h2>
-                </div>
-                {isOpen2 && (
-                    <div className="accordion-content">
-                       <AppDetails/>
-                    </div>
-                )}
-            </div>
              <div className="accordion-item">
                 <div className="accordion-heading" onClick={toggleAccordion3}>
                     <h2>Report bug / suggest Improvement <img src={isOpen3 ? upArrow : downArrow} alt="Toggle"/></h2>

@@ -2,8 +2,6 @@ import React,{Fragment, useCallback} from "react";
 import './home.css'
 import NavBarTeam from "./navbarTeam";
 import DashboardTeam from "./dashboardTeam";
-import RightMenuTeam from "./rightmenuTeam";
-
 
 const HomeTeam = () => {
   

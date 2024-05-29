@@ -11,6 +11,7 @@ import loginImg from '../images/login.png'
 import profilepic from '../images/icons8-user-profile-48.png'
 import member_img from '../images/user.png'
 import add_member_img from '../images/user-add.png'
+import msgicon from '../images/icons8-messages-50.png'
 
 const NavBarTeam = () => {
     const [userInfo, setUserInfo] = useState([]);
@@ -77,8 +78,8 @@ const NavBarTeam = () => {
         nav('/addmember')
     }
 
-    const handleJoinedEventsRedirect = () => {
-        nav('/joinedEvents')
+    const handleConversationsRedirect = () => {
+        nav('/conversations')
     }
 
     const handleMyProfileRedirect = () => {
@@ -116,14 +117,7 @@ const NavBarTeam = () => {
                         <img src={add_member_img} alt="Tasks" className="nav-icon" />
                         Add Members
                     </button>
-                    <button className={`nav-button_team ${isActive('/joinedEvents')}`} onClick={handleJoinedEventsRedirect}>
-                        <img src={joinedevents} alt="Messages" className="nav-icon" />
-                        joined Events 
-                    </button>
-                    <button className={`nav-button_team ${isActive('/MyProfile')}`} onClick={handleMyProfileRedirect}>
-                    <img src={profilepic} style={{borderRadius: '50%'}} alt="Profile" className="nav-icon" />
-                        My Profile
-                    </button>
+                   
                     <button className={`nav-button_team ${isActive('/help')}`} onClick={handleHelpRedirect}>
                         <img src={helpicon} alt="Help" className="nav-icon" />
                         Help

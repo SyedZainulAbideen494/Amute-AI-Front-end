@@ -5,5 +5,8 @@ export const API_ROUTES = {
   signup: `${API_URL}/addUser`,
   displayImages: `${API_URL}/images`,
   addMember: `${API_URL}/add/members`,
-  displayMember: `${API_URL}/display/members`
+  displayMember: `${API_URL}/display/members`,
+  getVacancies: `${API_URL}/api/vacancies`,
+  getRevenue: `${API_URL}/api/revenue`,
+  getPhoneNumbers: `${API_URL}/api/phone-numbers`
 };

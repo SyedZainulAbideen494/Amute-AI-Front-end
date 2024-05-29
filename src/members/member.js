@@ -84,7 +84,6 @@ const Member = () => {
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
                 <button className="notification_icon" onClick={handleRedirectQrScanner}><img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" /></button>
-                <button className="notification_icon" onClick={toggleModal}><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
                 {showModal && (
                     <div className="modal-overlay">
                         <div className="modal-content">

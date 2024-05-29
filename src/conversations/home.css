@@ -577,13 +577,11 @@
   color: #fff;
 }
 
-@media screen and (min-width: 650px) {
 .inline-display {
   display: flex;
   justify-content: center;
   width: 100%;
   max-width: 1200px;
-}
 }
 
 .conversations-container {

@@ -117,7 +117,14 @@ const NavBarTeam = () => {
                         <img src={add_member_img} alt="Tasks" className="nav-icon" />
                         Add Members
                     </button>
-            
+                    <button className={`nav-button_team ${isActive('/conversations')}`} onClick={handleConversationsRedirect}>
+                        <img src={msgicon} alt="Messages" className="nav-icon" />
+                        Conversations Initiated
+                    </button>
+                    <button className={`nav-button_team ${isActive('/MyProfile')}`} onClick={handleMyProfileRedirect}>
+                    <img src={profilepic} style={{borderRadius: '50%'}} alt="Profile" className="nav-icon" />
+                        My Profile
+                    </button>
                     <button className={`nav-button_team ${isActive('/help')}`} onClick={handleHelpRedirect}>
                         <img src={helpicon} alt="Help" className="nav-icon" />
                         Help

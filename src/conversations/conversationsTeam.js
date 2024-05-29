@@ -8,7 +8,7 @@ import Vacancies from "./Vacancies";
 import Revenue from "./revenue";
 import Conversations from "./conversations";
 
-const DashboardTeam = () => {
+const ConversationsPage = () => {
     const [notifications, setNotifications] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const nav = useNavigate()
@@ -44,11 +44,10 @@ const DashboardTeam = () => {
                 {showModal && <NotificationModal notifications={notifications} onClose={toggleModal} />}
             </div>
             <div className="inline-display">
-                <Vacancies />
-                <Revenue />
+                <Conversations/>
             </div>
         </div>
     );
 }
 
-export default DashboardTeam;
+export default ConversationsPage;

@@ -18,6 +18,9 @@ import HelpHome from "./Help/helpMainPage";
 import MemberPage from "./members/Memberpage";
 import AddMember from "./add member/add_member";
 import AddMemberPage from "./add member/add_memberpage";
+import ConversationsPage from "./conversations/conversationsTeam";
+import Conversations from "./home/conversations";
+import ConersationsMainPage from "./conversations/conversationsPage";
 
 
 const router = createBrowserRouter([
@@ -31,6 +34,7 @@ const router = createBrowserRouter([
   {path: '/help', element: <HelpHome/>},
   {path: '/members', element: <MemberPage/>},
   {path: '/addmember', element: <AddMemberPage/>},
+  {path: '/conversations', element: <ConersationsMainPage/>}
 ]);
 
 
