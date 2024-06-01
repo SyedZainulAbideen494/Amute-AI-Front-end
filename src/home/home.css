@@ -183,56 +183,6 @@
   margin-top: 5px;
   font-size: 14px;
 }
-.calendar {
-  background-color: #212027; /* Dark background color */
-  border-radius: 5px; /* Rounded corners */
-  padding: 20px;
-  margin-top: 10px;
-}
-
-.calendar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #fff; /* Text color */
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.calendar-header button {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-.calendar-header button:hover {
-  color: #9F9BEA;
-}
-
-.calendar-days {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
-  gap: 5px; /* Gap between days */
-}
-
-.calendar-day {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%; /* Circular shape */
-  background-color: #151418; /* Dark gray background color */
-  color: #fff; /* Text color */
-  font-size: 16px;
-  padding: 2px;
-}
-
-.live-date {
-  background-color: #5C33F6; /* Blue color for current date */
-}
 }
 @media screen and (max-width: 1113px)  {
   .rightmenu_area_Team_dashboard {
@@ -486,22 +436,14 @@
 
 
 
-.vacancies-container {
+.container {
   padding: 20px;
+  margin: 10px;
   background-color: #131313;
   border-radius: 8px;
-  color: #ffffff;
-  flex: 1;
-  margin: 10px;
 }
 
-.vacancies-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-
-.vacancy-card {
+.card {
   background-color: #1a1919;
   border: 1px solid #99aab5;
   border-radius: 4px;
@@ -510,53 +452,21 @@
   text-align: center;
 }
 
-.vacancy-card h3 {
-  margin: 0 0 10px;
-  color: #ffffff;
-}
-
-.vacancy-card p {
-  margin: 0;
-  font-size: 16px;
-  color: #ffffff;
-}
-
-
-.revenue-container {
-  padding: 20px;
-  background-color: #131313;
-  border-radius: 8px;
-  color: #ffffff;
+/* Specific Container Styles */
+.vacancies-container,
+.revenue-container,
+.conversations-container {
   flex: 1;
-  margin: 10px;
 }
 
-.revenue-container h2 {
+.vacancies-container h2,
+.revenue-container h2,
+.conversations-container h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff;
 }
 
-.revenue-card {
-  background-color: #1a1919;
-  border: 1px solid #99aab5;
-  border-radius: 4px;
-  padding: 15px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.revenue-card h3 {
-  margin: 0 0 10px;
-  color: #ffffff;
-}
-
-.revenue-card p {
-  margin: 0;
-  font-size: 16px;
-  color: #ffffff;
-}
-
+/* Total Revenue Specific Styles */
 .total-revenue {
   background-color: #131313;
   border: 1px solid #99aab5;
@@ -566,38 +476,15 @@
   text-align: center;
 }
 
-.total-revenue h3 {
-  margin: 0 0 10px;
-  color: #ffffff;
-}
-
 .total-revenue p {
-  margin: 0;
   font-size: 18px;
-  color: #fff;
 }
 
-@media screen and (min-width: 650px) {
-.inline-display {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-}
-}
-
+/* Conversations Specific Styles */
 .conversations-container {
-  padding: 20px;
   background-color: #2c2f33;
-  border-radius: 8px;
-  color: #ffffff;
   max-height: 400px;
-  margin: 10px;
-}
-
-.conversations-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  overflow-y: auto;
 }
 
 .conversations-container ul {
@@ -609,4 +496,39 @@
 .conversations-container ul li {
   margin-bottom: 10px;
   font-size: 16px;
+}
+
+/* Flexbox Layout */
+.inline-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 650px) {
+  .inline-display {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .inline-display {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* Responsive Typography */
+@media screen and (min-width: 650px) {
+  p {
+    font-size: 18px;
+  }
+
+  .total-revenue p {
+    font-size: 20px;
+  }
 }

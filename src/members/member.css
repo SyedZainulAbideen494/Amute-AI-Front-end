@@ -31,6 +31,7 @@
     cursor: pointer;
     background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
     color: white;
+    margin: 0px 5px;
 }
 .member_card {
     background-color: #2e2e2e;
@@ -69,6 +70,32 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     max-width: 400px;
     width: 100%;
+    max-height: 500px; /* Set a fixed height for the modal */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Hide the default scrollbar */
+.modal-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.3);
+}
+
+/* Customize scrollbar track */
+.modal-content::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+/* Customize scrollbar thumb */
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    border: 3px solid rgba(0, 0, 0, 0);
+}
+
+/* Hover effect on scrollbar thumb */
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .modal h2 {

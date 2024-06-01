@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import notificationicon from '../images/icons8-notifications-64.png';
 import QrcodeImg from '../images/qrcode.png';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import NotificationModal from "../Notifications/NotificationModal";
 import './member.css'; // Import the CSS file for styling
 import { API_ROUTES } from "../app-modules/api_routes";
@@ -48,7 +48,6 @@ const Member = () => {
 
     const handleDeleteMember = async () => {
         try {
-            // Update the member's status to deactivated in the database
             console.log(`Deactivating member with id: ${selectedMemberId}`);
             const response = await fetch(`http://localhost:8080/api/updateMember/${selectedMemberId}`, {
                 method: 'PUT', // or 'PATCH' depending on your API endpoint
@@ -57,8 +56,7 @@ const Member = () => {
                 },
                 body: JSON.stringify({ active: false }) // assuming 'active' is the column to update
             });
-    
-            // Assuming successful deactivation, update the member's status in state
+
             setMembers(members.map(member => {
                 if (member.member_id === selectedMemberId) {
                     return { ...member, active: false }; // Update the 'active' status
@@ -77,7 +75,105 @@ const Member = () => {
         toggleModal();
     };
 
-    console.log('showModal:', showModal); // Log the value of showModal to check if it's being updated correctly
+    const UpdateMemberModal = ({ member, updateMemberDetails, toggleModal }) => {
+        const [name, setName] = useState(member ? member.name : '');
+        const [phoneNumber, setPhoneNumber] = useState(member ? member.phoneNumber : '');
+        const [building, setBuilding] = useState(member ? member.building.name : '');
+        const [floor, setFloor] = useState(member ? member.floor.floor_number : '');
+        const [flat, setFlat] = useState(member ? member.flat.flat_number : '');
+        const [room, setRoom] = useState(member ? member.room.room_number : '');
+        const [bed, setBed] = useState(member ? member.bed.bed_number : '');
+    
+        const handleUpdate = () => {
+            // Implement logic to check bed availability and validate details
+            // Call updateMemberDetails if all checks pass
+        };
+    
+        return (
+            <div className="modal-overlay">
+                <div className="modal-content">
+                <form onSubmit={handleUpdate}>
+                        <div className="form_group">
+                            <label htmlFor="phone">Phone Number:</label>
+                            <input
+                                id="phone"
+                                type="text"
+                                value={phoneNumber}
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="building">Building:</label>
+                            <select
+                                id="building"
+                                value={building}
+                                onChange={(e) => setBuilding(e.target.value)}
+                                required
+                            >
+                                <option value="Building 1">Building 1</option>
+                                <option value="Building 2">Building 2</option>
+                                <option value="Building 3">Building 3</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="floor">Floor:</label>
+                            <select
+                                id="floor"
+                                value={floor}
+                                onChange={(e) => setFloor(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="flat">Flat:</label>
+                            <select
+                                id="flat"
+                                value={flat}
+                                onChange={(e) => setFlat(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="room">Room:</label>
+                            <select
+                                id="room"
+                                value={room}
+                                onChange={(e) => setRoom(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="bed">Bed:</label>
+                            <input
+                                id="bed"
+                                type="text"
+                                value={bed}
+                                onChange={(e) => setBed(e.target.value)}
+                                placeholder="Enter bed"
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="vacating_btn">Update</button>
+                    <button onClick={toggleModal} className="vacating_btn">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="dashboard_team_main_div">
@@ -105,13 +201,25 @@ const Member = () => {
                             <div className="member_card">
                                 <p><strong>Name:</strong> {member.name}</p>
                                 <p><strong>Phone Number:</strong> {member.phoneno}</p>
-                                <p><strong>Room Type:</strong> {member.room_type}</p>
+                                <p><strong>Building:</strong> {member.building.name}</p>
+                                <p><strong>Floor:</strong> {member.floor.floor_number}</p>
+                                <p><strong>Flat:</strong> {member.flat.flat_number}</p>
+                                <p><strong>Room:</strong> {member.room.room_number}</p>
+                                <p><strong>Sharing:</strong> {member.room.sharing}</p>
+                                <p><strong>Bed:</strong> {member.bed.bed_number}</p>
                                 <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
+                                <button onClick={() => toggleModal()} className="vacating_btn">Update</button>
                             </div>
                         </li>
                     ))}
                 </ul>
             </div>
+            {showModal && (
+                <UpdateMemberModal
+                    member={members.find(member => member.member_id === selectedMemberId)}
+                    toggleModal={toggleModal}
+                />
+            )}
         </div>
     );
 }

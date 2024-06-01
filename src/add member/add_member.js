@@ -14,7 +14,11 @@ const AddMember = () => {
     const [roomType, setRoomType] = useState('3 sharing');
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const nav = useNavigate();
+    const [building, setBuilding] = useState('Building 1');
+    const [floor, setFloor] = useState('1'); // Changed to match floor_number
+    const [flat, setFlat] = useState('1'); // Changed to match flat_number
+    const [room, setRoom] = useState('1'); // Changed to match room_number
+    const [bed, setBed] = useState('1'); // Changed to match bed_number
 
     useEffect(() => {
         fetchNotifications();
@@ -40,7 +44,7 @@ const AddMember = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newMember = { name, phoneNumber, roomType };
+        const newMember = { name, phoneNumber, roomType, building, floor, flat, room, bed };
         
         try {
             const response = await fetch(API_ROUTES.addMember, {
@@ -103,17 +107,67 @@ const AddMember = () => {
                             />
                         </div>
                         <div className="form_group">
-                            <label htmlFor="roomType">Room Type:</label>
+                            <label htmlFor="building">Building:</label>
                             <select
-                                id="roomType"
-                                value={roomType}
-                                onChange={(e) => setRoomType(e.target.value)}
+                                id="building"
+                                value={building}
+                                onChange={(e) => setBuilding(e.target.value)}
                                 required
                             >
-                                <option value="2 sharing">2 sharing</option>
-                                <option value="3 sharing">3 sharing</option>
-                                <option value="4 sharing">4 sharing</option>
+                                <option value="Building 1">Building 1</option>
+                                <option value="Building 2">Building 2</option>
+                                <option value="Building 3">Building 3</option>
                             </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="floor">Floor:</label>
+                            <select
+                                id="floor"
+                                value={floor}
+                                onChange={(e) => setFloor(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="flat">Flat:</label>
+                            <select
+                                id="flat"
+                                value={flat}
+                                onChange={(e) => setFlat(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="room">Room:</label>
+                            <select
+                                id="room"
+                                value={room}
+                                onChange={(e) => setRoom(e.target.value)}
+                                required
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div className="form_group">
+                            <label htmlFor="bed">Bed:</label>
+                            <input
+                                id="bed"
+                                type="text"
+                                value={bed}
+                                onChange={(e) => setBed(e.target.value)}
+                                placeholder="Enter bed"
+                                required
+                            />
                         </div>
                         <button type="submit" className="submit_button">Add Member</button>
                     </form>
