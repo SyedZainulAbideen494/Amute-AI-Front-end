@@ -3,14 +3,17 @@ import notificationicon from '../images/icons8-notifications-64.png';
 import QrcodeImg from '../images/qrcode.png';
 import { useNavigate } from "react-router-dom";
 import NotificationModal from "../Notifications/NotificationModal";
+import axios from "axios";
 import './member.css'; // Import the CSS file for styling
 import { API_ROUTES } from "../app-modules/api_routes";
 
 const Member = () => {
     const [notifications, setNotifications] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [members, setMembers] = useState([]);
     const [selectedMemberId, setSelectedMemberId] = useState(null); // To store the selected member id for deletion
+    const [selectedMember, setSelectedMember] = useState(null); // To store the selected member for updating
     const nav = useNavigate();
 
     useEffect(() => {
@@ -42,6 +45,10 @@ const Member = () => {
         setShowModal(!showModal);
     };
 
+    const toggleDeleteModal = () => {
+        setShowDeleteModal(!showDeleteModal);
+    };
+
     const handleRedirectQrScanner = () => {
         window.location.href = 'https://qrcodescan.in/#google_vignette';
     };
@@ -57,42 +64,84 @@ const Member = () => {
                 body: JSON.stringify({ active: false }) // assuming 'active' is the column to update
             });
 
-            setMembers(members.map(member => {
-                if (member.member_id === selectedMemberId) {
-                    return { ...member, active: false }; // Update the 'active' status
-                }
-                return member;
-            }));
+            if (response.ok) {
+                setMembers(members.map(member => {
+                    if (member.member_id === selectedMemberId) {
+                        return { ...member, active: false }; // Update the 'active' status
+                    }
+                    return member;
+                }));
+            } else {
+                console.error('Failed to deactivate member');
+            }
         } catch (error) {
             console.error('Error deactivating member:', error);
         } finally {
-            toggleModal(); // Close the modal
+            toggleDeleteModal(); // Close the modal
         }
     };
 
     const handleOpenDeleteModal = (memberId) => {
         setSelectedMemberId(memberId);
+        toggleDeleteModal();
+    };
+
+    const handleOpenUpdateModal = (member) => {
+        setSelectedMember(member);
         toggleModal();
     };
 
     const UpdateMemberModal = ({ member, updateMemberDetails, toggleModal }) => {
         const [name, setName] = useState(member ? member.name : '');
-        const [phoneNumber, setPhoneNumber] = useState(member ? member.phoneNumber : '');
+        const [phoneNumber, setPhoneNumber] = useState(member ? member.phoneno : '');
         const [building, setBuilding] = useState(member ? member.building.name : '');
         const [floor, setFloor] = useState(member ? member.floor.floor_number : '');
         const [flat, setFlat] = useState(member ? member.flat.flat_number : '');
         const [room, setRoom] = useState(member ? member.room.room_number : '');
         const [bed, setBed] = useState(member ? member.bed.bed_number : '');
-    
-        const handleUpdate = () => {
-            // Implement logic to check bed availability and validate details
-            // Call updateMemberDetails if all checks pass
+
+        const handleUpdate = async (e) => {
+            e.preventDefault();
+
+            try {
+                const response = await axios.put(`http://localhost:8080/edit/member/${member.member_id}`, {
+                    name,
+                    phoneno: phoneNumber,
+                    building,
+                    floor,
+                    flat,
+                    room,
+                    bed
+                });
+
+                if (response.status === 200) {
+                    updateMemberDetails();
+                    toggleModal();
+                } else {
+                    console.error('Failed to update member details:', response);
+                    alert('Failed to update member details.');
+                }
+            } catch (error) {
+                console.error('Error updating member:', error.response || error.message || error);
+                alert('Failed to update member details.');
+            }
         };
-    
+
         return (
             <div className="modal-overlay">
                 <div className="modal-content">
-                <form onSubmit={handleUpdate}>
+                    <form onSubmit={handleUpdate}>
+                        <div className="form_group">
+                            <label htmlFor="name">Name:</label>
+                            <input
+                                id="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter name"
+                                required
+                            />
+                        </div>
                         <div className="form_group">
                             <label htmlFor="phone">Phone Number:</label>
                             <input
@@ -100,7 +149,7 @@ const Member = () => {
                                 type="text"
                                 value={phoneNumber}
                                 onChange={(e) => setPhoneNumber(e.target.value)}
-                                placeholder="Enter your phone number"
+                                placeholder="Enter phone number"
                                 required
                             />
                         </div>
@@ -112,6 +161,7 @@ const Member = () => {
                                 onChange={(e) => setBuilding(e.target.value)}
                                 required
                             >
+                                <option value="">Select Building</option>
                                 <option value="Building 1">Building 1</option>
                                 <option value="Building 2">Building 2</option>
                                 <option value="Building 3">Building 3</option>
@@ -125,6 +175,7 @@ const Member = () => {
                                 onChange={(e) => setFloor(e.target.value)}
                                 required
                             >
+                                <option value="">Select Floor</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -139,6 +190,7 @@ const Member = () => {
                                 onChange={(e) => setFlat(e.target.value)}
                                 required
                             >
+                                <option value="">Select Flat</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -151,6 +203,7 @@ const Member = () => {
                                 onChange={(e) => setRoom(e.target.value)}
                                 required
                             >
+                                <option value="">Select Room</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -168,7 +221,7 @@ const Member = () => {
                             />
                         </div>
                         <button type="submit" className="vacating_btn">Update</button>
-                    <button onClick={toggleModal} className="vacating_btn">Cancel</button>
+                        <button type="button" onClick={toggleModal} className="vacating_btn">Cancel</button>
                     </form>
                 </div>
             </div>
@@ -179,15 +232,17 @@ const Member = () => {
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
-                <button className="notification_icon" onClick={handleRedirectQrScanner}><img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" /></button>
-                {showModal && (
+                <button className="notification_icon" onClick={handleRedirectQrScanner}>
+                    <img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" />
+                </button>
+                {showDeleteModal && (
                     <div className="modal-overlay">
                         <div className="modal-content">
                             <h2>Delete Member</h2>
                             <p>Are you sure you want to make this change?</p>
                             <div className="modal-buttons">
                                 <button onClick={handleDeleteMember}>Confirm</button>
-                                <button onClick={toggleModal}>Cancel</button>
+                                <button onClick={toggleDeleteModal}>Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -208,7 +263,7 @@ const Member = () => {
                                 <p><strong>Sharing:</strong> {member.room.sharing}</p>
                                 <p><strong>Bed:</strong> {member.bed.bed_number}</p>
                                 <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
-                                <button onClick={() => toggleModal()} className="vacating_btn">Update</button>
+                                <button onClick={() => handleOpenUpdateModal(member)} className="vacating_btn">Update</button>
                             </div>
                         </li>
                     ))}
@@ -216,7 +271,8 @@ const Member = () => {
             </div>
             {showModal && (
                 <UpdateMemberModal
-                    member={members.find(member => member.member_id === selectedMemberId)}
+                    member={selectedMember}
+                    updateMemberDetails={fetchMembers}
                     toggleModal={toggleModal}
                 />
             )}
