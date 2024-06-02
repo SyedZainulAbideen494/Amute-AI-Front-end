@@ -7,6 +7,6 @@ export const API_ROUTES = {
   addMember: `${API_URL}/add/members`,
   displayMember: `${API_URL}/display/members`,
   getVacancies: `${API_URL}/api/vacancies`,
-  getRevenue: `${API_URL}/api/revenue`,
+  getAdvanceTickets: `${API_URL}/advance_tickets`,
   getPhoneNumbers: `${API_URL}/api/phone-numbers`
 };

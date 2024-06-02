@@ -5,7 +5,7 @@ import QrcodeImg from '../images/qrcode.png'
 import { Link, useNavigate } from "react-router-dom";
 import NotificationModal from "../Notifications/NotificationModal";
 import Vacancies from "./Vacancies";
-import Revenue from "./revenue";
+import AdvanceTickets from "./advanceTickets";
 import Conversations from "./conversations";
 
 const DashboardTeam = () => {
@@ -45,7 +45,7 @@ const DashboardTeam = () => {
             </div>
             <div className="inline-display">
                 <Vacancies />
-                <Revenue />
+                <AdvanceTickets />
             </div>
         </div>
     );
