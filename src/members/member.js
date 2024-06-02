@@ -161,7 +161,6 @@ const Member = () => {
                                 onChange={(e) => setBuilding(e.target.value)}
                                 required
                             >
-                                <option value="">Select Building</option>
                                 <option value="Building 1">Building 1</option>
                                 <option value="Building 2">Building 2</option>
                                 <option value="Building 3">Building 3</option>
@@ -175,7 +174,6 @@ const Member = () => {
                                 onChange={(e) => setFloor(e.target.value)}
                                 required
                             >
-                                <option value="">Select Floor</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -190,7 +188,6 @@ const Member = () => {
                                 onChange={(e) => setFlat(e.target.value)}
                                 required
                             >
-                                <option value="">Select Flat</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -203,7 +200,6 @@ const Member = () => {
                                 onChange={(e) => setRoom(e.target.value)}
                                 required
                             >
-                                <option value="">Select Room</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
