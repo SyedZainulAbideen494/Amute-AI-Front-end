@@ -56,7 +56,7 @@ const Member = () => {
     const handleDeleteMember = async () => {
         try {
             console.log(`Deactivating member with id: ${selectedMemberId}`);
-            const response = await fetch(`http://localhost:8080/api/updateMember/${selectedMemberId}`, {
+            const response = await fetch(`${API_ROUTES.deleteMember}/${selectedMemberId}`, {
                 method: 'PUT', // or 'PATCH' depending on your API endpoint
                 headers: {
                     'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ const Member = () => {
             e.preventDefault();
     
             try {
-                const response = await axios.put(`http://localhost:8080/edit/member/${member.member_id}`, {
+                const response = await axios.put(`${API_ROUTES.editMember}/${member.member_id}`, {
                     name,
                     phoneno: phoneNumber,
                     building,

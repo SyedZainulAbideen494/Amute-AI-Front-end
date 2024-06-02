@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './home.css'; // Import the CSS file for styling
+import { API_ROUTES } from '../app-modules/api_routes';
 
 const Vacancies = () => {
     const [vacancies, setVacancies] = useState({
@@ -15,7 +16,7 @@ const Vacancies = () => {
 
     const fetchVacancies = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/vacancies'); // Fetch vacancies from your API endpoint
+            const response = await fetch(API_ROUTES.vacancies); // Fetch vacancies from your API endpoint
             const data = await response.json();
             setVacancies(data);
         } catch (error) {

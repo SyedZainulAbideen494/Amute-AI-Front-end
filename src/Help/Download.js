@@ -1,9 +1,10 @@
 import React from 'react';
+import { API_ROUTES } from '../app-modules/api_routes';
 
 const DownloadAPK = () => {
   const handleDownload = () => {
     // Assuming your Node.js server is running on localhost:3001 and serves the APK as /download/myapp.apk
-    window.location.href = 'https://ba90-122-172-80-187.ngrok-free.app/download/myapp.apk';
+    window.location.href = API_ROUTES.dolwnloadAPK;
   };
 
   const buttonStyle = {
