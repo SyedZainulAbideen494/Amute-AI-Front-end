@@ -99,10 +99,11 @@ const Member = () => {
         const [flat, setFlat] = useState(member ? member.flat.flat_number : '');
         const [room, setRoom] = useState(member ? member.room.room_number : '');
         const [bed, setBed] = useState(member ? member.bed.bed_number : '');
-
+        const [message, setMessage] = useState(''); // State to manage the feedback message
+    
         const handleUpdate = async (e) => {
             e.preventDefault();
-
+    
             try {
                 const response = await axios.put(`http://localhost:8080/edit/member/${member.member_id}`, {
                     name,
@@ -113,20 +114,22 @@ const Member = () => {
                     room,
                     bed
                 });
-
+    
                 if (response.status === 200) {
+                    setMessage('Member details updated successfully');
                     updateMemberDetails();
-                    toggleModal();
+                    setTimeout(() => {
+                        toggleModal();
+                    }, 2000); // Close the modal after 2 seconds
                 } else {
-                    console.error('Failed to update member details:', response);
-                    alert('Failed to update member details.');
+                    setMessage('Failed to update member details');
                 }
             } catch (error) {
                 console.error('Error updating member:', error.response || error.message || error);
-                alert('Failed to update member details.');
+                setMessage('Failed to update member details');
             }
         };
-
+    
         return (
             <div className="modal-overlay">
                 <div className="modal-content">
@@ -219,6 +222,7 @@ const Member = () => {
                         <button type="submit" className="vacating_btn">Update</button>
                         <button type="button" onClick={toggleModal} className="vacating_btn">Cancel</button>
                     </form>
+                    {message && <p>{message}</p>} {/* Display the message below the buttons */}
                 </div>
             </div>
         );
