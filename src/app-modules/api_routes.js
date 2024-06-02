@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080';
+const API_URL = 'https://srv491382.hstgr.cloud/';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,
