@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import './home.css'; // Import the CSS file for styling
 import { API_ROUTES } from '../app-modules/api_routes'; // Import your API routes
 
@@ -37,7 +38,7 @@ const AdvanceTickets = () => {
           <h4>Email:</h4>
           <p>{ticket.customer_email}</p>
           <h4>Time:</h4>
-          <p>{ticket.created_at}</p>
+          <p>{formatDistanceToNow(new Date(ticket.created_at), { addSuffix: true })}</p>
           <h4>Phone Number:</h4>
           <p>{ticket.sender_id}</p>
         </div>

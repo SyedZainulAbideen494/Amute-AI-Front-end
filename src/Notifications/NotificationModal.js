@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import './Notification.css';
 import { API_ROUTES } from '../app-modules/api_routes';
 
@@ -32,7 +33,9 @@ const NotificationModal = ({ onClose }) => {
                         <li key={index} className="notification-item">
                             <span className="phone-number">{phoneNumber.phone_number}</span>
                             <span className="conversation-type">{phoneNumber.conversation_type}</span>
-                            <span className="created-at">{phoneNumber.created_at}</span>
+                            <span className="created-at">
+                                {formatDistanceToNow(new Date(phoneNumber.created_at), { addSuffix: true })}
+                            </span>
                         </li>
                     ))}
                 </ul>
