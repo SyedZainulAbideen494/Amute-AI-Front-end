@@ -1,0 +1,14 @@
+/* styles.css or inline styles */
+body::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+}

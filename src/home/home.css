@@ -560,3 +560,11 @@
     font-size: 20px;
   }
 }
+
+
+.vacancy-zero {
+  /* Styles applied when vacancies are zero */
+  border-color: red;
+  color: red;
+  /* Adjust other styles as needed */
+}
