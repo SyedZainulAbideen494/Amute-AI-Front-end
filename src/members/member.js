@@ -14,6 +14,7 @@ const Member = () => {
     const [members, setMembers] = useState([]);
     const [selectedMemberId, setSelectedMemberId] = useState(null); // To store the selected member id for deletion
     const [selectedMember, setSelectedMember] = useState(null); // To store the selected member for updating
+    const [searchQuery, setSearchQuery] = useState(""); // To store the search query
     const nav = useNavigate();
 
     useEffect(() => {
@@ -90,6 +91,14 @@ const Member = () => {
         setSelectedMember(member);
         toggleModal();
     };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredMembers = members.filter(member =>
+        member.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     const UpdateMemberModal = ({ member, updateMemberDetails, toggleModal }) => {
         const [name, setName] = useState(member ? member.name : '');
@@ -228,7 +237,7 @@ const Member = () => {
         );
     };
 
-    return (
+    return  (
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
@@ -250,8 +259,16 @@ const Member = () => {
             </div>
             <div className="member_list">
                 <h3>Member List</h3>
+                <div className="member_search_bar">
+                    <input
+                        type="text"
+                        placeholder="Search members by name..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                    />
+                </div>
                 <ul>
-                    {members.map((member, index) => (
+                    {filteredMembers.map((member, index) => (
                         <li key={index}>
                             <div className="member_card">
                                 <p><strong>Name:</strong> {member.name}</p>

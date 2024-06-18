@@ -1,4 +1,4 @@
-const API_URL = 'https://srv491382.hstgr.cloud/pg';
+const API_URL = 'https://43e1f6af8a422afb6d870a873a830bbe.serveo.net';
 
 export const API_ROUTES = {
   login: `${API_URL}/login`,

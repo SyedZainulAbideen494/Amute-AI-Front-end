@@ -72,7 +72,7 @@ const NavBarTeam = () => {
         nav('/members')
     }
     const handledashboardPageRedirect = () => {
-        nav('/dashboard')
+        nav('/')
     }
     const handleAddMemberRedirect = () => {
         nav('/addmember')
@@ -105,7 +105,7 @@ const NavBarTeam = () => {
             <div className={`left-sidebar_team ${showNav ? 'show-nav' : ''}`}>
                 <div className="welcome-message_team">Amute</div>
                 <div className="nav-buttons_team">
-                    <button className={`nav-button_team ${isActive('/dashboard')}`} onClick={handledashboardPageRedirect}>
+                    <button className={`nav-button_team ${isActive('/')}`} onClick={handledashboardPageRedirect}>
                         <img src={dashboardicon} alt="Dashboard" className="nav-icon" />
                         Dashboard
                     </button>
@@ -122,17 +122,6 @@ const NavBarTeam = () => {
                         <img src={helpicon} alt="Help" className="nav-icon" />
                         Help
                     </button>
-                    {auth ? (
-              <button className="nav-button_team" onClick={handleLogout}>
-              <img src={logoutImg} alt="Help" className="nav-icon" />
-              Logout
-          </button>
-            ) : (
-                <button className="nav-button_team" onClick={handleLoginPageRedirect}>
-                <img src={loginImg} alt="Help" className="nav-icon" />
-                    Login
-                    </button>
-            )}
                 </div>
             </div>
             <div className="menu-toggle" onClick={toggleNav}>
