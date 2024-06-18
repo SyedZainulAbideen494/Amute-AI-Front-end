@@ -16,6 +16,8 @@ const Member = () => {
     const [selectedMember, setSelectedMember] = useState(null); // To store the selected member for updating
     const nav = useNavigate();
     const [deleteSuccess, setDeleteSuccess] = useState(false);
+    const [searchQuery, setSearchQuery] = useState(""); // To store the search query
+
 
     const handleDeleteMember = async () => {
         try {
@@ -82,6 +84,14 @@ const Member = () => {
     const handleRedirectQrScanner = () => {
         window.location.href = 'https://qrcodescan.in/#google_vignette';
     };
+
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+
+    const filteredMembers = members.filter(member =>
+        member.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
 
     const handleOpenDeleteModal = (memberId) => {
@@ -273,11 +283,19 @@ const Member = () => {
         </div>
     </div>
 )}
-            </div>
+           </div>
             <div className="member_list">
                 <h3>Member List</h3>
+                <div className="member_search_bar">
+                    <input
+                        type="text"
+                        placeholder="Search members by name..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                    />
+                </div>
                 <ul>
-                    {members.map((member, index) => (
+                    {filteredMembers.map((member, index) => (
                         <li key={index}>
                             <div className="member_card">
                                 <p><strong>Name:</strong> {member.name}</p>
