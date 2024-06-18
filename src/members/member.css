@@ -154,3 +154,47 @@ body.modal-open {
 .member_search_bar input::placeholder {
     color: #bbb;
 }
+
+.success-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.success-animation svg {
+    width: 80px;
+    height: 80px;
+    animation: scaleAndFade 1s ease-in-out forwards;
+}
+
+.success-animation p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #00cc00;
+    font-weight: bold;
+}
+
+.success-animation button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00cc00;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+@keyframes scaleAndFade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

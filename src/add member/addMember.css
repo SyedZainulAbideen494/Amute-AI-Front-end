@@ -54,3 +54,55 @@
 .success_message h2 {
     color: #4caf50;
 }
+
+/* CSS for loading spinner */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loading-spinner {
+    border: 3px solid rgba(0, 0, 0, 0.1); /* Decreased border thickness */
+    border-top: 3px solid #007bff; /* Adjusted top border color */
+    border-radius: 50%;
+    width: 20px; /* Smaller width */
+    height: 20px; /* Smaller height */
+    animation: spin 1s linear infinite;
+  }
+  
+  /* CSS for checkmark animation */
+  @keyframes draw {
+    0% {
+      stroke-dasharray: 0, 10; /* Adjusted dash array for a very small checkmark */
+    }
+    100% {
+      stroke-dasharray: 10, 0; /* Adjusted dash array for a very small checkmark */
+    }
+  }
+  
+  .checkmark {
+    fill: none;
+    stroke: #28a745;
+    stroke-width: 1.5px; /* Reduced stroke width for a very small checkmark */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 10; /* Adjusted dash array for a very small checkmark */
+    stroke-dashoffset: 10; /* Adjusted dash offset for a very small checkmark */
+    animation: draw 0.3s ease-out forwards;
+  }
+
+  .reset_button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .reset_button:hover {
+    background-color: #0056b3;
+  }

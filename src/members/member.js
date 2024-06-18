@@ -14,9 +14,38 @@ const Member = () => {
     const [members, setMembers] = useState([]);
     const [selectedMemberId, setSelectedMemberId] = useState(null); // To store the selected member id for deletion
     const [selectedMember, setSelectedMember] = useState(null); // To store the selected member for updating
-    const [searchQuery, setSearchQuery] = useState(""); // To store the search query
     const nav = useNavigate();
+    const [deleteSuccess, setDeleteSuccess] = useState(false);
 
+    const handleDeleteMember = async () => {
+        try {
+            console.log(`Deactivating member with id: ${selectedMemberId}`);
+            const response = await fetch(`${API_ROUTES.deleteMember}/${selectedMemberId}`, {
+                method: 'PUT', // or 'PATCH' depending on your API endpoint
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ active: false }) // assuming 'active' is the column to update
+            });
+    
+            if (response.ok) {
+                setDeleteSuccess(true); // Set delete success to true
+                setMembers(members.filter(member => member.member_id !== selectedMemberId));
+                setTimeout(() => {
+                    resetDeleteModal();
+                }, 2000); // Reset delete modal after 2 seconds
+            } else {
+                console.error('Failed to deactivate member');
+            }
+        } catch (error) {
+            console.error('Error deactivating member:', error);
+        }
+    };
+    
+    const resetDeleteModal = () => {
+        setDeleteSuccess(false);
+        toggleDeleteModal();
+    };
     useEffect(() => {
         fetchNotifications();
         fetchMembers();
@@ -54,33 +83,6 @@ const Member = () => {
         window.location.href = 'https://qrcodescan.in/#google_vignette';
     };
 
-    const handleDeleteMember = async () => {
-        try {
-            console.log(`Deactivating member with id: ${selectedMemberId}`);
-            const response = await fetch(`${API_ROUTES.deleteMember}/${selectedMemberId}`, {
-                method: 'PUT', // or 'PATCH' depending on your API endpoint
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ active: false }) // assuming 'active' is the column to update
-            });
-
-            if (response.ok) {
-                setMembers(members.map(member => {
-                    if (member.member_id === selectedMemberId) {
-                        return { ...member, active: false }; // Update the 'active' status
-                    }
-                    return member;
-                }));
-            } else {
-                console.error('Failed to deactivate member');
-            }
-        } catch (error) {
-            console.error('Error deactivating member:', error);
-        } finally {
-            toggleDeleteModal(); // Close the modal
-        }
-    };
 
     const handleOpenDeleteModal = (memberId) => {
         setSelectedMemberId(memberId);
@@ -91,14 +93,6 @@ const Member = () => {
         setSelectedMember(member);
         toggleModal();
     };
-
-    const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-    };
-
-    const filteredMembers = members.filter(member =>
-        member.name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
 
     const UpdateMemberModal = ({ member, updateMemberDetails, toggleModal }) => {
         const [name, setName] = useState(member ? member.name : '');
@@ -237,7 +231,7 @@ const Member = () => {
         );
     };
 
-    return  (
+    return (
         <div className="dashboard_team_main_div">
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
@@ -245,30 +239,45 @@ const Member = () => {
                     <img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" />
                 </button>
                 {showDeleteModal && (
-                    <div className="modal-overlay">
-                        <div className="modal-content">
-                            <h2>Member Vacating?</h2>
-                            <p>Are you sure you want to make this change?</p>
-                            <div className="modal-buttons">
-                                <button onClick={handleDeleteMember}>Confirm</button>
-                                <button onClick={toggleDeleteModal}>Cancel</button>
-                            </div>
-                        </div>
+    <div className="modal-overlay">
+        <div className="modal-content">
+            {!deleteSuccess ? (
+                <>
+                    <h2>Delete Member</h2>
+                    <p>Are you sure you want to make this change?</p>
+                    <div className="modal-buttons">
+                        <button onClick={handleDeleteMember}>Confirm</button>
+                        <button onClick={toggleDeleteModal}>Cancel</button>
                     </div>
-                )}
+                </>
+            ) : (
+                <div className="success-animation">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="100"
+                        height="100"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#00cc00"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 14l4 4 8-8" />
+                    </svg>
+                    <p>Member Deleted Successfully</p>
+                    <button onClick={resetDeleteModal}>Close</button>
+                </div>
+            )}
+        </div>
+    </div>
+)}
             </div>
             <div className="member_list">
                 <h3>Member List</h3>
-                <div className="member_search_bar">
-                    <input
-                        type="text"
-                        placeholder="Search members by name..."
-                        value={searchQuery}
-                        onChange={handleSearchChange}
-                    />
-                </div>
                 <ul>
-                    {filteredMembers.map((member, index) => (
+                    {members.map((member, index) => (
                         <li key={index}>
                             <div className="member_card">
                                 <p><strong>Name:</strong> {member.name}</p>

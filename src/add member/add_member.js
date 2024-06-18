@@ -19,6 +19,7 @@ const AddMember = () => {
     const [flat, setFlat] = useState('1'); // Changed to match flat_number
     const [room, setRoom] = useState('1'); // Changed to match room_number
     const [bed, setBed] = useState('1'); // Changed to match bed_number
+    const [submitting, setSubmitting] = useState(false); // State to track form submission
 
     useEffect(() => {
         fetchNotifications();
@@ -45,7 +46,9 @@ const AddMember = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newMember = { name, phoneNumber, roomType, building, floor, flat, room, bed };
-        
+
+        setSubmitting(true); // Set submitting state to true
+
         try {
             const response = await fetch(API_ROUTES.addMember, {
                 method: 'POST',
@@ -65,22 +68,41 @@ const AddMember = () => {
         } catch (error) {
             console.error('Error adding member:', error);
             setErrorMessage('An error occurred while adding the member.');
+        } finally {
+            setSubmitting(false); // Set submitting state back to false
         }
     };
 
+    const handleResetForm = () => {
+        setName('');
+        setPhoneNumber('');
+        setBuilding('Building 1');
+        setFloor('1');
+        setFlat('1');
+        setRoom('1');
+        setBed('1');
+        setFormSubmitted(false);
+        setErrorMessage('');
+    };
+
     return (
-        <div className="dashboard_team_main_div">
+        <div className={`dashboard_team_main_div ${submitting ? 'submitting' : ''}`}>
             <div className="dashvoard_team_header">
                 <h3>Amute</h3>
                 <button className="notification_icon" onClick={handleRedirectQrScanner}><img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" /></button>
                 <button className="notification_icon" onClick={toggleModal}><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
                 {showModal && <NotificationModal notifications={notifications} onClose={toggleModal} />}
             </div>
-            <div className="form_container">
+            <div className={`form_container ${formSubmitted ? 'fade-out' : ''}`}>
                 {formSubmitted ? (
                     <div className="success_message">
-                        <h2>Member added successfully!</h2>
-                    </div>
+                    <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+                        <circle className="checkmark__circle" cx="16" cy="16" r="15" fill="none" strokeWidth="2"/>
+                        <path className="checkmark__check" fill="none" strokeWidth="2" d="M9 16.5l5.5 5.5L23 11"/>
+                    </svg>
+                    <h2>Member added successfully!</h2>
+                    <button className="reset_button" onClick={handleResetForm}>Add Another Member</button>
+                </div>
                 ) : (
                     <form onSubmit={handleSubmit}>
                         {errorMessage && <p className="error_message">{errorMessage}</p>}
@@ -169,7 +191,13 @@ const AddMember = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="submit_button">Add Member</button>
+                        <button type="submit" className="submit_button" disabled={submitting}>
+                            {submitting ? (
+                                <div className="loading-spinner"></div>
+                            ) : (
+                                'Add Member'
+                            )}
+                        </button>
                     </form>
                 )}
             </div>
