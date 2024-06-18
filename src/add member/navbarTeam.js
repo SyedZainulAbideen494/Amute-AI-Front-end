@@ -117,11 +117,6 @@ const NavBarTeam = () => {
                         <img src={add_member_img} alt="Tasks" className="nav-icon" />
                         Add Members
                     </button>
-                  
-                    <button className={`nav-button_team ${isActive('/help')}`} onClick={handleHelpRedirect}>
-                        <img src={helpicon} alt="Help" className="nav-icon" />
-                        Help
-                    </button>
                 </div>
             </div>
             <div className="menu-toggle" onClick={toggleNav}>
