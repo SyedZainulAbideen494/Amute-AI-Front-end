@@ -113,7 +113,6 @@ const Member = () => {
         const [room, setRoom] = useState(member ? member.room.room_number : '');
         const [bed, setBed] = useState(member ? member.bed.bed_number : '');
         const [message, setMessage] = useState(''); // State to manage the feedback message
-        const [updateSuccess, setUpdateSuccess] = useState(false); // State to manage update success
     
         const handleUpdate = async (e) => {
             e.preventDefault();
@@ -130,7 +129,6 @@ const Member = () => {
                 });
     
                 if (response.status === 200) {
-                    setUpdateSuccess(true);
                     setMessage('Member details updated successfully');
                     updateMemberDetails();
                     setTimeout(() => {
@@ -148,19 +146,18 @@ const Member = () => {
         return (
             <div className="modal-overlay">
                 <div className="modal-content">
-                    {!updateSuccess ? (
-                        <form onSubmit={handleUpdate}>
-                            <div className="form_group">
-                                <label htmlFor="name">Name:</label>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    placeholder="Enter name"
-                                    required
-                                />
-                            </div>
+                    <form onSubmit={handleUpdate}>
+                        <div className="form_group">
+                            <label htmlFor="name">Name:</label>
+                            <input
+                                id="name"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                placeholder="Enter name"
+                                required
+                            />
+                        </div>
                         <div className="form_group">
                             <label htmlFor="phone">Phone Number:</label>
                             <input
@@ -237,32 +234,12 @@ const Member = () => {
                         </div>
                         <button type="submit" className="vacating_btn">Update</button>
                         <button type="button" onClick={toggleModal} className="vacating_btn">Cancel</button>
-                        {message && <p>{message}</p>} {/* Display the message below the buttons */}
                     </form>
-                ) : (
-                    <div className="success-animation">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="100"
-                            height="100"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#00cc00"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M8 14l4 4 8-8" />
-                        </svg>
-                        <p>Member Updated Successfully</p>
-                        <button onClick={toggleModal}>Close</button>
-                    </div>
-                )}
+                    {message && <p>{message}</p>} {/* Display the message below the buttons */}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    };
 
     return (
         <div className="dashboard_team_main_div">
