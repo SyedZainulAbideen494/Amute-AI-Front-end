@@ -28,8 +28,9 @@ const Vacancies = () => {
         padding: '3px',
         marginBottom: '10px',
         maxHeight: '80px', // Adjust max height as needed
+        borderRadius: '5px', // Adding border radius
+        textAlign: 'center', // Align text center
     };
-
     const vacancyZeroStyle = {
         borderColor: 'red',
         // Additional styles for zero vacancies
