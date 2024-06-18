@@ -25,7 +25,7 @@ const Vacancies = () => {
 
     const vacancyCardStyle = {
         border: '1px solid #ccc',
-        padding: '3px',
+        padding: '4px',
         marginBottom: '10px',
         maxHeight: '80px', // Adjust max height as needed
         borderRadius: '5px', // Adding border radius
@@ -41,7 +41,7 @@ const Vacancies = () => {
     };
 
     return (
-        <div className="vacancies-container" style={{ maxHeight: '440px', overflowY: 'auto' }}>
+        <div className="vacancies-container" style={{ maxHeight: '450px', overflowY: 'auto' }}>
             <h2>Room Vacancies</h2>
             <div style={isVacancyZero(vacancies['1 sharing']) ? { ...vacancyCardStyle, ...vacancyZeroStyle } : vacancyCardStyle}>
                 <h3>1 Sharing</h3>
