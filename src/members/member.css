@@ -1,5 +1,5 @@
 .member_list {
-    background-color: #1e1e1e;
+    background-color: #121212;
     padding: 20px;
     border-radius: 8px;
     margin-top: 40px;
@@ -36,7 +36,7 @@
     margin: 0px 5px;
 }
 .member_card {
-    background-color: #2e2e2e;
+    background-color: #181818;
     padding: 15px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -66,7 +66,7 @@
 }
 
 .modal-content {
-    background-color: #222222;
+    background-color: #121212;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -143,10 +143,10 @@ body.modal-open {
 .member_search_bar input {
     width: 100%;
     max-width: 400px;
-    padding: 6px;
-    border: 1px solid #444;
+    padding: 9px;
+    border: 1px solid #555555;
     border-radius: 9px;
-    background-color: #333;
+    background-color: #181818;
     color: #fff;
     font-size: 16px;
 }

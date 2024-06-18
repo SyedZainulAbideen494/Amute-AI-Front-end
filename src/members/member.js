@@ -247,7 +247,7 @@ const Member = () => {
                 {showDeleteModal && (
                     <div className="modal-overlay">
                         <div className="modal-content">
-                            <h2>Delete Member</h2>
+                            <h2>Member Vacating?</h2>
                             <p>Are you sure you want to make this change?</p>
                             <div className="modal-buttons">
                                 <button onClick={handleDeleteMember}>Confirm</button>
