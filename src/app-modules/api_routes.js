@@ -12,5 +12,7 @@ export const API_ROUTES = {
   editMember: `${API_URL}/edit/member`,
   deleteMember: `${API_URL}/api/updateMember`,
   vacancies: `${API_URL}/api/vacancies`,
-  dolwnloadAPK: `${API_URL}/download/myapp.apk`
+  availableBeds: `${API_URL}/api/available-beds`,
+  dolwnloadAPK: `${API_URL}/download/myapp.apk`,
+  shiftMember: `${API_URL}/api/shiftMember`
 };

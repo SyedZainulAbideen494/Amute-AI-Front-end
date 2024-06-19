@@ -198,3 +198,28 @@ body.modal-open {
         opacity: 1;
     }
 }
+
+/* Styling for form groups */
+.form_group {
+    margin-bottom: 15px;
+}
+
+/* Styling for form labels */
+.form_group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Styling for form inputs */
+.form_group input,
+.form_group select {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #181818;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #181818;
+    color: white;
+}
