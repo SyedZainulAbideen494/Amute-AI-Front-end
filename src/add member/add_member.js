@@ -1,208 +1,124 @@
-import React, { useState, useEffect } from "react";
-import notificationicon from '../images/icons8-notifications-64.png';
-import QrcodeImg from '../images/qrcode.png';
-import { Link, useNavigate } from "react-router-dom";
-import NotificationModal from "../Notifications/NotificationModal";
-import { API_ROUTES } from '../app-modules/api_routes';
-import './addMember.css';
+import React, { useState } from "react";
+import axios from "axios";
+import './addMember.css'; // Ensure your CSS file is named correctly
+import SuccessModal from './succesModal';
 
 const AddMember = () => {
-    const [notifications, setNotifications] = useState([]);
-    const [showModal, setShowModal] = useState(false);
-    const [name, setName] = useState('');
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [roomType, setRoomType] = useState('3 sharing');
-    const [formSubmitted, setFormSubmitted] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-    const [building, setBuilding] = useState('Building 1');
-    const [floor, setFloor] = useState('1'); // Changed to match floor_number
-    const [flat, setFlat] = useState('1'); // Changed to match flat_number
-    const [room, setRoom] = useState('1'); // Changed to match room_number
-    const [bed, setBed] = useState('1'); // Changed to match bed_number
-    const [submitting, setSubmitting] = useState(false); // State to track form submission
+  const [name, setName] = useState('');
+  const [phoneNo, setPhoneNo] = useState('');
+  const [sharing, setSharing] = useState('');
+  const [beds, setBeds] = useState([]);
+  const [selectedBed, setSelectedBed] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredBeds, setFilteredBeds] = useState([]);
 
-    useEffect(() => {
-        fetchNotifications();
-    }, []);
+  const fetchBeds = async (sharing) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/beds/${sharing}`);
+      setBeds(response.data);
+      setSharing(sharing);
+    } catch (error) {
+      console.error('Error fetching beds:', error);
+    }
+  };
 
-    const fetchNotifications = async () => {
-        try {
-            const response = await fetch('/api/notifications/123'); // Replace 123 with actual user id
-            const data = await response.json();
-            setNotifications(data);
-        } catch (error) {
-            console.error('Error fetching notifications:', error);
-        }
-    };
-
-    const toggleModal = () => {
-        setShowModal(!showModal);
-    };
-
-    const handleRedirectQrScanner = () => {
-        window.location.href = 'https://qrcodescan.in/#google_vignette';
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const newMember = { name, phoneNumber, roomType, building, floor, flat, room, bed };
-
-        setSubmitting(true); // Set submitting state to true
-
-        try {
-            const response = await fetch(API_ROUTES.addMember, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(newMember),
-            });
-
-            if (response.ok) {
-                setFormSubmitted(true);
-                setErrorMessage('');
-            } else {
-                const errorText = await response.text();
-                setErrorMessage(errorText);
-            }
-        } catch (error) {
-            console.error('Error adding member:', error);
-            setErrorMessage('An error occurred while adding the member.');
-        } finally {
-            setSubmitting(false); // Set submitting state back to false
-        }
-    };
-
-    const handleResetForm = () => {
+  const addMember = async () => {
+    if (selectedBed) {
+      try {
+        await axios.post('http://localhost:8080/addMembers', {
+          name,
+          phoneNo,
+          bedId: selectedBed
+        });
+        setShowModal(true); // Show modal on successful addition
+        // Reset form fields after successful addition
         setName('');
-        setPhoneNumber('');
-        setBuilding('Building 1');
-        setFloor('1');
-        setFlat('1');
-        setRoom('1');
-        setBed('1');
-        setFormSubmitted(false);
-        setErrorMessage('');
-    };
+        setPhoneNo('');
+        setSelectedBed(null);
+      } catch (error) {
+        console.error('Error adding member:', error);
+      }
+    } else {
+      alert('Please select a bed.');
+    }
+  };
 
-    return (
-        <div className={`dashboard_team_main_div ${submitting ? 'submitting' : ''}`}>
-            <div className="dashvoard_team_header">
-                <h3>Amute</h3>
-                <button className="notification_icon" onClick={handleRedirectQrScanner}><img src={QrcodeImg} alt="QR Scanner" className="notification_dashboard_icon" /></button>
-                <button className="notification_icon" onClick={toggleModal}><img src={notificationicon} alt="Notifications" className="notification_dashboard_icon" /></button>
-                {showModal && <NotificationModal notifications={notifications} onClose={toggleModal} />}
-            </div>
-            <div className={`form_container ${formSubmitted ? 'fade-out' : ''}`}>
-                {formSubmitted ? (
-                    <div className="success_message">
-                    <svg className="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-                        <circle className="checkmark__circle" cx="16" cy="16" r="15" fill="none" strokeWidth="2"/>
-                        <path className="checkmark__check" fill="none" strokeWidth="2" d="M9 16.5l5.5 5.5L23 11"/>
-                    </svg>
-                    <h2>Member added successfully!</h2>
-                    <button className="reset_button" onClick={handleResetForm}>Add Another Member</button>
-                </div>
-                ) : (
-                    <form onSubmit={handleSubmit}>
-                        {errorMessage && <p className="error_message">{errorMessage}</p>}
-                        <div className="form_group">
-                            <label htmlFor="name">Name:</label>
-                            <input
-                                id="name"
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder="Enter your name"
-                                required
-                            />
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="phone">Phone Number:</label>
-                            <input
-                                id="phone"
-                                type="text"
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
-                                placeholder="Enter your phone number"
-                                required
-                            />
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="building">Building:</label>
-                            <select
-                                id="building"
-                                value={building}
-                                onChange={(e) => setBuilding(e.target.value)}
-                                required
-                            >
-                                <option value="Building 1">Building 1</option>
-                                <option value="Building 2">Building 2</option>
-                                <option value="Building 3">Building 3</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="floor">Floor:</label>
-                            <select
-                                id="floor"
-                                value={floor}
-                                onChange={(e) => setFloor(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="flat">Flat:</label>
-                            <select
-                                id="flat"
-                                value={flat}
-                                onChange={(e) => setFlat(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="room">Room:</label>
-                            <select
-                                id="room"
-                                value={room}
-                                onChange={(e) => setRoom(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="bed">Bed:</label>
-                            <input
-                                id="bed"
-                                type="text"
-                                value={bed}
-                                onChange={(e) => setBed(e.target.value)}
-                                placeholder="Enter bed"
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="submit_button" disabled={submitting}>
-                            {submitting ? (
-                                <div className="loading-spinner"></div>
-                            ) : (
-                                'Add Member'
-                            )}
-                        </button>
-                    </form>
-                )}
-            </div>
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const filterBeds = (term) => {
+    setSearchTerm(term);
+    if (term.trim() === '') {
+      setFilteredBeds(beds); // If search term is empty, show all beds
+    } else {
+      const lowercasedFilter = term.toLowerCase();
+      const filteredData = beds.filter((bed) =>
+        `${bed.buildingName} ${bed.floor_number} ${bed.flat_number} ${bed.room_number} ${bed.bed_number}`
+          .toLowerCase()
+          .includes(lowercasedFilter)
+      );
+      setFilteredBeds(filteredData);
+    }
+  };
+
+  return  (
+    <div className="container_add_member">
+      <h1 className="heading_add_member">Add Member</h1>
+      <div className="add_member_form">
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Phone No"
+          value={phoneNo}
+          onChange={(e) => setPhoneNo(e.target.value)}
+        />
+        <div className="button-group_add_member">
+          <button className="button_add_member" onClick={() => fetchBeds(1)}>1 Sharing</button>
+          <button className="button_add_member" onClick={() => fetchBeds(2)}>2 Sharing</button>
+          <button className="button_add_member" onClick={() => fetchBeds(3)}>3 Sharing</button>
+          <button className="button_add_member" onClick={() => fetchBeds(4)}>4 Sharing</button>
         </div>
-    );
+        <div className="search-bar_add_member">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => filterBeds(e.target.value)}
+            className="input-text_add_member"
+          />
+        </div>
+        <div className="radio-group_add_member">
+          {(searchTerm ? filteredBeds : beds).map(bed => (
+            <div className="radio-item_add_member" key={bed.bedId}>
+              <input
+                type="radio"
+                className="radio-input_add_member"
+                id={`bed_${bed.bedId}`}
+                name="bed"
+                value={bed.bedId}
+                onChange={() => setSelectedBed(bed.bedId)}
+                checked={selectedBed === bed.bedId}
+              />
+              <label htmlFor={`bed_${bed.bedId}`} className="radio-label_add_member">
+                {`Building: ${bed.buildingName}, Floor: ${bed.floor_number}, Flat: ${bed.flat_number}, Room: ${bed.room_number}, Bed: ${bed.bed_number}`}
+              </label>
+            </div>
+          ))}
+        </div>
+        <button className="button_add_member" onClick={addMember}>Add Member</button>
+      </div>
+      {showModal && <SuccessModal onClose={closeModal} />}
+    </div>
+  );
 }
 
 export default AddMember;

@@ -1,108 +1,90 @@
-.form_container {
-    background-color: #1e1e1e;
-    padding: 20px;
-    margin-top: 40px;
-    border-radius: 8px;
+.container_add_member {
+  padding: 20px;
+  background-color: #121212;
+  color: #ffffff;
 }
 
-.form_group {
-    margin-bottom: 15px;
+.heading_add_member {
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
-.form_group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #bbb;
+.add_member_form {
+  background-color: #121212;
+  border: 1px solid #121212;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
 }
 
-.form_group input,
-.form_group select {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
+.input-text_add_member {
+  background-color: #2e2e2e;
+  border: 1px solid #555555;
+  color: #ffffff;
+  padding: 10px;
+  margin: 10px 0;
+  width: calc(100% - 24px);
 }
 
-.form_group input::placeholder {
-    color: #777;
+.button-group_add_member {
+  margin: 10px 0;
 }
 
-.form_group select {
-    color: #fff;
+.button_add_member {
+  background-color: #333333;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
 }
 
-.submit_button {
-    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.button_add_member:hover {
+  background-color: #444444;
 }
 
-
-
-.success_message {
-    text-align: center;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;
+.radio-group_add_member {
+  margin: 10px 0;
 }
 
-.success_message h2 {
-    color: #4caf50;
+.radio-item_add_member {
+  margin-bottom: 10px;
 }
 
-/* CSS for loading spinner */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  .loading-spinner {
-    border: 3px solid rgba(0, 0, 0, 0.1); /* Decreased border thickness */
-    border-top: 3px solid #007bff; /* Adjusted top border color */
-    border-radius: 50%;
-    width: 20px; /* Smaller width */
-    height: 20px; /* Smaller height */
-    animation: spin 1s linear infinite;
-  }
-  
-  /* CSS for checkmark animation */
-  @keyframes draw {
-    0% {
-      stroke-dasharray: 0, 10; /* Adjusted dash array for a very small checkmark */
-    }
-    100% {
-      stroke-dasharray: 10, 0; /* Adjusted dash array for a very small checkmark */
-    }
-  }
-  
-  .checkmark {
-    fill: none;
-    stroke: #28a745;
-    stroke-width: 1.5px; /* Reduced stroke width for a very small checkmark */
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 10; /* Adjusted dash array for a very small checkmark */
-    stroke-dashoffset: 10; /* Adjusted dash offset for a very small checkmark */
-    animation: draw 0.3s ease-out forwards;
-  }
+.radio-input_add_member {
+  display: none; /* Hide the default radio input */
+}
 
-  .reset_button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .reset_button:hover {
-    background-color: #0056b3;
-  }
+.radio-label_add_member {
+  cursor: pointer;
+  padding: 10px;
+  display: inline-block;
+  width: calc(100% - 40px); /* Adjust width for label */
+  background-color: #181818;
+  border: 1px solid #181818;
+  color: #ffffff;
+}
+
+.radio-label_add_member:hover {
+  background-color: #121212;
+}
+
+.radio-input_add_member:checked + .radio-label_add_member {
+  background-color: #131313; /* Styling for checked state */
+  border: 1px solid white;
+}
+
+.radio-label_add_member::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  border: 1px solid #555555;
+  border-radius: 50%;
+}
+
+.radio-input_add_member:checked + .radio-label_add_member::before {
+  background-color: #ffffff;
+}
