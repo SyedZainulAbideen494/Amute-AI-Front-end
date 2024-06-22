@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import './addMember.css'; // Ensure your CSS file is named correctly
 import SuccessModal from './succesModal';
+import { API_ROUTES } from "../app-modules/api_routes";
 
 const AddMember = () => {
   const [name, setName] = useState('');
@@ -13,9 +14,10 @@ const AddMember = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBeds, setFilteredBeds] = useState([]);
 
+
   const fetchBeds = async (sharing) => {
     try {
-      const response = await axios.get(`https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net/beds/${sharing}`);
+      const response = await axios.get(`${API_ROUTES.fetchBeds}/${sharing}`);
       setBeds(response.data);
       setSharing(sharing);
     } catch (error) {
@@ -26,7 +28,7 @@ const AddMember = () => {
   const addMember = async () => {
     if (selectedBed) {
       try {
-        await axios.post('https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net/addMembers', {
+        await axios.post(API_ROUTES.addMember, {
           name,
           phoneNo,
           bedId: selectedBed

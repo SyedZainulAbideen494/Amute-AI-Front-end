@@ -1,10 +1,8 @@
 const API_URL = 'https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net';
 
 export const API_ROUTES = {
-  login: `${API_URL}/login`,
-  signup: `${API_URL}/addUser`,
   displayImages: `${API_URL}/images`,
-  addMember: `${API_URL}/add/members`,
+  addMember: `${API_URL}/addMembers`,
   displayMember: `${API_URL}/display/members`,
   getVacancies: `${API_URL}/api/vacancies`,
   getAdvanceTickets: `${API_URL}/advance_tickets`,
@@ -14,5 +12,6 @@ export const API_ROUTES = {
   vacancies: `${API_URL}/api/vacancies`,
   availableBeds: `${API_URL}/api/available-beds`,
   dolwnloadAPK: `${API_URL}/download/myapp.apk`,
-  shiftMember: `${API_URL}/api/shiftMember`
+  shiftMember: `${API_URL}/api/shiftMember`,
+  fetchBeds: `${API_URL}/beds`
 };
