@@ -15,7 +15,7 @@ const AddMember = () => {
 
   const fetchBeds = async (sharing) => {
     try {
-      const response = await axios.get(`https://a57eacdb13ba1ad9f8a66fac38b59c94.serveo.net/beds/${sharing}`);
+      const response = await axios.get(`https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net/beds/${sharing}`);
       setBeds(response.data);
       setSharing(sharing);
     } catch (error) {
@@ -26,7 +26,7 @@ const AddMember = () => {
   const addMember = async () => {
     if (selectedBed) {
       try {
-        await axios.post('https://a57eacdb13ba1ad9f8a66fac38b59c94.serveo.net/addMembers', {
+        await axios.post('https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net/addMembers', {
           name,
           phoneNo,
           bedId: selectedBed
