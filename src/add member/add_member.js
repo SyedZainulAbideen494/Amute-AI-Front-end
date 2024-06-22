@@ -15,7 +15,7 @@ const AddMember = () => {
 
   const fetchBeds = async (sharing) => {
     try {
-      const response = await axios.get(`http://localhost:8080/beds/${sharing}`);
+      const response = await axios.get(`https://a57eacdb13ba1ad9f8a66fac38b59c94.serveo.net/beds/${sharing}`);
       setBeds(response.data);
       setSharing(sharing);
     } catch (error) {
@@ -26,7 +26,7 @@ const AddMember = () => {
   const addMember = async () => {
     if (selectedBed) {
       try {
-        await axios.post('http://localhost:8080/addMembers', {
+        await axios.post('https://a57eacdb13ba1ad9f8a66fac38b59c94.serveo.net/addMembers', {
           name,
           phoneNo,
           bedId: selectedBed
