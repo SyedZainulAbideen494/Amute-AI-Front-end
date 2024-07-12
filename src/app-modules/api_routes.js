@@ -1,4 +1,4 @@
-const API_URL = 'https://7d563cc238d42d7beefb7516bb7b38f8.serveo.net';
+const API_URL = 'https://kraftpoint.in/glast';
 
 export const API_ROUTES = {
   displayImages: `${API_URL}/images`,
