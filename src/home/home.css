@@ -1,570 +1,247 @@
-@media screen and (min-width: 851px){
-.left-sidebar_team {
-    background-color: #131313;
-    color: #fff;
-    width: 250px;
-    height: 100vh;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  .welcome-message_team {
-    font-size: 20px;
-    margin-bottom: 40px;
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  .nav-buttons_team {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .nav-buttons_team button {
-    display: flex;
-    align-items: center;
-    background: transparent;
-    color: #fff;
-    border: none;
-    padding: 12px 10px;
-    cursor: pointer;
-    margin-bottom: 20px;
-    border-radius: 15px;
-    transition: background 0.5s ease; /* Apply transition to the background property */
-  }
-  
-  .nav-buttons_team button img {
-    margin-right: 10px;
-    width: 24px; /* Adjust image size as needed */
-    height: 24px; /* Adjust image size as needed */
-  }
-  
-  
-  .nav-button_team:hover {
-    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
-  }
+/* home.css */
 
-
-  .main_div_team_dashboard {
-    display: flex;
-  }
-  
-  .nav_bar_area_Team_dashboard,
-  .Dashboard_area_Team_dashboard,
-  .rightmenu_area_Team_dashboard {
-    flex: 1; /* Equal width for all */
-  }
-  
-  .Dashboard_area_Team_dashboard {
-    flex: 2; /* Twice the width of the others */
-  }
-  
-
-.dashvoard_team_header {
-  background-color: #000000;
-  color: #fff;
-  border-radius: 25px;
-  padding: 6px 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  border: 2px solid #1F1F1F;
-  margin-top: 5px;
-}
-
-.dashvoard_team_header {
+.dashboard-team-container {
   display: flex;
-  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.dashvoard_team_header h3 {
-  margin: 0;
-  cursor: grab;
-  font-size: 20px;
-  flex: 1; /* Allow the text to take up remaining space */
-}
-
-.dashvoard_team_header button {
-  background-color: transparent;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.setting_btn_dashboard_team,
-.notification_icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
-
-.setting_btn_dashboard_team:hover,
-.notification_icon:hover {
-  background-color: #1a1919;
-  transition: 0.3s;
-  border-radius: 50%;
-}
-
-.notification_dashboard_icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px;
-}
-.notification_dashboard_icon:hover {
-  background-color: #1a1919;
-  transition: 0.3s;
-}
-.main_div_team_dashboard_smallscreen {
-  display: none;
-}
-.menu-toggle {
-  display: none;
-}
-
-.rightmenu_summary_main_div {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 240px; /* Adjust width as needed */
-  background-color: #131313; /* Dark background color */
-  color: #fff; /* Light text color */
-  border-left: none; /* Border color */
-  z-index: 1000; /* Ensure it appears above other content */
-  padding: 20px; /* Padding for content */
-  overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
-}
-
-.right_menu_summary_header {
-  margin-bottom: 20px; /* Add some space below the header */
-}
-
-.right_menu_summary_header h2 {
-  color: #fff; /* Header text color */
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 40px;
-  font-weight: 100;
-  text-align: center;
-}
-.team_details_summary_menu {
-  margin-bottom: 10px;
-}
-
-.team_details_summary_header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.team_details_summary_header h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 100;
-}
-
-.toggle_arrow {
-  width: 16px; /* Adjust arrow size as needed */
-  height: 16px; /* Adjust arrow size as needed */
-  transition: transform 0.3s ease; /* Smooth transition for rotation */
-}
-
-.team_details_summary_content {
-  padding-left: 20px; /* Add indentation for content */
-}
-
-.team_details_summary_content button {
-  margin-top: 5px;
-  font-size: 14px;
-}
-}
-@media screen and (max-width: 1113px)  {
-  .rightmenu_area_Team_dashboard {
-    display: none;
-  }
-  .rightmenu_summary_main_div {
-    position: fixed;
-    top: 0;
-    left: 0; /* Adjust to cover the whole screen */
-    bottom: 0;
-    width: 100%; /* Cover the whole screen */
-    background-color: #131313; /* Dark background color */
-    color: #fff; /* Light text color */
-    border-left: none; /* Border color */
-    z-index: 1000; /* Ensure it appears above other content */
-    padding: 20px; /* Padding for content */
-    overflow-y: auto; /* Enable vertical scrolling if content exceeds viewport height */
-  }
-  .right_menu_summary_header {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .right_menu_summary_header h2 {
-    color: #fff; /* Header text color */
-    font-size: 27px;
-    text-align: center;
-  }
-
-  .right_menu_summary_header h3 {
-    font-weight: 100;
-  }
-  
-  .toggle_arrow {
-    width: 20px; /* Adjust arrow size as needed */
-    height: 20px; /* Adjust arrow size as needed */
-    margin-left: 10px; /* Add margin between heading and arrow */
-    transition: transform 0.3s ease; /* Smooth transition for rotation */
-  }
-  
-  .team_details_summary_content {
-    padding-left: 20px; /* Add indentation for content */
-  }
-  
-  .team_details_summary_content button {
-    margin-top: 5px;
-    font-size: 14px;
-  }
-  .calendar {
-    background-color: #212027; /* Dark background color */
-    border-radius: 5px; /* Rounded corners */
-    padding: 20px;
-    margin-top: 10px;
-  }
-  
-  .calendar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: #fff; /* Text color */
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .calendar-header button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 18px;
-    cursor: pointer;
-  }
-  
-  .calendar-header button:hover {
-    color: #9F9BEA;
-  }
-  
-  .calendar-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* 7 columns for days of the week */
-    gap: 5px; /* Gap between days */
-  }
-  
-  .calendar-day {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%; /* Circular shape */
-    background-color: #151418; /* Dark gray background color */
-    color: #fff; /* Text color */
-    font-size: 16px;
-    padding: 2px;
-  }
-  
-  .live-date {
-    background-color: #5C33F6; /* Blue color for current date */
-  }
-  .back_button_Right_menu_mobile {
-    display: inline-block; /* Display the back button for smaller screens */
-    width: 24px; /* Adjust width as needed */
-    height: 24px; /* Adjust height as needed */
-    margin-right: 14px; /* Add margin between back button and heading */
-    margin-top: 8px;
-    cursor: pointer;
-  }
-}
-@media screen and (min-width: 1113px){
-  .mobl_btn_dashboard_btn_summary {
-    display: none;
-  }
-  .back_button_Right_menu_mobile {
-    display: none; /* Initially hide the back button */
-  }
-}
-
-@media screen and (max-width: 850px) {
-  .left-sidebar_team {
-    width: 240px;
-    background-color: #1F1F1F;
-    color: #fff;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -240px; /* Initially hide the navbar off the screen */
-    transition: left 0.3s ease;
-    border-radius: 12px;
-  }
-  
-  .left-sidebar_team.show-nav {
-    left: 0; /* Show the navbar by bringing it back to 0 left position */
-  }
-  
-  .welcome-message_team {
-    padding: 20px 0;
-    margin-top: 40px;
-    text-align: center;
-  }
-  
-  .nav-buttons_team {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-  }
-  
-  .nav-button_team {
-    border: none;
-    background: none;
-    padding: 10px 20px;
-    margin: 10px 10px;
-    display: flex;
-    align-items: left;
-    cursor: pointer;
-    border-radius: 15px;
-    color: white;
-    text-align: left;
-  }
-  
-  .nav-button_team img {
-    margin-right: 10px;
-  }
-  
-  .nav-icon {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 999;
-    cursor: pointer;
-  }
-  .nav-button_team:hover {
-    background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%); /* Adjust gradient colors for hover */
-  }
-  .dashvoard_team_header {
-    background-color: #1F1F1F;
-    color: #fff;
-    border-radius: 25px;
-    padding: 6px 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .dashvoard_team_header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .dashvoard_team_header h2 {
-    margin: 0;
-    font-size: 24px;
-  }
-  
-  .dashvoard_team_header button {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .setting_btn_dashboard_team:hover {
-    background-color: #4b4a4a;
-    transition: 0.3s;
-    padding: 12px;
-    border-radius: 12px;
-  }
-  
-  .dashvoard_team_header button:focus {
-    outline: none;
-  }
-  
-  .notification_dashboard_icon {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 5px;
-  }
-  .dashvoard_team_header h3 {
-    margin-left: 48px;
-  }
-  .main_div_team_dashboard {
-    display: none;
-  }
-  .rightmenu_area_Team_dashboard {
-    display: none;
-  }
-}
-
-.right_menu_btn_company_area {
-  text-align: center;
-  border: none;
-  background-color: transparent;
-  color: white;
-  font-size: 17px;
-  cursor: pointer;
-}
-
-.nav-button_team.active {
-  background: linear-gradient(to right, #9F9BEA 0%, #72C3EE 100%);
-}
-
-
-
-.container {
+.left-navbar {
+  background-color: #fff;
+  color: #000000;
+  width: 200px;
   padding: 20px;
-  margin: 10px;
-  background-color: #131313;
-  border-radius: 8px;
+  height: 100%;
+  position: fixed; /* Fixed positioning to keep it in place */
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays above other content */
+  margin: 10px 0px;
+  border-radius: 25px;
 }
 
-.card {
-  background-color: #1a1919;
-  border: 1px solid #99aab5;
-  border-radius: 4px;
-  padding: 15px;
+.left-navbar h3 {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 20px;
+  cursor: no-drop;
+}
+
+.left-navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.left-navbar ul li {
   margin-bottom: 10px;
-  text-align: center;
 }
 
-/* Specific Container Styles */
-.vacancies-container,
-.revenue-container,
-.conversations-container {
+.left-navbar ul li a {
+  display: block;
+  padding: 10px;
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 25px;
+}
+
+.left-navbar ul li a:hover {
+  background-color: #fff5f5;
+}
+
+.main-dashboard {
   flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  margin-left: 250px; /* Ensure content doesn't overlap with navbar */
 }
 
-.vacancies-container h2,
-.revenue-container h2,
-.conversations-container h2 {
-  text-align: center;
+/* Ensure scrollbar does not overlap with the fixed navbar */
+.main-dashboard::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+
+.dashboard-summary {
+  display: flex;
+  justify-content: space-around;
   margin-bottom: 20px;
 }
 
-.revenue-container {
-  background-color: #131313; /* Dark background color */
-  color: #fff; /* Light text color */
+.summary-box {
+  flex: 1;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  margin: 0 5px; /* Adjusted margin for spacing between boxes */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Ensure stacking context for pseudo-elements */
+  overflow: hidden; /* Ensure overflow hidden for pseudo-elements */
+}
+
+/* Custom styles for each summary box */
+.summary-box:nth-child(1) {
+  background-image: linear-gradient(to right, #42cdff, #7DD7FB); /* Reversed Blue gradient */
+  color: #fff; /* White text */
+}
+
+.summary-box:nth-child(2) {
+  background-image: linear-gradient(to right, #a48eff, #8364FF); /* Reversed Green gradient */
+  color: #fff; /* White text */
+}
+
+.summary-box:nth-child(3) {
+  background-image: linear-gradient(to right, #7da4ff, #689DFF); /* Reversed Red gradient */
+  color: #fff; /* White text */
+}
+
+.summary-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.summary-box:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+
+
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 100px;
+}
+
+.dashboard-card {
+  flex: 1;
   padding: 20px;
-  border-radius: 8px;
-  max-height: 450px; /* Maximum height */
-  overflow-y: auto; /* Add scroll bar when content exceeds max height */
+  margin-bottom: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  max-height: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Custom scrollbar */
-.revenue-container::-webkit-scrollbar {
+.dashboard-card:hover {
+  overflow-y: auto;
+  transition: overflow-y 0.3s ease;
+}
+
+.dashboard-card h4 {
+  margin-bottom: 10px;
+}
+
+.dashboard-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.dashboard-card ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.dashboard-card ul li:hover {
+  background-color: rgb(243, 242, 242);
+}
+
+.dashboard-card::-webkit-scrollbar {
   width: 10px;
+  background: #f1f1f1;
 }
 
-/* Track */
-.revenue-container::-webkit-scrollbar-track {
-  background: #131313; /* Dark background color */
+.dashboard-card::-webkit-scrollbar-track {
+  background: #f1f1f1;
 }
 
-/* Handle */
-.revenue-container::-webkit-scrollbar-thumb {
-  background: #888; /* Darker color for the scrollbar handle */
+.dashboard-card::-webkit-scrollbar-thumb {
+  background: #888;
   border-radius: 5px;
 }
 
-/* Handle on hover */
-.revenue-container::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Darker color for the scrollbar handle on hover */
+.dashboard-card::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
-.ticket-card {
-  background-color: #1F1F1F; /* Dark card background color */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-}
-
-/* Styles for headings */
-
-
-/* Styles for paragraph */
-.ticket-card p {
-  color: #ccc; /* Lighter text color */
-}
-
-/* Conversations Specific Styles */
-.conversations-container {
-  background-color: #2c2f33;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.conversations-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.conversations-container ul li {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-/* Flexbox Layout */
-.inline-display {
+.member-item {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.view-button {
+  padding: 8px 15px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #555;
+}
+
+/* Modal styles */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (min-width: 650px) {
-  .inline-display {
-    flex-direction: row;
-  }
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@media screen and (min-width: 900px) {
-  .inline-display {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-/* Responsive Typography */
-@media screen and (min-width: 650px) {
-
-  .total-revenue p {
-    font-size: 20px;
-  }
-}
-
-
-.vacancy-zero {
-  /* Styles applied when vacancies are zero */
-  border-color: red;
-  color: red;
-  /* Adjust other styles as needed */
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
 }
