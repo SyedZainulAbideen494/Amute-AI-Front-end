@@ -28,7 +28,7 @@ const Member = () => {
     const [paidRentMembers, setPaidRentMembers] = useState([])
 
     const handleRemoveMember = (member_id) => {
-        axios.delete(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members/${member_id}`)
+        axios.delete(`${API_ROUTES.revertVacatingMember}/${member_id}`)
             .then(response => {
                 // Remove the member from the vacating list in state
                 setMembersVacateNotice(prevMembers => (
@@ -44,7 +44,7 @@ const Member = () => {
     useEffect(() => {
       const fetchVacatingMembers = async () => {
         try {
-          const response = await axios.get('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members');
+          const response = await axios.get(API_ROUTES.fetchVeacatingMemberList);
           setMembersVacateNotice(response.data);
         } catch (error) {
           console.error('Error fetching vacating members:', error);
@@ -65,7 +65,7 @@ const Member = () => {
 
     const fetchTotalRent = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/total-rent');
+            const response = await fetch(API_ROUTES.fetchTotalRent);
             const data = await response.json();
             setTotalRent(data.totalRent);
         } catch (error) {
@@ -75,7 +75,7 @@ const Member = () => {
 
     const fetchLeavingMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/leaving-members');
+            const response = await fetch(API_ROUTES.fetchLevingMemberList);
             const data = await response.json();
             setLeavingMembers(data);
         } catch (error) {
@@ -85,7 +85,7 @@ const Member = () => {
 
     const fetchRentNotPaid = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/rent-not-paid');
+            const response = await fetch(API_ROUTES.fetchMemberNotPaidRentList);
             const data = await response.json();
             setRentNotPaid(data);
         } catch (error) {
@@ -95,7 +95,7 @@ const Member = () => {
 
     const fetchJoiningMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/joining-members');
+            const response = await fetch(API_ROUTES.fetchJoiningMembersList);
             const data = await response.json();
             setJoiningMembers(data);
         } catch (error) {
@@ -114,7 +114,7 @@ const Member = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-paid/${memberId}`, {
+          const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ const Member = () => {
 
     const markRentNotPaid = async (memberId) => {
         try {
-          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-not-paid/${memberId}`, {
+          const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -217,7 +217,7 @@ const Member = () => {
 
     const fetchPaidRentMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/members-paid-rent');
+            const response = await fetch(API_ROUTES.fetchListMemberRentPaid);
             const data = await response.json();
             // Assuming you want to set this data into a state variable
             setPaidRentMembers(data);
@@ -289,7 +289,7 @@ const Member = () => {
       
         const fetchBeds = async (sharing) => {
           try {
-            const response = await axios.get(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/beds/${sharing}`);
+            const response = await axios.get(`${API_ROUTES.fetchSharingBedApiDETAILS}/${sharing}`);
             setBeds(response.data);
             setSharing(sharing);
           } catch (error) {

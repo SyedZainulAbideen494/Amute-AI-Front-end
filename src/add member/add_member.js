@@ -32,18 +32,7 @@ const AddMember = () => {
   };
 
   const addMember = async () => {
-    console.log('Form Data:', {
-      name,
-      phoneNo,
-      dateJoining,
-      dateLeaving,
-      workingLocation,
-      adharNumber,
-      costing,
-      alternativeNumber,
-      bedId: selectedBed
-    });
-  
+
     if (selectedBed) {
       try {
         await axios.post(API_ROUTES.addMember, {

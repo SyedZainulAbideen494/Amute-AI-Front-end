@@ -43,18 +43,18 @@ const DashboardTeam = () => {
         );
       };
 
-    useEffect(() => {
-      const fetchVacatingMembers = async () => {
-        try {
-          const response = await axios.get('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members');
-          setMembersVacateNotice(response.data);
-        } catch (error) {
-          console.error('Error fetching vacating members:', error);
-        }
-      };
-  
-      fetchVacatingMembers();
-    }, []);
+        const fetchVacatingMembers = async () => {
+            try {
+              const response = await axios.get(API_ROUTES.fetchVeacatingMemberList);
+              setMembersVacateNotice(response.data);
+            } catch (error) {
+              console.error('Error fetching vacating members:', error);
+            }
+          };
+        
+          useEffect(() => {
+            fetchVacatingMembers();
+          }, []); // Empty dependency array means this effect runs only once on mount
     useEffect(() => {
         fetchMembers();
         fetchTotalRent();
@@ -76,7 +76,7 @@ const DashboardTeam = () => {
 
     const fetchTotalRent = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/total-rent');
+            const response = await fetch(API_ROUTES.displayFetchTotalRent);
             const data = await response.json();
             setTotalRent(data.totalRent);
         } catch (error) {
@@ -86,7 +86,7 @@ const DashboardTeam = () => {
 
     const fetchLeavingMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/leaving-members');
+            const response = await fetch(API_ROUTES.fetchLevingMemberList);
             const data = await response.json();
             setLeavingMembers(data);
         } catch (error) {
@@ -96,7 +96,7 @@ const DashboardTeam = () => {
 
     const fetchRentNotPaid = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/rent-not-paid');
+            const response = await fetch(API_ROUTES.fetchMemberNotPaidRentList);
             const data = await response.json();
             setRentNotPaid(data);
         } catch (error) {
@@ -106,7 +106,7 @@ const DashboardTeam = () => {
 
     const fetchJoiningMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/joining-members');
+            const response = await fetch(API_ROUTES.fetchJoiningMembersList);
             const data = await response.json();
             setJoiningMembers(data);
         } catch (error) {
@@ -125,7 +125,7 @@ const DashboardTeam = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-paid/${memberId}`, {
+          const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ const DashboardTeam = () => {
 
       const markRentNotPaid = async (memberId) => {
         try {
-          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-not-paid/${memberId}`, {
+          const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ const DashboardTeam = () => {
 
       const fetchPaidRentMembers = async () => {
         try {
-            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/members-paid-rent');
+            const response = await fetch(API_ROUTES.fetchListMemberRentPaid);
             const data = await response.json();
             // Assuming you want to set this data into a state variable
             setPaidRentMembers(data);

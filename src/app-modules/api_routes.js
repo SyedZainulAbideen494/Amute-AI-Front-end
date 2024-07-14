@@ -15,5 +15,16 @@ export const API_ROUTES = {
   shiftMember: `${API_URL}/api/shiftMember`,
   fetchBeds: `${API_URL}/beds`,
   addStatements: `${API_URL}/api/add/statements`,
-  fetchStatements: `${API_URL}/api/statements`
+  fetchStatements: `${API_URL}/api/statements`,
+  calanderFetch: `${API_URL}/api/calendar`,
+  fetchVeacatingMemberList: `${API_URL}/api/vacating-members`,
+  displayFetchTotalRent: `${API_URL}/api/total-rent`,
+  fetchLevingMemberList: `${API_URL}/api/leaving-members`,
+  fetchMemberNotPaidRentList: `${API_URL}/api/rent-not-paid`,
+  fetchJoiningMembersList: `${API_URL}/api/joining-members`,
+  markRentPaidAPI: `${API_URL}/api/mark-rent-paid`,
+  markRentNotPaidAPI: `${API_URL}/api/mark-rent-not-paid`,
+  fetchListMemberRentPaid: `${API_URL}/api/members-paid-rent`,
+  fetchSharingBedApiDETAILS: `${API_URL}/beds`,
+  revertVacatingMember: `${API_URL}/api/vacating-members`
 };

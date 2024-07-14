@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CalendarModal from './CalendarModal'; // Adjust path based on your project structure
+import { API_ROUTES } from '../app-modules/api_routes';
 
 const CalendarComponent = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
@@ -10,7 +11,7 @@ const CalendarComponent = () => {
     setCurrentMonth(index);
 
     try {
-      const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/calendar/${new Date().getFullYear()}/${index + 1}`);
+      const response = await fetch(`${API_ROUTES.calanderFetch}/${new Date().getFullYear()}/${index + 1}`);
       const data = await response.json();
       setModalData(data);
       setModalOpen(true);
