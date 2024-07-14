@@ -3,17 +3,23 @@ import axios from "axios";
 import './addMember.css'; // Ensure your CSS file is named correctly
 import SuccessModal from './succesModal';
 import { API_ROUTES } from "../app-modules/api_routes";
+import { Link } from "react-router-dom";
 
 const AddMember = () => {
   const [name, setName] = useState('');
   const [phoneNo, setPhoneNo] = useState('');
+  const [dateJoining, setDateJoining] = useState('');
+  const [dateLeaving, setDateLeaving] = useState('');
+  const [workingLocation, setWorkingLocation] = useState('');
+  const [adharNumber, setAdharNumber] = useState('');
+  const [costing, setCosting] = useState('');
+  const [alternativeNumber, setAlternativeNumber] = useState('');
   const [sharing, setSharing] = useState('');
   const [beds, setBeds] = useState([]);
   const [selectedBed, setSelectedBed] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredBeds, setFilteredBeds] = useState([]);
-
 
   const fetchBeds = async (sharing) => {
     try {
@@ -26,17 +32,41 @@ const AddMember = () => {
   };
 
   const addMember = async () => {
+    console.log('Form Data:', {
+      name,
+      phoneNo,
+      dateJoining,
+      dateLeaving,
+      workingLocation,
+      adharNumber,
+      costing,
+      alternativeNumber,
+      bedId: selectedBed
+    });
+  
     if (selectedBed) {
       try {
         await axios.post(API_ROUTES.addMember, {
           name,
           phoneNo,
+          dateJoining,
+          dateLeaving,
+          workingLocation,
+          adharNumber,
+          costing,
+          alternativeNumber,
           bedId: selectedBed
         });
         setShowModal(true); // Show modal on successful addition
         // Reset form fields after successful addition
         setName('');
         setPhoneNo('');
+        setDateJoining('');
+        setDateLeaving('');
+        setWorkingLocation('');
+        setAdharNumber('');
+        setCosting('');
+        setAlternativeNumber('');
         setSelectedBed(null);
       } catch (error) {
         console.error('Error adding member:', error);
@@ -66,7 +96,16 @@ const AddMember = () => {
   };
 
   return  (
-    <div className="container_add_member">
+    <div className="dashboard-team-container">
+        <nav className="left-navbar">
+        <h3>Dashboard</h3>
+        <ul>
+            <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/members">Members</Link></li>
+            <li><Link to="/statements">Statements</Link></li>
+            <li><Link to="/add-members">Add Members</Link></li>
+        </ul>
+    </nav>
       <h1 className="heading_add_member">Add Member</h1>
       <div className="add_member_form">
         <input
@@ -82,6 +121,48 @@ const AddMember = () => {
           placeholder="Phone No"
           value={phoneNo}
           onChange={(e) => setPhoneNo(e.target.value)}
+        />
+        <input
+          type="date"
+          className="input-text_add_member"
+          placeholder="Date of Joining"
+          value={dateJoining}
+          onChange={(e) => setDateJoining(e.target.value)}
+        />
+        <input
+          type="date"
+          className="input-text_add_member"
+          placeholder="Date of Leaving"
+          value={dateLeaving}
+          onChange={(e) => setDateLeaving(e.target.value)}
+        />
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Working Location"
+          value={workingLocation}
+          onChange={(e) => setWorkingLocation(e.target.value)}
+        />
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Adhar Number"
+          value={adharNumber}
+          onChange={(e) => setAdharNumber(e.target.value)}
+        />
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Costing"
+          value={costing}
+          onChange={(e) => setCosting(e.target.value)}
+        />
+        <input
+          type="text"
+          className="input-text_add_member"
+          placeholder="Alternative Number"
+          value={alternativeNumber}
+          onChange={(e) => setAlternativeNumber(e.target.value)}
         />
         <div className="button-group_add_member">
           <button className="button_add_member" onClick={() => fetchBeds(1)}>1 Sharing</button>

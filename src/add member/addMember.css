@@ -1,0 +1,126 @@
+.heading_add_member {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .add_member_form {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    margin-left: 250px;
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-text_add_member {
+    width: calc(100% - 20px);
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .button-group_add_member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .button_add_member {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button_add_member:hover {
+    background-color: #005cbf;
+  }
+  
+  .search-bar_add_member {
+    margin-bottom: 20px;
+  }
+  
+  .radio-group_add_member {
+    margin-bottom: 20px;
+  }
+  
+  .radio-item_add_member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .radio-input_add_member {
+    margin-right: 10px;
+  }
+  
+  .radio-label_add_member {
+    font-size: 1rem;
+  }
+  
+  .radio-label_add_member::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  
+  .radio-input_add_member:checked + .radio-label_add_member::before {
+    background-color: #0066cc;
+    border-color: #0066cc;
+  }
+  
+  .button-group_add_member,
+  .search-bar_add_member,
+  .radio-group_add_member {
+    width: 100%;
+  }
+  
+  /* Modal Styles */
+  .success-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .success-modal h2 {
+    margin-bottom: 10px;
+    color: #0066cc;
+  }
+  
+  .success-modal p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .modal-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #0066cc;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-button:hover {
+    background-color: #005cbf;
+  }
