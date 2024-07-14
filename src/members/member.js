@@ -31,6 +31,7 @@ const Member = () => {
     const [modalMessage, setModalMessage] = useState('');
     const [showWhatsappReminder, setShowWhatsappReminder] = useState('')
     const [remniderMember, setReminderMember] = useState(null)
+    const [showModalSuccessmsg, setShowModalSuccessMsg] = useState(false)
 
     const handleRemoveMember = (member_id) => {
         axios.delete(`${API_ROUTES.revertVacatingMember}/${member_id}`)
@@ -292,6 +293,7 @@ const Member = () => {
 
         
 const handleSend = async () => {
+  setShowModalSuccessMsg(true);
     try {
         // API call to send WhatsApp reminder
         await axios.post('http://localhost:8080/api/send-whatsapp-reminder', {
@@ -299,7 +301,7 @@ const handleSend = async () => {
             message,
         });
         // Show success modal
-        setShowModal(true);
+        setShowModalSuccessMsg(true);
     } catch (error) {
         console.error('Failed to send reminder:', error);
     }
@@ -324,7 +326,7 @@ const handleSend = async () => {
                   Cancel
                 </button>
               </div>
-              {showModal && (
+              {showModalSuccessmsg && (
                 <div className="success-animation">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
