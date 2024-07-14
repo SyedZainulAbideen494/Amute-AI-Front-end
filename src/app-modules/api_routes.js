@@ -13,5 +13,7 @@ export const API_ROUTES = {
   availableBeds: `${API_URL}/api/available-beds`,
   dolwnloadAPK: `${API_URL}/download/myapp.apk`,
   shiftMember: `${API_URL}/api/shiftMember`,
-  fetchBeds: `${API_URL}/beds`
+  fetchBeds: `${API_URL}/beds`,
+  addStatements: `${API_URL}/api/add/statements`,
+  fetchStatements: `${API_URL}/api/statements`
 };

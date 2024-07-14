@@ -1,0 +1,116 @@
+/* Left Navbar */
+.left-navbar {
+    background-color: #fff;
+    color: #000000;
+    width: 200px;
+    padding: 20px;
+    height: 100%;
+    position: fixed; /* Fixed positioning to keep it in place */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it stays above other content */
+    margin: 10px 0px;
+    border-radius: 25px;
+  }
+  
+  .left-navbar h3 {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 20px;
+    cursor: no-drop;
+  }
+  
+  .left-navbar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .left-navbar ul li {
+    margin-bottom: 10px;
+  }
+  
+  .left-navbar ul li a {
+    display: block;
+    padding: 10px;
+    color: #000000;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    border-radius: 25px;
+  }
+  
+  .left-navbar ul li a:hover {
+    background-color: #fff5f5;
+  }
+  
+  /* Main Content */
+  .main-content {
+    margin-left: 220px; /* Adjust according to the width of the navbar */
+    padding: 20px;
+  }
+  
+  .add-statement-form {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%; /* Occupy full width */
+    max-width: 600px; /* Ensure it doesn't stretch too wide */
+    margin: 20px auto; /* Center align horizontally */
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .form-input {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .form-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background-color: #45a049;
+  }
+
+
+  .main-statements {
+    flex: 1;
+    margin-left: 220px;
+    padding: 20px;
+  }
+  
+  .statement-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .statement-card {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    width: calc(50% - 10px); /* Display two cards inline */
+  }
+  
+  .statement-card p {
+    margin: 5px 0;
+  }

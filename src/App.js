@@ -21,13 +21,15 @@ import AddMemberPage from "./add member/add_memberpage";
 import ConversationsPage from "./conversations/conversationsTeam";
 import Conversations from "./home/conversations";
 import ConersationsMainPage from "./conversations/conversationsPage";
+import Statements from "./statements/statements";
 
 
 const router = createBrowserRouter([
   { path: '/', element: <HomeTeam/>},
   {path: '/members', element: <MemberPage/>},
   {path: '/add-members', element: <AddMemberPage/>},
-  {path: '/conversations', element: <ConersationsMainPage/>}
+  {path: '/conversations', element: <ConersationsMainPage/>},
+  {path: '/statements', element: <Statements/>}
 ]);
 
 
