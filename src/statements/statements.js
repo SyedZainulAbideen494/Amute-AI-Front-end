@@ -23,9 +23,8 @@ const Statements = () => {
     }
   };
 
-  const handleViewPhoto = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
+  const handleViewPhoto = (photoLink) => {
+    window.open(`${API_ROUTES.displayImages}/${photoLink}`, "_blank"); // Open photo link in a new tab
   };
 
   const closeModal = () => {
