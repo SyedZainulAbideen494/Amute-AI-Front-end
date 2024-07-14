@@ -6,6 +6,7 @@ import NotificationModal from "../Notifications/NotificationModal";
 import axios from "axios";
 import './member.css'; // Import the CSS file for styling
 import { API_ROUTES } from "../app-modules/api_routes";
+import SuccessModal from "./successModal";
 
 const Member = () => {
     const [notifications, setNotifications] = useState([]);
@@ -26,6 +27,8 @@ const Member = () => {
     const [deleteDate, setDeleteDate] = useState("");
     const [membersVacateNotice, setMembersVacateNotice] = useState([]);
     const [paidRentMembers, setPaidRentMembers] = useState([])
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const handleRemoveMember = (member_id) => {
         axios.delete(`${API_ROUTES.revertVacatingMember}/${member_id}`)
@@ -114,24 +117,45 @@ const Member = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ payment_pending: 0 }) // Assuming 'payment_pending' field in your API
-          });
-          if (response.ok) {
-            // Update UI or fetch updated rent not paid list
-            fetchRentNotPaid();
-            console.log(`Rent marked as paid for member ID ${memberId}`);
-          } else {
-            console.error('Failed to mark rent as paid');
-          }
+            const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ payment_pending: 0 })
+            });
+            if (response.ok) {
+                fetchRentNotPaid();
+                setModalMessage(`Rent marked as paid for member`);
+                setShowSuccessModal(true);
+            } else {
+                console.error('Failed to mark rent as paid');
+            }
         } catch (error) {
-          console.error('Error marking rent as paid:', error);
+            console.error('Error marking rent as paid:', error);
         }
-      };
+    };
+    
+    const markRentNotPaid = async (memberId) => {
+        try {
+            const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ payment_pending: 1 })
+            });
+            if (response.ok) {
+                fetchPaidRentMembers();
+                setModalMessage(`Rent marked as unpaid for member`);
+                setShowSuccessModal(true);
+            } else {
+                console.error('Failed to mark rent as unpaid');
+            }
+        } catch (error) {
+            console.error('Error marking rent as unpaid:', error);
+        }
+    };
 
       const handleDeleteMember = async () => {
         try {
@@ -194,26 +218,7 @@ const Member = () => {
         }
     };
 
-    const markRentNotPaid = async (memberId) => {
-        try {
-          const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ payment_pending: 1 }) // Assuming 'payment_pending' field in your API
-          });
-          if (response.ok) {
-            // Update UI or fetch updated rent not paid list
-            fetchPaidRentMembers();
-            console.log(`Rent marked as paid for member ID ${memberId}`);
-          } else {
-            console.error('Failed to mark rent as paid');
-          }
-        } catch (error) {
-          console.error('Error marking rent as paid:', error);
-        }
-      };
+
 
     const fetchPaidRentMembers = async () => {
         try {
@@ -422,6 +427,12 @@ const Member = () => {
 
     return (
 <div className="dashboard-team-container">
+{showSuccessModal && (
+            <SuccessModal
+                message={modalMessage}
+                onClose={() => setShowSuccessModal(false)}
+            />
+        )}
     <nav className="left-navbar">
         <h3>Dashboard</h3>
         <ul>

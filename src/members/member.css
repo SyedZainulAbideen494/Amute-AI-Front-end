@@ -214,3 +214,86 @@
   .success-animation button:hover {
     background-color: #27ae60;
   }
+
+
+  /* Overlay */
+.modal-overlay-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Modal content */
+.modal-content-success {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    position: relative;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Animation for modal appearance */
+@keyframes slideDown {
+    from {
+        transform: translateY(-20%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Tick mark container */
+.tick-mark-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Tick mark */
+.tick-mark {
+    fill: none;
+    stroke: #4CAF50;
+    stroke-width: 2;
+    width: 48px;
+    height: 48px;
+}
+
+/* Success heading */
+.modal-content-success h2 {
+    margin-bottom: 10px;
+    color: #4CAF50;
+}
+
+/* Message */
+.modal-content-success p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Close button */
+.modal-content-success button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content-success button:hover {
+    background-color: #45a049;
+}

@@ -3,6 +3,7 @@ import './home.css'; // Ensure your CSS file is correctly imported
 import { Link } from "react-router-dom";
 import { API_ROUTES } from "../app-modules/api_routes";
 import axios from "axios";
+import SuccessModal from "../members/successModal";
 import CalendarComponent from "./calander";
 
 const DashboardTeam = () => {
@@ -17,7 +18,8 @@ const DashboardTeam = () => {
     const [paidRentMembers, setPaidRentMembers] = useState([])
     const [membersVacateNotice, setMembersVacateNotice] = useState([]);
     const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const renderCalendar = () => {
         const months = [
@@ -125,46 +127,45 @@ const DashboardTeam = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ payment_pending: 0 }) // Assuming 'payment_pending' field in your API
-          });
-          if (response.ok) {
-            // Update UI or fetch updated rent not paid list
-            fetchRentNotPaid();
-            console.log(`Rent marked as paid for member ID ${memberId}`);
-          } else {
-            console.error('Failed to mark rent as paid');
-          }
+            const response = await fetch(`${API_ROUTES.markRentPaidAPI}/${memberId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ payment_pending: 0 })
+            });
+            if (response.ok) {
+                fetchRentNotPaid();
+                setModalMessage(`Rent marked as paid for member`);
+                setShowSuccessModal(true);
+            } else {
+                console.error('Failed to mark rent as paid');
+            }
         } catch (error) {
-          console.error('Error marking rent as paid:', error);
+            console.error('Error marking rent as paid:', error);
         }
-      };
-
-      const markRentNotPaid = async (memberId) => {
+    };
+    
+    const markRentNotPaid = async (memberId) => {
         try {
-          const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ payment_pending: 1 }) // Assuming 'payment_pending' field in your API
-          });
-          if (response.ok) {
-            // Update UI or fetch updated rent not paid list
-            fetchPaidRentMembers();
-            console.log(`Rent marked as paid for member ID ${memberId}`);
-          } else {
-            console.error('Failed to mark rent as paid');
-          }
+            const response = await fetch(`${API_ROUTES.markRentNotPaidAPI}/${memberId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ payment_pending: 1 })
+            });
+            if (response.ok) {
+                fetchPaidRentMembers();
+                setModalMessage(`Rent marked as unpaid for member`);
+                setShowSuccessModal(true);
+            } else {
+                console.error('Failed to mark rent as unpaid');
+            }
         } catch (error) {
-          console.error('Error marking rent as paid:', error);
+            console.error('Error marking rent as unpaid:', error);
         }
-      };
-
+    };
       const fetchPaidRentMembers = async () => {
         try {
             const response = await fetch(API_ROUTES.fetchListMemberRentPaid);
@@ -192,6 +193,12 @@ const DashboardTeam = () => {
 
     return (
         <div className="dashboard-team-container">
+             {showSuccessModal && (
+            <SuccessModal
+                message={modalMessage}
+                onClose={() => setShowSuccessModal(false)}
+            />
+        )}
             <nav className="left-navbar">
                 <h3>Dashboard</h3>
                 <ul>
