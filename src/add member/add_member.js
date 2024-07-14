@@ -86,110 +86,128 @@ const AddMember = () => {
 
   return  (
     <div className="dashboard-team-container">
-        <nav className="left-navbar">
-        <h3>Dashboard</h3>
-        <ul>
-            <li><Link to="/">Dashboard</Link></li>
-            <li><Link to="/members">Members</Link></li>
-            <li><Link to="/statements">Statements</Link></li>
-            <li><Link to="/add-members">Add Members</Link></li>
-        </ul>
+    <nav className="left-navbar">
+      <h3>Dashboard</h3>
+      <ul>
+        <li><Link to="/">Dashboard</Link></li>
+        <li><Link to="/members">Members</Link></li>
+        <li><Link to="/statements">Statements</Link></li>
+        <li><Link to="/add-members">Add Members</Link></li>
+      </ul>
     </nav>
-      <h1 className="heading_add_member">Add Member</h1>
-      <div className="add_member_form">
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Phone No"
-          value={phoneNo}
-          onChange={(e) => setPhoneNo(e.target.value)}
-        />
-        <input
-          type="date"
-          className="input-text_add_member"
-          placeholder="Date of Joining"
-          value={dateJoining}
-          onChange={(e) => setDateJoining(e.target.value)}
-        />
-        <input
-          type="date"
-          className="input-text_add_member"
-          placeholder="Date of Leaving"
-          value={dateLeaving}
-          onChange={(e) => setDateLeaving(e.target.value)}
-        />
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Working Location"
-          value={workingLocation}
-          onChange={(e) => setWorkingLocation(e.target.value)}
-        />
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Adhar Number"
-          value={adharNumber}
-          onChange={(e) => setAdharNumber(e.target.value)}
-        />
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Costing"
-          value={costing}
-          onChange={(e) => setCosting(e.target.value)}
-        />
-        <input
-          type="text"
-          className="input-text_add_member"
-          placeholder="Alternative Number"
-          value={alternativeNumber}
-          onChange={(e) => setAlternativeNumber(e.target.value)}
-        />
-        <div className="button-group_add_member">
-          <button className="button_add_member" onClick={() => fetchBeds(1)}>1 Sharing</button>
-          <button className="button_add_member" onClick={() => fetchBeds(2)}>2 Sharing</button>
-          <button className="button_add_member" onClick={() => fetchBeds(3)}>3 Sharing</button>
-          <button className="button_add_member" onClick={() => fetchBeds(4)}>4 Sharing</button>
-        </div>
-        <div className="search-bar_add_member">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => filterBeds(e.target.value)}
-            className="input-text_add_member"
-          />
-        </div>
-        <div className="radio-group_add_member">
-          {(searchTerm ? filteredBeds : beds).map(bed => (
-            <div className="radio-item_add_member" key={bed.bedId}>
-              <input
-                type="radio"
-                className="radio-input_add_member"
-                id={`bed_${bed.bedId}`}
-                name="bed"
-                value={bed.bedId}
-                onChange={() => setSelectedBed(bed.bedId)}
-                checked={selectedBed === bed.bedId}
-              />
-              <label htmlFor={`bed_${bed.bedId}`} className="radio-label_add_member">
-                {`Building: ${bed.buildingName}, Floor: ${bed.floor_number}, Flat: ${bed.flat_number}, Room: ${bed.room_number}, Bed: ${bed.bed_number}`}
-              </label>
-            </div>
-          ))}
-        </div>
-        <button className="button_add_member" onClick={addMember}>Add Member</button>
+    <h1 className="heading_add_member">Add Member</h1>
+    <div className="add_member_form">
+      <label htmlFor="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <label htmlFor="phoneNo">Phone No</label>
+      <input
+        id="phoneNo"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Phone No"
+        value={phoneNo}
+        onChange={(e) => setPhoneNo(e.target.value)}
+      />
+      <label htmlFor="dateJoining">Date of Joining</label>
+      <input
+        id="dateJoining"
+        type="date"
+        className="input-text_add_member"
+        placeholder="Date of Joining"
+        value={dateJoining}
+        onChange={(e) => setDateJoining(e.target.value)}
+      />
+      <label htmlFor="dateLeaving">Date of Leaving</label>
+      <input
+        id="dateLeaving"
+        type="date"
+        className="input-text_add_member"
+        placeholder="Date of Leaving"
+        value={dateLeaving}
+        onChange={(e) => setDateLeaving(e.target.value)}
+      />
+      <label htmlFor="workingLocation">Working Location</label>
+      <input
+        id="workingLocation"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Working Location"
+        value={workingLocation}
+        onChange={(e) => setWorkingLocation(e.target.value)}
+      />
+      <label htmlFor="adharNumber">Adhar Number</label>
+      <input
+        id="adharNumber"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Adhar Number"
+        value={adharNumber}
+        onChange={(e) => setAdharNumber(e.target.value)}
+      />
+      <label htmlFor="costing">Costing</label>
+      <input
+        id="costing"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Costing"
+        value={costing}
+        onChange={(e) => setCosting(e.target.value)}
+      />
+      <label htmlFor="alternativeNumber">Alternative Number</label>
+      <input
+        id="alternativeNumber"
+        type="text"
+        className="input-text_add_member"
+        placeholder="Alternative Number"
+        value={alternativeNumber}
+        onChange={(e) => setAlternativeNumber(e.target.value)}
+      />
+      <div className="button-group_add_member">
+        <button className="button_add_member" onClick={() => fetchBeds(1)}>1 Sharing</button>
+        <button className="button_add_member" onClick={() => fetchBeds(2)}>2 Sharing</button>
+        <button className="button_add_member" onClick={() => fetchBeds(3)}>3 Sharing</button>
+        <button className="button_add_member" onClick={() => fetchBeds(4)}>4 Sharing</button>
       </div>
-      {showModal && <SuccessModal onClose={closeModal} />}
+      <div className="search-bar_add_member">
+        <label htmlFor="searchTerm">Search</label>
+        <input
+          id="searchTerm"
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(e) => filterBeds(e.target.value)}
+          className="input-text_add_member"
+        />
+      </div>
+      <div className="radio-group_add_member">
+        {(searchTerm ? filteredBeds : beds).map(bed => (
+          <div className="radio-item_add_member" key={bed.bedId}>
+            <input
+              type="radio"
+              className="radio-input_add_member"
+              id={`bed_${bed.bedId}`}
+              name="bed"
+              value={bed.bedId}
+              onChange={() => setSelectedBed(bed.bedId)}
+              checked={selectedBed === bed.bedId}
+            />
+            <label htmlFor={`bed_${bed.bedId}`} className="radio-label_add_member">
+              {`Building: ${bed.buildingName}, Floor: ${bed.floor_number}, Flat: ${bed.flat_number}, Room: ${bed.room_number}, Bed: ${bed.bed_number}`}
+            </label>
+          </div>
+        ))}
+      </div>
+      <button className="button_add_member" onClick={addMember}>Add Member</button>
     </div>
+    {showModal && <SuccessModal onClose={closeModal} />}
+  </div>
   );
 }
 
