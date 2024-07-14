@@ -27,14 +27,14 @@ const CalendarModal = ({ isOpen, onClose, data, currentMonth }) => {
         <div className="joining-list">
           <h3>Joining this month:</h3>
           {data.joining.map((entry, idx) => (
-            <p key={idx}>{entry.member_name} joined on {new Date(entry.date_join).toLocaleDateString()}</p>
+            <p key={idx}>{entry.member_name} joining on {new Date(entry.date_join).toLocaleDateString()}</p>
           ))}
         </div>
 
         <div className="leaving-list">
           <h3>Leaving this month:</h3>
           {data.leaving.map((entry, idx) => (
-            <p key={idx}>{entry.member_name} vacated on {entry.date_vacating ? new Date(entry.date_vacating).toLocaleDateString() : 'unknown'}</p>
+            <p key={idx}>{entry.member_name} vacating on {entry.date_vacating ? new Date(entry.date_vacating).toLocaleDateString() : 'unknown'}</p>
           ))}
         </div>
       </div>
