@@ -3,6 +3,7 @@ import './home.css'; // Ensure your CSS file is correctly imported
 import { Link } from "react-router-dom";
 import { API_ROUTES } from "../app-modules/api_routes";
 import axios from "axios";
+import CalendarComponent from "./calander";
 
 const DashboardTeam = () => {
     const [members, setMembers] = useState([]);
@@ -15,11 +16,37 @@ const DashboardTeam = () => {
     const [showModal, setShowModal] = useState(false);
     const [paidRentMembers, setPaidRentMembers] = useState([])
     const [membersVacateNotice, setMembersVacateNotice] = useState([]);
+    const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
+
+
+    const renderCalendar = () => {
+        const months = [
+          'January', 'February', 'March', 'April', 'May', 'June',
+          'July', 'August', 'September', 'October', 'November', 'December'
+        ];
+      
+        return (
+          <div className="calendar-container">
+            <h3>Calendar {new Date().getFullYear()}</h3>
+            <div className="calendar">
+              {months.map((month, index) => (
+                <div
+                  key={index}
+                  className={`month ${index === currentMonth ? 'current' : ''}`}
+                  onClick={() => setCurrentMonth(index)}
+                >
+                  {month}
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      };
 
     useEffect(() => {
       const fetchVacatingMembers = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/api/vacating-members');
+          const response = await axios.get('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members');
           setMembersVacateNotice(response.data);
         } catch (error) {
           console.error('Error fetching vacating members:', error);
@@ -49,7 +76,7 @@ const DashboardTeam = () => {
 
     const fetchTotalRent = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/total-rent');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/total-rent');
             const data = await response.json();
             setTotalRent(data.totalRent);
         } catch (error) {
@@ -59,7 +86,7 @@ const DashboardTeam = () => {
 
     const fetchLeavingMembers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/leaving-members');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/leaving-members');
             const data = await response.json();
             setLeavingMembers(data);
         } catch (error) {
@@ -69,7 +96,7 @@ const DashboardTeam = () => {
 
     const fetchRentNotPaid = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/rent-not-paid');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/rent-not-paid');
             const data = await response.json();
             setRentNotPaid(data);
         } catch (error) {
@@ -79,7 +106,7 @@ const DashboardTeam = () => {
 
     const fetchJoiningMembers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/joining-members');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/joining-members');
             const data = await response.json();
             setJoiningMembers(data);
         } catch (error) {
@@ -98,7 +125,7 @@ const DashboardTeam = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`http://localhost:8080/api/mark-rent-paid/${memberId}`, {
+          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-paid/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -119,7 +146,7 @@ const DashboardTeam = () => {
 
       const markRentNotPaid = async (memberId) => {
         try {
-          const response = await fetch(`http://localhost:8080/api/mark-rent-not-paid/${memberId}`, {
+          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-not-paid/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -140,7 +167,7 @@ const DashboardTeam = () => {
 
       const fetchPaidRentMembers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/members-paid-rent');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/members-paid-rent');
             const data = await response.json();
             // Assuming you want to set this data into a state variable
             setPaidRentMembers(data);
@@ -168,12 +195,10 @@ const DashboardTeam = () => {
             <nav className="left-navbar">
                 <h3>Dashboard</h3>
                 <ul>
-                    <li><Link to="/">Dashboard</Link></li>
-                    <li><Link to="/members">Members</Link></li>
-                    <li><Link to="/path3">Buildings</Link></li>
-                    <li><Link to="/path4">Vacating</Link></li>
-                    <li><Link to="/path5">Add Members</Link></li>
-                    <li><Link to="/path6">Bookings</Link></li>
+                <li><Link to="/">Dashboard</Link></li>
+            <li><Link to="/members">Members</Link></li>
+            <li><Link to="/statements">Statements</Link></li>
+            <li><Link to="/add-members">Add Members</Link></li>
                 </ul>
             </nav>
             <div className="main-dashboard">
@@ -191,13 +216,14 @@ const DashboardTeam = () => {
                         <p>{leavingMembers.length}</p>
                     </div>
                 </div>
+                <CalendarComponent/>
                 <div className="dashboard-cards">
                 <div className="dashboard-card">
                         <h4>Rent Paid This Month</h4>
                         <ul>
                             {paidRentMembers.map(member => (
                                 <li key={member.id} className="member-item">
-                                    <span>{member.name} - {member.phone}</span>
+                                    <span>{member.name} - {member.phoneno}</span>
                                     <button className="view-button" onClick={() => markRentNotPaid(member.member_id)}>Mark Not Paid</button>
                                 </li>
                             ))}
@@ -221,7 +247,7 @@ const DashboardTeam = () => {
                         <ul>
                             {joiningMembers.map(member => (
                                 <li key={member.id} className="member-item">
-                                    <span>{member.name} - {member.phone}</span>
+                                    <span>{member.name} - {member.phoneno}</span>
                                     <button className="view-button" onClick={() => viewMemberDetails(member)}>View</button>
                                 </li>
                             ))}
@@ -232,7 +258,7 @@ const DashboardTeam = () => {
                         <ul>
                             {leavingMembers.map(member => (
                                 <li key={member.id} className="member-item">
-                                    <span>{member.name} - {member.phone}</span>
+                                    <span>{member.name} - {member.phoneno}</span>
                                     <button className="view-button" onClick={() => viewMemberDetails(member)}>View</button>
                                 </li>
                             ))}
@@ -257,7 +283,7 @@ const DashboardTeam = () => {
                         <ul>
                             {members.map(member => (
                                 <li key={member.id} className="member-item">
-                                    <span>{member.name} - {member.phone}</span>
+                                    <span>{member.name} - {member.phoneno}</span>
                                     <button className="view-button" onClick={() => viewMemberDetails(member)}>View</button>
                                 </li>
                             ))}
@@ -271,7 +297,7 @@ const DashboardTeam = () => {
                         <span className="close" onClick={toggleModal}>&times;</span>
                         <h2>Member Details</h2>
                         <p><strong>Name:</strong> {selectedMember.name}</p>
-                        <p><strong>Phone:</strong> {selectedMember.phone}</p>
+                        <p><strong>Phone:</strong> {selectedMember.phoneno}</p>
                         <p><strong>Adhar:</strong> {selectedMember.adhar}</p>
                         <p><strong>Alternative Numbers:</strong> {selectedMember.alternative_numbers}</p>
                         <p><strong>Working Location:</strong> {selectedMember.working_location}</p>

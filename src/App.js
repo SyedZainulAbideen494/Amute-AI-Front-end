@@ -26,7 +26,7 @@ import ConersationsMainPage from "./conversations/conversationsPage";
 const router = createBrowserRouter([
   { path: '/', element: <HomeTeam/>},
   {path: '/members', element: <MemberPage/>},
-  {path: '/addmember', element: <AddMemberPage/>},
+  {path: '/add-members', element: <AddMemberPage/>},
   {path: '/conversations', element: <ConersationsMainPage/>}
 ]);
 

@@ -32,7 +32,7 @@
 }
 
 .vacating_btn {
-    background-color: #000000;
+    background-color: #59D1F7;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -44,61 +44,6 @@
 
 .vacating_btn:hover {
     background-color: #000000;
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.success-animation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.success-animation svg {
-    margin-bottom: 10px;
-}
-
-.success-animation p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.success-animation button {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.success-animation button:hover {
-    background-color: #27ae60;
 }
 
 .delete-member-title {
@@ -151,3 +96,121 @@
 .delete-member-confirm-button:hover, .delete-member-cancel-button:hover {
     background-color: #0056b3;
 }
+
+
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  .heading_update_member {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .update_member_form {
+    margin-bottom: 20px;
+  }
+  
+  .input-text_update_member {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .button-group_update_member {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .button_update_member {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button_update_member:hover {
+    background-color: #2980b9;
+  }
+  
+  .search-bar_update_member {
+    margin-bottom: 15px;
+  }
+  
+  .radio-group_update_member {
+    max-height: 200px; /* Set a max height to enable vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 15px;
+  }
+  
+  .radio-item_update_member {
+    margin-bottom: 10px;
+  }
+  
+  .radio-input_update_member {
+    /* Customize as needed */
+  }
+  
+  .radio-label_update_member {
+    /* Customize as needed */
+  }
+  
+  .success-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .success-animation svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .success-animation p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .success-animation button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .success-animation button:hover {
+    background-color: #27ae60;
+  }

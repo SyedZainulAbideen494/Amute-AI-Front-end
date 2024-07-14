@@ -25,10 +25,10 @@ const Member = () => {
     const [showModal_view, setShowModal_view] = useState(false);
     const [deleteDate, setDeleteDate] = useState("");
     const [membersVacateNotice, setMembersVacateNotice] = useState([]);
-
+    const [paidRentMembers, setPaidRentMembers] = useState([])
 
     const handleRemoveMember = (member_id) => {
-        axios.delete(`http://localhost:8080/api/vacating-members/${member_id}`)
+        axios.delete(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members/${member_id}`)
             .then(response => {
                 // Remove the member from the vacating list in state
                 setMembersVacateNotice(prevMembers => (
@@ -44,7 +44,7 @@ const Member = () => {
     useEffect(() => {
       const fetchVacatingMembers = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/api/vacating-members');
+          const response = await axios.get('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/vacating-members');
           setMembersVacateNotice(response.data);
         } catch (error) {
           console.error('Error fetching vacating members:', error);
@@ -65,7 +65,7 @@ const Member = () => {
 
     const fetchTotalRent = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/total-rent');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/total-rent');
             const data = await response.json();
             setTotalRent(data.totalRent);
         } catch (error) {
@@ -75,7 +75,7 @@ const Member = () => {
 
     const fetchLeavingMembers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/leaving-members');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/leaving-members');
             const data = await response.json();
             setLeavingMembers(data);
         } catch (error) {
@@ -85,7 +85,7 @@ const Member = () => {
 
     const fetchRentNotPaid = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/rent-not-paid');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/rent-not-paid');
             const data = await response.json();
             setRentNotPaid(data);
         } catch (error) {
@@ -95,7 +95,7 @@ const Member = () => {
 
     const fetchJoiningMembers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/api/joining-members');
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/joining-members');
             const data = await response.json();
             setJoiningMembers(data);
         } catch (error) {
@@ -114,7 +114,7 @@ const Member = () => {
 
     const markRentPaid = async (memberId) => {
         try {
-          const response = await fetch(`http://localhost:8080/api/mark-rent-paid/${memberId}`, {
+          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-paid/${memberId}`, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json'
@@ -194,6 +194,43 @@ const Member = () => {
         }
     };
 
+    const markRentNotPaid = async (memberId) => {
+        try {
+          const response = await fetch(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/mark-rent-not-paid/${memberId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ payment_pending: 1 }) // Assuming 'payment_pending' field in your API
+          });
+          if (response.ok) {
+            // Update UI or fetch updated rent not paid list
+            fetchPaidRentMembers();
+            console.log(`Rent marked as paid for member ID ${memberId}`);
+          } else {
+            console.error('Failed to mark rent as paid');
+          }
+        } catch (error) {
+          console.error('Error marking rent as paid:', error);
+        }
+      };
+
+    const fetchPaidRentMembers = async () => {
+        try {
+            const response = await fetch('https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/api/members-paid-rent');
+            const data = await response.json();
+            // Assuming you want to set this data into a state variable
+            setPaidRentMembers(data);
+        } catch (error) {
+            console.error('Error fetching members with paid rent:', error);
+        }
+    };
+    
+    // Call fetchPaidRentMembers inside useEffect or as needed
+    useEffect(() => {
+        fetchPaidRentMembers();
+    }, []);
+
     const toggleModal = () => {
         setShowModal(!showModal);
     };
@@ -232,165 +269,157 @@ const Member = () => {
             day: 'numeric'
         });
     };
-    const UpdateMemberModal = ({ member, updateMemberDetails, toggleModal }) => {
+
+
+    const UpdateMemberModal = ({ member, onUpdateSuccess, onClose }) => {
         const [name, setName] = useState(member ? member.name : '');
-        const [phoneNumber, setPhoneNumber] = useState(member ? member.phoneno : '');
-        const [building, setBuilding] = useState(member ? member.building.name : '');
-        const [floor, setFloor] = useState(member ? member.floor.floor_number : '');
-        const [flat, setFlat] = useState(member ? member.flat.flat_number : '');
-        const [room, setRoom] = useState(member ? member.room.room_number : '');
-        const [bed, setBed] = useState(member ? member.bed.bed_number : '');
-        const [message, setMessage] = useState(''); // State to manage the feedback message
-        const [updateSuccess, setUpdateSuccess] = useState(false); // State to manage update success
-    
-        const handleUpdate = async (e) => {
-            e.preventDefault();
-    
-            try {
-                const response = await axios.put(`${API_ROUTES.editMember}/${member.member_id}`, {
-                    name,
-                    phoneno: phoneNumber,
-                    building,
-                    floor,
-                    flat,
-                    room,
-                    bed
-                });
-    
-                if (response.status === 200) {
-                    setUpdateSuccess(true);
-                    setMessage('Member details updated successfully');
-                    updateMemberDetails();
-                    setTimeout(() => {
-                        toggleModal();
-                    }, 2000); // Close the modal after 2 seconds
-                } else {
-                    setMessage('Failed to update member details');
-                }
-            } catch (error) {
-                console.error('Error updating member:', error.response || error.message || error);
-                setMessage('Failed to update member details');
-            }
+        const [phoneNo, setPhoneNo] = useState(member ? member.phoneno : '');
+        const [sharing, setSharing] = useState('');
+        const [beds, setBeds] = useState([]);
+        const [selectedBed, setSelectedBed] = useState(member ? member.bed.id : '');
+        const [showModal, setShowModal] = useState(false);
+        const [searchTerm, setSearchTerm] = useState('');
+        const [filteredBeds, setFilteredBeds] = useState([]);
+      
+        useEffect(() => {
+          if (member) {
+            fetchBeds(member.room.sharing);
+          }
+        }, [member]);
+      
+        const fetchBeds = async (sharing) => {
+          try {
+            const response = await axios.get(`https://71b9585e58c4f527e361885f1b2f25ec.serveo.net/beds/${sharing}`);
+            setBeds(response.data);
+            setSharing(sharing);
+          } catch (error) {
+            console.error('Error fetching beds:', error);
+          }
         };
-    
+      
+        const updateMember = async () => {
+          if (selectedBed) {
+            try {
+              await axios.put(`${API_ROUTES.editMember}/${member.member_id}`, {
+                name,
+                phoneNo,
+                bedId: selectedBed
+              });
+              setShowModal(true); // Show modal on successful update
+              onUpdateSuccess(); // Trigger parent component update
+              setTimeout(() => {
+                setShowModal(false);
+                onClose(); // Close update modal
+              }, 2000); // Close the modal after 2 seconds
+            } catch (error) {
+              console.error('Error updating member:', error);
+            }
+          } else {
+            alert('Please select a bed.');
+          }
+        };
+      
+        const closeModal = () => {
+          setShowModal(false);
+          onClose();
+        };
+      
+        const filterBeds = (term) => {
+          setSearchTerm(term);
+          if (term.trim() === '') {
+            setFilteredBeds(beds); // If search term is empty, show all beds
+          } else {
+            const lowercasedFilter = term.toLowerCase();
+            const filteredData = beds.filter((bed) =>
+              `${bed.buildingName} ${bed.floor_number} ${bed.flat_number} ${bed.room_number} ${bed.bed_number}`
+                .toLowerCase()
+                .includes(lowercasedFilter)
+            );
+            setFilteredBeds(filteredData);
+          }
+        };
+      
         return (
             <div className="modal-overlay">
-                <div className="modal-content">
-                    {!updateSuccess ? (
-                        <form onSubmit={handleUpdate}>
-                            <div className="form_group">
-                                <label htmlFor="name">Name:</label>
-                                <input
-                                    id="name"
-                                    type="text"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    placeholder="Enter name"
-                                    required
-                                />
-                            </div>
-                        <div className="form_group">
-                            <label htmlFor="phone">Phone Number:</label>
-                            <input
-                                id="phone"
-                                type="text"
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
-                                placeholder="Enter phone number"
-                                required
-                            />
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="building">Building:</label>
-                            <select
-                                id="building"
-                                value={building}
-                                onChange={(e) => setBuilding(e.target.value)}
-                                required
-                            >
-                                <option value="Building 1">Building 1</option>
-                                <option value="Building 2">Building 2</option>
-                                <option value="Building 3">Building 3</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="floor">Floor:</label>
-                            <select
-                                id="floor"
-                                value={floor}
-                                onChange={(e) => setFloor(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="flat">Flat:</label>
-                            <select
-                                id="flat"
-                                value={flat}
-                                onChange={(e) => setFlat(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="room">Room:</label>
-                            <select
-                                id="room"
-                                value={room}
-                                onChange={(e) => setRoom(e.target.value)}
-                                required
-                            >
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
-                        </div>
-                        <div className="form_group">
-                            <label htmlFor="bed">Bed:</label>
-                            <input
-                                id="bed"
-                                type="text"
-                                value={bed}
-                                onChange={(e) => setBed(e.target.value)}
-                                placeholder="Enter bed"
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="vacating_btn">Update</button>
-                        <button type="button" onClick={toggleModal} className="vacating_btn">Cancel</button>
-                        {message && <p>{message}</p>} {/* Display the message below the buttons */}
-                    </form>
-                ) : (
-                    <div className="success-animation">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="100"
-                            height="100"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#00cc00"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M8 14l4 4 8-8" />
-                        </svg>
-                        <p>Member Updated Successfully</p>
-                        <button onClick={toggleModal}>Close</button>
+            <div className="modal-content">
+              <h1 className="heading_update_member">Update Member</h1>
+              <div className="update_member_form">
+                <input
+                  type="text"
+                  className="input-text_update_member"
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <input
+                  type="text"
+                  className="input-text_update_member"
+                  placeholder="Phone No"
+                  value={phoneNo}
+                  onChange={(e) => setPhoneNo(e.target.value)}
+                />
+                <div className="button-group_update_member">
+                  <button className="button_update_member" onClick={() => fetchBeds(1)}>1 Sharing</button>
+                  <button className="button_update_member" onClick={() => fetchBeds(2)}>2 Sharing</button>
+                  <button className="button_update_member" onClick={() => fetchBeds(3)}>3 Sharing</button>
+                  <button className="button_update_member" onClick={() => fetchBeds(4)}>4 Sharing</button>
+                </div>
+                <div className="search-bar_update_member">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchTerm}
+                    onChange={(e) => filterBeds(e.target.value)}
+                    className="input-text_update_member"
+                  />
+                </div>
+                <div className="radio-group_update_member">
+                  {(searchTerm ? filteredBeds : beds).map(bed => (
+                    <div className="radio-item_update_member" key={bed.bedId}>
+                      <input
+                        type="radio"
+                        className="radio-input_update_member"
+                        id={`bed_${bed.bedId}`}
+                        name="bed"
+                        value={bed.bedId}
+                        onChange={() => setSelectedBed(bed.bedId)}
+                        checked={selectedBed === bed.bedId}
+                      />
+                      <label htmlFor={`bed_${bed.bedId}`} className="radio-label_update_member">
+                        {`Building: ${bed.buildingName}, Floor: ${bed.floor_number}, Flat: ${bed.flat_number}, Room: ${bed.room_number}, Bed: ${bed.bed_number}`}
+                      </label>
                     </div>
-                )}
+                  ))}
+                </div>
+                <button className="button_update_member" onClick={updateMember} style={{marginRight:'20px'}}>Update Member</button>
+                <button className="button_update_member" onClick={toggleModal} style={{marginLeft:'20px'}}>Cancel</button>
+              </div>
+              {showModal &&  
+                <div className="success-animation">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100"
+                    height="100"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#00cc00"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 14l4 4 8-8" />
+                  </svg>
+                  <p>Member Updated Successfully</p>
+                  <button onClick={toggleModal} className="button_update_member">Close</button>
+                </div>
+              }
             </div>
-        </div>
-    );
-};
+          </div>
+        );
+      }
+      
+
     return (
 <div className="dashboard-team-container">
     <nav className="left-navbar">
@@ -398,44 +427,37 @@ const Member = () => {
         <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><Link to="/members">Members</Link></li>
-            <li><Link to="/buildings">Buildings</Link></li>
-            <li><Link to="/vacating">Vacating</Link></li>
+            <li><Link to="/statements">Statements</Link></li>
             <li><Link to="/add-members">Add Members</Link></li>
-            <li><Link to="/bookings">Bookings</Link></li>
         </ul>
     </nav>
     <div>
         <div className="main-dashboard">
-    <div className="dashboard-cards">
-<div className="dashboard-card">
-    <h3>Member List</h3>
-    <ul>
-    <div className="member_search_bar">
-        <input
-            type="text"
-            placeholder="Search members by name..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-        />
-    </div>
-        {filteredMembers.map((member, index) => (
-            <li key={index} className="dashboard-card">
-                <p><strong>Name:</strong> {member.name}</p>
-                <p><strong>Phone Number:</strong> {member.phoneno}</p>
-                <p><strong>Building:</strong> {member.building.name}</p>
-                <p><strong>Floor:</strong> {member.floor.floor_number}</p>
-                <p><strong>Flat:</strong> {member.flat.flat_number}</p>
-                <p><strong>Room:</strong> {member.room.room_number}</p>
-                <p><strong>Sharing:</strong> {member.room.sharing}</p>
-                <p><strong>Bed:</strong> {member.bed.bed_number}</p>
-                <button className="vacating_btn" onClick={() => viewMemberDetails(member)}>View</button>
-                <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
-                <button onClick={() => handleOpenUpdateModal(member)} className="vacating_btn">Update</button>
-            </li>
-        ))}
-        </ul>
+        <div className="dashboard-cards">
+               
+               <div className="dashboard-card">
+           <h4>All Members</h4>
+           <div className="member_search_bar">
+   <input
+       type="text"
+       placeholder="Search members by name..."
+       value={searchQuery}
+       onChange={handleSearchChange}
+   />
 </div>
-</div>
+           <ul>
+           {filteredMembers.map((member, index) => (
+       <li key={index} className="dashboard-card">
+           <p><strong>Name:</strong> {member.name}</p>
+           <p><strong>Phone Number:</strong> {member.phoneno}</p>
+           <button className="vacating_btn" onClick={() => viewMemberDetails(member)}>View</button>
+           <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
+           <button onClick={() => handleOpenUpdateModal(member)} className="vacating_btn">Update</button>
+       </li>
+   ))}
+           </ul>
+       </div>
+               </div>
 <div className="dashboard-cards">
                     <div className="dashboard-card">
                         <h4>Members Leaving This Month</h4>
@@ -473,12 +495,12 @@ const Member = () => {
                         </ul>
                     </div>
                     <div className="dashboard-card">
-                        <h4>All Members</h4>
+                        <h4>Rent Paid This Month</h4>
                         <ul>
-                            {members.map(member => (
+                            {paidRentMembers.map(member => (
                                 <li key={member.id} className="member-item">
-                                    <span>{member.name} - {member.phone}</span>
-                                    <button className="view-button" onClick={() => viewMemberDetails(member)}>View</button>
+                                    <span>{member.name} - {member.phoneno}</span>
+                                    <button className="view-button" onClick={() => markRentNotPaid(member.member_id)}>Mark Not Paid</button>
                                 </li>
                             ))}
                         </ul>
@@ -494,6 +516,28 @@ const Member = () => {
                             <button className="view-button" onClick={() => handleRemoveMember(member.member_id)}>Revert</button>
                         </li>
                     ))}
+                </ul>
+            </div>
+            <div className="dashboard-card">
+                <h4>All Members</h4>
+                <div className="member_search_bar">
+        <input
+            type="text"
+            placeholder="Search members by name..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+        />
+    </div>
+                <ul>
+                {filteredMembers.map((member, index) => (
+            <li key={index} className="dashboard-card">
+                <p><strong>Name:</strong> {member.name}</p>
+                <p><strong>Phone Number:</strong> {member.phoneno}</p>
+                <button className="vacating_btn" onClick={() => viewMemberDetails(member)}>View</button>
+                <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
+                <button onClick={() => handleOpenUpdateModal(member)} className="vacating_btn">Update</button>
+            </li>
+        ))}
                 </ul>
             </div>
                 </div>
@@ -557,13 +601,19 @@ const Member = () => {
                         <span className="close" onClick={toggleModal_view}>&times;</span>
                         <h2>Member Details</h2>
                         <p><strong>Name:</strong> {selectedMember.name}</p>
-                        <p><strong>Phone:</strong> {selectedMember.phone}</p>
+                        <p><strong>Phone:</strong> {selectedMember.phoneno}</p>
                         <p><strong>Adhar:</strong> {selectedMember.adhar}</p>
                         <p><strong>Alternative Numbers:</strong> {selectedMember.alternative_numbers}</p>
                         <p><strong>Working Location:</strong> {selectedMember.working_location}</p>
                         <p><strong>Date Joined:</strong> {selectedMember.date_join}</p>
                         <p><strong>Date Leaving:</strong> {selectedMember.date_leaving}</p>
                         <p><strong>Costing (Rent):</strong> {selectedMember.costing}</p>
+                        <p><strong>Building:</strong> {selectedMember.building.name}</p>
+                <p><strong>Floor:</strong> {selectedMember.floor.floor_number}</p>
+                <p><strong>Flat:</strong> {selectedMember.flat.flat_number}</p>
+                <p><strong>Room:</strong> {selectedMember.room.room_number}</p>
+                <p><strong>Sharing:</strong> {selectedMember.room.sharing}</p>
+                <p><strong>Bed:</strong> {selectedMember.bed.bed_number}</p>
                         <p><strong>Rent Payment Status:</strong> {selectedMember.payment_pending == '0' ? 'Paid' : 'Not Paid'}</p>
                     </div>
                 </div>

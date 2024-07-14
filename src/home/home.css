@@ -196,7 +196,7 @@
 
 .view-button {
   padding: 8px 15px;
-  background-color: #000000;
+  background-color: #59D1F7;
   color: #fff;
   border: none;
   border-radius: 9px;
@@ -244,4 +244,126 @@
 .close:focus {
   color: black;
   text-decoration: none;
+}
+
+.calendar-container {
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensure container doesn't overflow */
+}
+
+.calendar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px; /* Add some bottom padding */
+}
+
+.month {
+  width: calc(100px + 10vw); /* Responsive width based on viewport */
+  max-width: 180px; /* Adjusted max-width for better spacing */
+  background-color: #f0f0f0;
+  margin-right: 20px;
+  padding: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px; /* Rounded corners */
+}
+
+.month:hover {
+  background-color: #42cdff;
+  color: white;
+}
+
+.month:last-child {
+  margin-right: 0;
+}
+
+.current {
+  background-color: #a38dff;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+.calendar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.calendar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+
+/* Modal styles */
+.calendar-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  outline: none;
+  width: 400px;
+  max-width: 90%;
+  padding: 20px;
+  z-index: 1000;
+  border-radius: 25px;
+}
+
+/* Modal content */
+.modal-content {
+  text-align: center;
+}
+
+.modal-content.calendar-fallback {
+  color: #888;
+}
+
+.modal-content.calendar {
+  color: #333;
+}
+
+/* Heading styles */
+.modal-content h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.modal-content h3 {
+  font-size: 1.4em;
+  margin-bottom: 8px;
+}
+
+/* List styles */
+.joining-list, .leaving-list {
+  margin-top: 15px;
+}
+
+.joining-list p, .leaving-list p {
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .calendar-modal {
+    width: 90%;
+    max-width: 100%;
+  }
 }
