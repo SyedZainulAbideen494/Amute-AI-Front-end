@@ -33,6 +33,16 @@ const Statements = () => {
     setIsModalOpen(false);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+};
+
+
   return (
     <div className="dashboard-team-container">
       <nav className="left-navbar">
@@ -83,7 +93,7 @@ const Statements = () => {
                     : "N/A"}
                 </td>
                 <td>{statement.type}</td>
-                <td>{statement.created_at}</td>
+                <td>{formatDate(statement.created_at)}</td>
                 <td>
                   {statement.photo && (
                     <button
@@ -105,7 +115,7 @@ const Statements = () => {
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <img src={`${API_ROUTES.displayImages}/${selectedPhoto}`} alt="Statement Photo" />
+            <img src={`${API_ROUTES.displayImages}/${selectedPhoto}`} alt="Statement Photo" className="image-statements"/>
           </div>
         </div>
       )}
