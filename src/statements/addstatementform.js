@@ -9,16 +9,25 @@ const AddStatementForm = ({ onUpdateStatements }) => {
     const [transactionId, setTransactionId] = useState("");
     const [amount, setAmount] = useState("");
     const [type, setType] = useState("advance_payment");
+    const [photo, setPhoto] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(API_ROUTES.addStatements, {
-                name,
-                paymentType,
-                transactionId: paymentType === "cash" ? "" : transactionId,
-                amount,
-                type,
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("paymentType", paymentType);
+            formData.append("transactionId", paymentType === "cash" ? "" : transactionId);
+            formData.append("amount", amount);
+            formData.append("type", type);
+            if (paymentType === "online" && photo) {
+                formData.append("photo", photo);
+            }
+
+            const response = await axios.post(API_ROUTES.addStatements, formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
             });
             onUpdateStatements(); // Update statements after successful addition
             // Clear form fields after submission
@@ -27,6 +36,7 @@ const AddStatementForm = ({ onUpdateStatements }) => {
             setTransactionId("");
             setAmount("");
             setType("advance_payment");
+            setPhoto(null);
         } catch (error) {
             console.error("Error adding statement:", error);
         }
@@ -58,16 +68,28 @@ const AddStatementForm = ({ onUpdateStatements }) => {
                     </select>
                 </label>
                 {paymentType === "online" && (
-                    <label className="form-label">
-                        Transaction ID:
-                        <input
-                            className="form-input"
-                            type="text"
-                            value={transactionId}
-                            onChange={(e) => setTransactionId(e.target.value)}
-                            required
-                        />
-                    </label>
+                    <>
+                        <label className="form-label">
+                            Transaction ID:
+                            <input
+                                className="form-input"
+                                type="text"
+                                value={transactionId}
+                                onChange={(e) => setTransactionId(e.target.value)}
+                                required
+                            />
+                        </label>
+                        <label className="form-label">
+                            Upload Photo:
+                            <input
+                                className="form-input"
+                                type="file"
+                                onChange={(e) => setPhoto(e.target.files[0])}
+                                accept="image/*"
+                                required
+                            />
+                        </label>
+                    </>
                 )}
                 <label className="form-label">
                     Amount:
@@ -92,7 +114,7 @@ const AddStatementForm = ({ onUpdateStatements }) => {
                         <option value="other">Other</option>
                     </select>
                 </label>
-                <button className="form-button" type="submit">Add Statement</button>
+                <button className="button_update_member" type="submit">Add Statement</button>
             </form>
         </div>
     );

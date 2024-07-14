@@ -98,19 +98,28 @@
     padding: 20px;
   }
   
-  .statement-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  .statement-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
   }
   
-  .statement-card {
+  .statement-table th,
+  .statement-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .statement-table th {
     background-color: #f0f0f0;
-    padding: 15px;
-    border-radius: 8px;
-    width: calc(50% - 10px); /* Display two cards inline */
+    font-weight: bold;
   }
   
-  .statement-card p {
-    margin: 5px 0;
+  .statement-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .statement-table tbody tr:hover {
+    background-color: #f1f1f1;
   }
