@@ -33,13 +33,17 @@ const Statements = () => {
     setIsModalOpen(false);
   };
 
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
+  const formatDate = (dateTimeString) => {
+    const dateTime = new Date(dateTimeString);
+    const options = {
         year: 'numeric',
         month: 'long',
-        day: 'numeric'
-    });
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    };
+    return dateTime.toLocaleDateString('en-US', options);
 };
 
 
