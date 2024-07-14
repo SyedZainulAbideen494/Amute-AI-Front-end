@@ -29,6 +29,8 @@ const Member = () => {
     const [paidRentMembers, setPaidRentMembers] = useState([])
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [showWhatsappReminder, setShowWhatsappReminder] = useState('')
+    const [remniderMember, setReminderMember] = useState(null)
 
     const handleRemoveMember = (member_id) => {
         axios.delete(`${API_ROUTES.revertVacatingMember}/${member_id}`)
@@ -108,6 +110,11 @@ const Member = () => {
 
     const toggleModal_view = () => {
         setShowModal_view(!showModal_view);
+    };
+
+    const toggleModal_reminder = (memberPhone) => {
+        setReminderMember(memberPhone); // Set the reminderMember state
+        setShowWhatsappReminder(!showWhatsappReminder);
     };
 
     const viewMemberDetails = (member) => {
@@ -275,6 +282,76 @@ const Member = () => {
         });
     };
 
+    const SendWhatsappReminder = ({ memberPhone }) => {
+        const [message, setMessage] = useState('');
+        const [showModal, setShowModal] = useState(false);
+      
+        const handleClose = () => {
+            setShowWhatsappReminder(false)
+        }
+
+        
+const handleSend = async () => {
+    try {
+        // API call to send WhatsApp reminder
+        await axios.post('http://localhost:8080/api/send-whatsapp-reminder', {
+            remniderMember: memberPhone,
+            message,
+        });
+        // Show success modal
+        setShowModal(true);
+    } catch (error) {
+        console.error('Failed to send reminder:', error);
+    }
+};
+      
+        return (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h1 className="heading_update_member">Send Reminder</h1>
+              <div className="update_member_form">
+                <input
+                  type="text"
+                  className="input-text_update_member"
+                  placeholder="Message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <button className="button_update_member" onClick={handleSend} style={{ marginRight: '20px' }}>
+                  Send
+                </button>
+                <button className="button_update_member" onClick={handleClose} style={{ marginLeft: '20px' }}>
+                  Cancel
+                </button>
+              </div>
+              {showModal && (
+                <div className="success-animation">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="100"
+                    height="100"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#00cc00"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M8 14l4 4 8-8" />
+                  </svg>
+                  <p>Sent!</p>
+                  <button onClick={handleClose} className="button_update_member">
+                    Close
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      };
+      
+
 
     const UpdateMemberModal = ({ member, onUpdateSuccess, onClose }) => {
         const [name, setName] = useState(member ? member.name : '');
@@ -433,6 +510,9 @@ const Member = () => {
                 onClose={() => setShowSuccessModal(false)}
             />
         )}
+{showWhatsappReminder && (
+    <SendWhatsappReminder memberPhone={remniderMember} />
+)}
     <nav className="left-navbar">
         <h3>Dashboard</h3>
         <ul>
@@ -462,8 +542,7 @@ const Member = () => {
            <p><strong>Name:</strong> {member.name}</p>
            <p><strong>Phone Number:</strong> {member.phoneno}</p>
            <button className="vacating_btn" onClick={() => viewMemberDetails(member)}>View</button>
-           <button onClick={() => handleOpenDeleteModal(member.member_id)} className="vacating_btn">Vacating</button>
-           <button onClick={() => handleOpenUpdateModal(member)} className="vacating_btn">Update</button>
+           <button onClick={() => toggleModal_reminder(member.phoneno)} className="vacating_btn">Send Reminder</button>
        </li>
    ))}
            </ul>
