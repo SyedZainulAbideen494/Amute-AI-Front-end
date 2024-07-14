@@ -293,7 +293,6 @@ const Member = () => {
 
         
 const handleSend = async () => {
-  setShowModalSuccessMsg(true);
     try {
         // API call to send WhatsApp reminder
         await axios.post('http://localhost:8080/api/send-whatsapp-reminder', {
@@ -309,8 +308,30 @@ const handleSend = async () => {
       
         return (
           <div className="modal-overlay">
-            <div className="modal-content">
-              <h1 className="heading_update_member">Send Reminder</h1>
+          <div className="modal-content">
+            <h1 className="heading_update_member">Send Reminder</h1>
+            {showModalSuccessmsg ? (
+              <div className="success-animation">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100"
+                  height="100"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#00cc00"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14l4 4 8-8" />
+                </svg>
+                <p>Sent!</p>
+                <button onClick={handleClose} className="button_update_member">
+                  Close
+                </button>
+              </div>
+            ) : (
               <div className="update_member_form">
                 <input
                   type="text"
@@ -326,30 +347,9 @@ const handleSend = async () => {
                   Cancel
                 </button>
               </div>
-              {showModalSuccessmsg && (
-                <div className="success-animation">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="100"
-                    height="100"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#00cc00"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <path d="M8 14l4 4 8-8" />
-                  </svg>
-                  <p>Sent!</p>
-                  <button onClick={handleClose} className="button_update_member">
-                    Close
-                  </button>
-                </div>
-              )}
-            </div>
+            )}
           </div>
+        </div>
         );
       };
       
