@@ -133,7 +133,8 @@ const Member = () => {
                 body: JSON.stringify({ payment_pending: 0 })
             });
             if (response.ok) {
-                fetchRentNotPaid();
+              fetchPaidRentMembers();
+              fetchRentNotPaid()
                 setModalMessage(`Rent marked as paid for member`);
                 setShowSuccessModal(true);
             } else {
@@ -155,6 +156,7 @@ const Member = () => {
             });
             if (response.ok) {
                 fetchPaidRentMembers();
+                fetchRentNotPaid()
                 setModalMessage(`Rent marked as unpaid for member`);
                 setShowSuccessModal(true);
             } else {
