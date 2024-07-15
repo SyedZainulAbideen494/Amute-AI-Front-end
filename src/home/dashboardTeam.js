@@ -136,6 +136,7 @@ const DashboardTeam = () => {
             });
             if (response.ok) {
                 fetchRentNotPaid();
+                fetchPaidRentMembers()
                 setModalMessage(`Rent marked as paid for member`);
                 setShowSuccessModal(true);
             } else {
@@ -157,6 +158,7 @@ const DashboardTeam = () => {
             });
             if (response.ok) {
                 fetchPaidRentMembers();
+                fetchRentNotPaid()
                 setModalMessage(`Rent marked as unpaid for member`);
                 setShowSuccessModal(true);
             } else {
