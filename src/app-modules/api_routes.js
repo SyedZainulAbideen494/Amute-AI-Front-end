@@ -1,4 +1,4 @@
-const API_URL = 'https://5099770a06599aae0f6509b4c38663e3.serveo.net';
+const API_URL = 'https://kraftpoint.in/pg';
 
 export const API_ROUTES = {
   displayImages: `${API_URL}/`,
@@ -26,5 +26,6 @@ export const API_ROUTES = {
   markRentNotPaidAPI: `${API_URL}/api/mark-rent-not-paid`,
   fetchListMemberRentPaid: `${API_URL}/api/members-paid-rent`,
   fetchSharingBedApiDETAILS: `${API_URL}/beds`,
-  revertVacatingMember: `${API_URL}/api/vacating-members`
+  revertVacatingMember: `${API_URL}/api/vacating-members`,
+  sendWhstappReminder: `${API_URL}/api/send-whatsapp-reminder`
 };

@@ -296,7 +296,7 @@ const handleSend = async () => {
   setShowModalSuccessMsg(true);
     try {
         // API call to send WhatsApp reminder
-        await axios.post('http://localhost:8080/api/send-whatsapp-reminder', {
+        await axios.post(API_ROUTES.sendWhstappReminder, {
             remniderMember: memberPhone,
             message,
         });
