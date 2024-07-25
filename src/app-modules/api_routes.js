@@ -1,4 +1,4 @@
-const API_URL = 'https://kraftpoint.in/pg';
+const API_URL = 'http://localhost:8080/pg';
 
 export const API_ROUTES = {
   displayImages: `${API_URL}/`,

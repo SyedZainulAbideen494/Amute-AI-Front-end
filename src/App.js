@@ -22,6 +22,7 @@ import ConversationsPage from "./conversations/conversationsTeam";
 import Conversations from "./home/conversations";
 import ConersationsMainPage from "./conversations/conversationsPage";
 import Statements from "./statements/statements";
+import AddBuilding from "./add buildings/add-building";
 
 
 const router = createBrowserRouter([
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
   {path: '/members', element: <MemberPage/>},
   {path: '/add-members', element: <AddMemberPage/>},
   {path: '/conversations', element: <ConersationsMainPage/>},
-  {path: '/statements', element: <Statements/>}
+  {path: '/statements', element: <Statements/>},
+  {path: '/building/add', element: <AddBuilding/>}
 ]);
 
 
