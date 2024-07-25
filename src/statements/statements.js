@@ -63,6 +63,9 @@ const Statements = () => {
           <li>
             <Link to="/add-members">Add Members</Link>
           </li>
+          <li>
+            <Link to="/building/add">Add Building</Link>
+          </li>
         </ul>
       </nav>
       <div className="main-statements">

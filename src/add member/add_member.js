@@ -93,6 +93,9 @@ const AddMember = () => {
         <li><Link to="/members">Members</Link></li>
         <li><Link to="/statements">Statements</Link></li>
         <li><Link to="/add-members">Add Members</Link></li>
+        <li>
+            <Link to="/building/add">Add Building</Link>
+          </li>
       </ul>
     </nav>
     <h1 className="heading_add_member">Add Member</h1>

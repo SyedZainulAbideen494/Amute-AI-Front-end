@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './add-building.css';
+import { API_ROUTES } from '../app-modules/api_routes';
 
 const AddBuilding = () => {
     const [buildings, setBuildings] = useState([]);
@@ -31,7 +32,7 @@ const AddBuilding = () => {
 
     const fetchBuildings = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/buildings');
+            const response = await axios.get(API_ROUTES.fetchBuildings);
             setBuildings(response.data);
         } catch (error) {
             console.error('Error fetching buildings:', error);
@@ -40,7 +41,7 @@ const AddBuilding = () => {
 
     const fetchFloors = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/floors');
+            const response = await axios.get(API_ROUTES.fetchFloors);
             setFloors(response.data);
         } catch (error) {
             console.error('Error fetching floors:', error);
@@ -49,7 +50,7 @@ const AddBuilding = () => {
 
     const fetchFlats = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/flats');
+            const response = await axios.get(API_ROUTES.fetchFlatsAddBuildings);
             setFlats(response.data);
         } catch (error) {
             console.error('Error fetching flats:', error);
@@ -58,7 +59,7 @@ const AddBuilding = () => {
 
     const fetchRooms = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/rooms');
+            const response = await axios.get(API_ROUTES.fetchRoomsAddBuildings);
             setRooms(response.data);
         } catch (error) {
             console.error('Error fetching rooms:', error);
@@ -67,7 +68,7 @@ const AddBuilding = () => {
 
     const fetchBeds = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/beds');
+            const response = await axios.get(API_ROUTES.fetchBedsAddBuildings);
             setBeds(response.data);
         } catch (error) {
             console.error('Error fetching beds:', error);
@@ -76,7 +77,7 @@ const AddBuilding = () => {
 
     const addBuilding = async () => {
         try {
-            await axios.post('http://localhost:8080/buildings', { name: buildingName });
+            await axios.post(API_ROUTES.addBuildings, { name: buildingName });
             setBuildingName('');
             await fetchBuildings(); // Refresh buildings list
         } catch (error) {
@@ -86,7 +87,7 @@ const AddBuilding = () => {
 
     const addFloor = async () => {
         try {
-            await axios.post('http://localhost:8080/floors', { building_id: buildingId, floor_number: floorNumber });
+            await axios.post(API_ROUTES.addFloor, { building_id: buildingId, floor_number: floorNumber });
             setFloorNumber('');
             await fetchFloors(); // Refresh floors list
         } catch (error) {
@@ -96,7 +97,7 @@ const AddBuilding = () => {
 
     const addFlat = async () => {
         try {
-            await axios.post('http://localhost:8080/flats', { floor_id: floorId, flat_number: flatNumber });
+            await axios.post(API_ROUTES.addFlat, { floor_id: floorId, flat_number: flatNumber });
             setFlatNumber('');
             await fetchFlats(); // Refresh flats list
         } catch (error) {
@@ -106,7 +107,7 @@ const AddBuilding = () => {
 
     const addRoom = async () => {
         try {
-            await axios.post('http://localhost:8080/rooms', { flat_id: flatId, room_number: roomNumber, sharing });
+            await axios.post(API_ROUTES.addRoom, { flat_id: flatId, room_number: roomNumber, sharing });
             setRoomNumber('');
             setSharing('');
             await fetchRooms(); // Refresh rooms list
@@ -117,7 +118,7 @@ const AddBuilding = () => {
 
     const addBed = async () => {
         try {
-            await axios.post('http://localhost:8080/beds', { room_id: roomId, bed_number: bedNumber });
+            await axios.post(API_ROUTES.addBed, { room_id: roomId, bed_number: bedNumber });
             setBedNumber('');
             await fetchBeds(); // Refresh beds list
         } catch (error) {
@@ -134,6 +135,9 @@ const AddBuilding = () => {
                     <li><Link to="/members">Members</Link></li>
                     <li><Link to="/statements">Statements</Link></li>
                     <li><Link to="/add-members">Add Members</Link></li>
+                    <li>
+            <Link to="/building/add">Add Building</Link>
+          </li>
                 </ul>
             </nav>
             <div className="main-statements">

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/pg';
+const API_URL = 'https://b2e74c318c41f2d5c0cdfc1d3da12c49.serveo.net/pg';
 
 export const API_ROUTES = {
   displayImages: `${API_URL}/`,
@@ -27,5 +27,15 @@ export const API_ROUTES = {
   fetchListMemberRentPaid: `${API_URL}/api/members-paid-rent`,
   fetchSharingBedApiDETAILS: `${API_URL}/beds`,
   revertVacatingMember: `${API_URL}/api/vacating-members`,
-  sendWhstappReminder: `${API_URL}/api/send-whatsapp-reminder`
+  sendWhstappReminder: `${API_URL}/api/send-whatsapp-reminder`,
+  fetchBuildingsAddBuildings: `${API_URL}/buildings/fetch`,
+  fetchFloorsAddBuildings: `${API_URL}/floors/fetch`,
+  fetchFlatsAddBuildings: `${API_URL}/flats/fetch`,
+  fetchRoomsAddBuildings: `${API_URL}/rooms/fetch`,
+  fetchBedsAddBuildings: `${API_URL}/beds/fetch`,
+  addBuildings: `${API_URL}/buildings/add`,
+  addFloor: `${API_URL}/floors/add`,
+  addFlat: `${API_URL}/flats/add`,
+  addRoom: `${API_URL}/rooms/add`,
+  addBed: `${API_URL}/beds/add`,
 };

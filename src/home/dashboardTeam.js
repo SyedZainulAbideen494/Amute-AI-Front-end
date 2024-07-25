@@ -208,6 +208,9 @@ const DashboardTeam = () => {
             <li><Link to="/members">Members</Link></li>
             <li><Link to="/statements">Statements</Link></li>
             <li><Link to="/add-members">Add Members</Link></li>
+            <li>
+            <Link to="/building/add">Add Building</Link>
+          </li>
                 </ul>
             </nav>
             <div className="main-dashboard">
