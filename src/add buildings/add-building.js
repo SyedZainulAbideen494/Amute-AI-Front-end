@@ -32,7 +32,7 @@ const AddBuilding = () => {
 
     const fetchBuildings = async () => {
         try {
-            const response = await axios.get(API_ROUTES.fetchBuildings);
+            const response = await axios.get(API_ROUTES.fetchBuildingsAddBuildings);
             setBuildings(response.data);
         } catch (error) {
             console.error('Error fetching buildings:', error);
@@ -41,7 +41,7 @@ const AddBuilding = () => {
 
     const fetchFloors = async () => {
         try {
-            const response = await axios.get(API_ROUTES.fetchFloors);
+            const response = await axios.get(API_ROUTES.fetchFloorsAddBuildings);
             setFloors(response.data);
         } catch (error) {
             console.error('Error fetching floors:', error);
