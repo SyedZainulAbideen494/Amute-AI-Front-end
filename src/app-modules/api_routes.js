@@ -38,4 +38,9 @@ export const API_ROUTES = {
   addFlat: `${API_URL}/flats/add`,
   addRoom: `${API_URL}/rooms/add`,
   addBed: `${API_URL}/beds/add`,
+  deleteBuilding: (id) => `${API_URL}/buildings/delete/${id}`,
+  deleteFloor: (id) => `${API_URL}/floors/delete/${id}`,
+  deleteFlat: (id) => `${API_URL}/flats/delete/${id}`,
+  deleteRoom: (id) => `${API_URL}/rooms/delete/${id}`,
+  deleteBed: (id) => `${API_URL}/beds/delete/${id}`,
 };

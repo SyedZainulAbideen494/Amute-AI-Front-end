@@ -1,40 +1,53 @@
-/* Container Styles */
-.container {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Form Section Styles */
-  .form-section {
-    margin-bottom: 20px;
-  }
-  
-  .form-section select,
-  .form-section input.input-field {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .form-section button.action-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  
-  .form-section button.action-button:hover {
-    background-color: #0056b3;
-  }
+.container-add-buildings {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px; /* Limits the width of the container */
+  margin: 0 auto;  /* Centers the container */
+}
+
+.heading {
+  font-size: 24px; /* Reduced font size */
+  margin-bottom: 15px; /* Reduced margin */
+  text-align: center; /* Centered text */
+}
+
+.form-section-add-buildings {
+  margin-bottom: 15px; /* Reduced margin */
+  text-align: center; /* Centered text */
+}
+
+.sub-heading {
+  font-size: 18px; /* Reduced font size */
+  margin-bottom: 8px; /* Reduced margin */
+  text-align: center; /* Centered text */
+}
+
+.input-field,
+.select-dropdown {
+  width: 90%; /* Slightly smaller width */
+  padding: 8px; /* Reduced padding */
+  margin: 0 auto 10px auto; /* Centered input fields */
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.action-button {
+  width: 90%; /* Slightly smaller width */
+  padding: 8px; /* Reduced padding */
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px; /* Reduced font size */
+  transition: background-color 0.3s;
+  margin: 0 auto; /* Centered button */
+  display: block; /* Ensures block display for centering */
+}
+
+.action-button:hover {
+  background-color: #0056b3;
+}
