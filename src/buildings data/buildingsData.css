@@ -1,0 +1,59 @@
+/* Main content section */
+.main-buildings-section {
+    margin-left: 250px; /* Offset for the fixed sidebar */
+    padding: 20px;
+    flex: 1; /* Take up remaining space */
+}
+
+/* Building buttons section */
+.building-buttons {
+    margin-bottom: 20px;
+}
+
+.building-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7161ef;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.building-buttons button:hover {
+    background-color: #a38dff;
+}
+
+/* Members list section */
+.members-list {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Flat section styling */
+.flat-section {
+    margin-bottom: 20px;
+}
+
+.flat-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #7161ef;
+}
+
+.flat-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.flat-section li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+}

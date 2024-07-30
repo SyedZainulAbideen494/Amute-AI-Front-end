@@ -1,4 +1,4 @@
-const API_URL = 'https://b2e74c318c41f2d5c0cdfc1d3da12c49.serveo.net/pg';
+const API_URL = 'http://localhost:8080/pg';
 
 export const API_ROUTES = {
   displayImages: `${API_URL}/`,

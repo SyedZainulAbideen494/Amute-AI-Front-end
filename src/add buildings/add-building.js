@@ -181,6 +181,7 @@ const AddBuilding = () => {
                     <li><Link to="/statements">Statements</Link></li>
                     <li><Link to="/add-members">Add Members</Link></li>
                     <li><Link to="/building/add">Add Building</Link></li>
+                    <li><Link to='/buildings'>Buildings Data</Link></li>
                 </ul>
             </nav>
             <div className="main-statements">
@@ -193,7 +194,20 @@ const AddBuilding = () => {
                         <input className="input-field" value={buildingName} onChange={(e) => setBuildingName(e.target.value)} placeholder="Building Name" />
                         <button className="action-button" onClick={addBuilding}>Add Building</button>
                     </div>
-                    
+
+                    {/* List Buildings */}
+                    <div className="list-section">
+                        <h2 className="sub-heading">Existing Buildings</h2>
+                        <ul>
+                            {buildings.map(building => (
+                                <li key={building.id}>
+                                    {building.name}
+                                    <button className="action-button" onClick={() => deleteBuilding(building.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
                     {/* Add Floor Section */}
                     <div className="form-section-add-buildings">
                         <h2 className="sub-heading">Add Floor</h2>
@@ -204,97 +218,119 @@ const AddBuilding = () => {
                         <input className="input-field" value={floorNumber} onChange={(e) => setFloorNumber(e.target.value)} placeholder="Floor Number" />
                         <button className="action-button" onClick={addFloor}>Add Floor</button>
                     </div>
-                    
+
+                    {/* List Floors */}
+                    <div className="list-section">
+                        <h2 className="sub-heading">Existing Floors</h2>
+                        <ul>
+                            {floors.map(floor => (
+                                <li key={floor.id}>
+                                    Floor {floor.floor_number} in Building {floor.building_name}
+                                    <button className="action-button" onClick={() => deleteFloor(floor.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
                     {/* Add Flat Section */}
                     <div className="form-section-add-buildings">
                         <h2 className="sub-heading">Add Flat</h2>
                         <select className="select-dropdown" onChange={(e) => setFloorId(e.target.value)}>
                             <option value="">Select Floor</option>
-                            {floors.map(floor => <option key={floor.id} value={floor.id}>{floor.number}</option>)}
+                            {floors.map(floor => (
+                                <option key={floor.id} value={floor.id}>
+                                    Floor {floor.floor_number} - Building {floor.building_name}
+                                </option>
+                            ))}
                         </select>
                         <input className="input-field" value={flatNumber} onChange={(e) => setFlatNumber(e.target.value)} placeholder="Flat Number" />
                         <button className="action-button" onClick={addFlat}>Add Flat</button>
                     </div>
-                    
+
+                    {/* List Flats */}
+                    <div className="list-section">
+                        <h2 className="sub-heading">Existing Flats</h2>
+                        <ul>
+                            {flats.map(flat => (
+                                <li key={flat.id}>
+                                    Flat {flat.flat_number} on Floor {flat.floor_number} in Building {flat.building_name}
+                                    <button className="action-button" onClick={() => deleteFlat(flat.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
                     {/* Add Room Section */}
                     <div className="form-section-add-buildings">
                         <h2 className="sub-heading">Add Room</h2>
                         <select className="select-dropdown" onChange={(e) => setFlatId(e.target.value)}>
                             <option value="">Select Flat</option>
-                            {flats.map(flat => <option key={flat.id} value={flat.id}>{flat.number}</option>)}
+                            {flats.map(flat => (
+                                <option key={flat.id} value={flat.id}>
+                                    Flat {flat.flat_number} - Floor {flat.floor_number} - Building {flat.building_name}
+                                </option>
+                            ))}
                         </select>
                         <input className="input-field" value={roomNumber} onChange={(e) => setRoomNumber(e.target.value)} placeholder="Room Number" />
-                        <select className="select-dropdown" onChange={(e) => setSharing(e.target.value)}>
+                        <select className="select-dropdown" value={sharing} onChange={(e) => setSharing(e.target.value)}>
                             <option value="">Select Sharing</option>
-                            <option value="Single">Single</option>
-                            <option value="Double">Double</option>
+                            {[...Array(7).keys()].map(num => (
+                                <option key={num + 1} value={num + 1}>{num + 1}</option>
+                            ))}
                         </select>
                         <button className="action-button" onClick={addRoom}>Add Room</button>
                     </div>
-                    
+
+                    {/* List Rooms */}
+                    <div className="list-section">
+                        <h2 className="sub-heading">Existing Rooms</h2>
+                        <ul>
+                            {rooms.map(room => (
+                                <li key={room.id}>
+                                    Room {room.room_number} in Flat {room.flat_number} - Floor {room.floor_number} - Building {room.building_name}
+                                    <button className="action-button" onClick={() => deleteRoom(room.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
                     {/* Add Bed Section */}
                     <div className="form-section-add-buildings">
                         <h2 className="sub-heading">Add Bed</h2>
                         <select className="select-dropdown" onChange={(e) => setRoomId(e.target.value)}>
                             <option value="">Select Room</option>
-                            {rooms.map(room => <option key={room.id} value={room.id}>{room.number}</option>)}
+                            {rooms.map(room => (
+                                <option key={room.id} value={room.id}>
+                                    Room {room.room_number} - Flat {room.flat_number} - Floor {room.floor_number} - Building {room.building_name}
+                                </option>
+                            ))}
                         </select>
                         <input className="input-field" value={bedNumber} onChange={(e) => setBedNumber(e.target.value)} placeholder="Bed Number" />
                         <button className="action-button" onClick={addBed}>Add Bed</button>
                     </div>
-                    
-                    {/* Delete Building Section */}
-                    <div className="form-section-add-buildings">
-                        <h2 className="sub-heading">Delete Building</h2>
-                        <select className="select-dropdown" onChange={(e) => setBuildingId(e.target.value)}>
-                            <option value="">Select Building</option>
-                            {buildings.map(building => <option key={building.id} value={building.id}>{building.name}</option>)}
-                        </select>
-                        <button className="action-button" onClick={() => deleteBuilding(buildingId)}>Delete Building</button>
+
+                    {/* List Beds */}
+                    <div className="list-section">
+                        <h2 className="sub-heading">Existing Beds</h2>
+                        <ul>
+                            {beds.map(bed => (
+                                <li key={bed.id}>
+                                    Bed {bed.bed_number} in Room {bed.room_number} - Flat {bed.flat_number} - Floor {bed.floor_number} - Building {bed.building_name}
+                                    <button className="action-button" onClick={() => deleteBed(bed.id)}>Delete</button>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+
+                    {/* Error/Success Messages */}
+                    {error && <p className="error-message">{error}</p>}
                     
-                    {/* Delete Floor Section */}
-                    <div className="form-section-add-buildings">
-                        <h2 className="sub-heading">Delete Floor</h2>
-                        <select className="select-dropdown" onChange={(e) => setFloorId(e.target.value)}>
-                            <option value="">Select Floor</option>
-                            {floors.map(floor => <option key={floor.id} value={floor.id}>{floor.number}</option>)}
-                        </select>
-                        <button className="action-button" onClick={() => deleteFloor(floorId)}>Delete Floor</button>
-                    </div>
-                    
-                    {/* Delete Flat Section */}
-                    <div className="form-section-add-buildings">
-                        <h2 className="sub-heading">Delete Flat</h2>
-                        <select className="select-dropdown" onChange={(e) => setFlatId(e.target.value)}>
-                            <option value="">Select Flat</option>
-                            {flats.map(flat => <option key={flat.id} value={flat.id}>{flat.number}</option>)}
-                        </select>
-                        <button className="action-button" onClick={() => deleteFlat(flatId)}>Delete Flat</button>
-                    </div>
-                    
-                    {/* Delete Room Section */}
-                    <div className="form-section-add-buildings">
-                        <h2 className="sub-heading">Delete Room</h2>
-                        <select className="select-dropdown" onChange={(e) => setRoomId(e.target.value)}>
-                            <option value="">Select Room</option>
-                            {rooms.map(room => <option key={room.id} value={room.id}>{room.number}</option>)}
-                        </select>
-                        <button className="action-button" onClick={() => deleteRoom(roomId)}>Delete Room</button>
-                    </div>
-                    
-                    {/* Delete Bed Section */}
-                    <div className="form-section-add-buildings">
-                        <h2 className="sub-heading">Delete Bed</h2>
-                        <select className="select-dropdown" onChange={(e) => setBedId(e.target.value)}>
-                            <option value="">Select Bed</option>
-                            {beds.map(bed => <option key={bed.id} value={bed.id}>{bed.number}</option>)}
-                        </select>
-                        <button className="action-button" onClick={() => deleteBed(bedId)}>Delete Bed</button>
-                    </div>
+                    {/* Modal for Success Messages */}
+                    <Modal isOpen={modalOpen} onClose={closeModal}>
+                        {modalMessage}
+                    </Modal>
                 </div>
             </div>
-            <Modal isOpen={modalOpen} message={modalMessage} onClose={closeModal} />
         </div>
     );
 };

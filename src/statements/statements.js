@@ -66,6 +66,7 @@ const Statements = () => {
           <li>
             <Link to="/building/add">Add Building</Link>
           </li>
+          <li><Link to='/buildings'>Buildings Data</Link></li>
         </ul>
       </nav>
       <div className="main-statements">

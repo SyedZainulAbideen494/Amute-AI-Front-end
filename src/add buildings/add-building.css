@@ -1,53 +1,148 @@
+.main-statements {
+  flex: 1;
+  padding: 20px;
+}
+
 .container-add-buildings {
   background-color: #fff;
-  padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px; /* Limits the width of the container */
-  margin: 0 auto;  /* Centers the container */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .heading {
-  font-size: 24px; /* Reduced font size */
-  margin-bottom: 15px; /* Reduced margin */
-  text-align: center; /* Centered text */
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #121212;
 }
 
 .form-section-add-buildings {
-  margin-bottom: 15px; /* Reduced margin */
-  text-align: center; /* Centered text */
+  margin-bottom: 30px;
 }
 
-.sub-heading {
-  font-size: 18px; /* Reduced font size */
-  margin-bottom: 8px; /* Reduced margin */
-  text-align: center; /* Centered text */
+.form-section-add-buildings h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #7161ef;
 }
 
-.input-field,
-.select-dropdown {
-  width: 90%; /* Slightly smaller width */
-  padding: 8px; /* Reduced padding */
-  margin: 0 auto 10px auto; /* Centered input fields */
-  border-radius: 4px;
+.input-field {
+  width: calc(100% - 22px);
+  padding: 10px;
   border: 1px solid #ddd;
-  box-sizing: border-box; /* Ensures padding is included in width */
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.select-dropdown {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .action-button {
-  width: 90%; /* Slightly smaller width */
-  padding: 8px; /* Reduced padding */
+  padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #7161ef;
   color: #fff;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 14px; /* Reduced font size */
   transition: background-color 0.3s;
-  margin: 0 auto; /* Centered button */
-  display: block; /* Ensures block display for centering */
 }
 
 .action-button:hover {
-  background-color: #0056b3;
+  background-color: #a38dff;
+}
+
+.list-section {
+  margin-bottom: 30px;
+}
+
+.list-section h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #7161ef;
+}
+
+.list-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-section li {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-section button {
+  background-color: #ff4d4d;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.list-section button:hover {
+  background-color: #e60000;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #7161ef;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.modal-content button:hover {
+  background-color: #a38dff;
 }

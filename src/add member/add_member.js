@@ -96,6 +96,7 @@ const AddMember = () => {
         <li>
             <Link to="/building/add">Add Building</Link>
           </li>
+          <li><Link to='/buildings'>Buildings Data</Link></li>
       </ul>
     </nav>
     <h1 className="heading_add_member">Add Member</h1>
